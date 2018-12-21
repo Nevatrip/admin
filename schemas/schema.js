@@ -1,15 +1,37 @@
-// First, we must import the schema creator
 import createSchema from 'part:@sanity/base/schema-creator'
-
-// Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
-// Then we give our schema to the builder and provide the result to Sanity
+import supportedLanguages from './supportedLanguages'
+import apiProvider from './apiProvider'
+import apiRelation from './apiRelation'
+import ticketType from './ticketType'
+import placeCategory from './placeCategory'
+import point from './point'
+import place from './place'
+import promo from './promo'
+import promoType from './promoType'
+import promoEntry from './promoEntry'
+import promoCode from './promoCode'
+import blog from './blog'
+import tour from './tour'
+import rent from './rent'
+
 export default createSchema({
   name: 'default',
-  // Then proceed to concatenate our our document type
-  // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
-    /* Your types here! */
+    supportedLanguages,
+    apiProvider,
+    apiRelation,
+    ticketType,
+    placeCategory,
+    point,
+    place,
+    promo,
+    promoType,
+    promoEntry,
+    promoCode,
+    blog,
+    tour,
+    rent,
   ])
 })
