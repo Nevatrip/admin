@@ -8,6 +8,13 @@ import ticketType from './ticketType'
 import placeCategory from './placeCategory'
 import point from './point'
 import place from './place'
+import promo from './promo'
+import promoType from './promoType'
+import promoEntry from './promoEntry'
+import promoCode from './promoCode'
+import blog from './blog'
+import tour from './tour'
+import rent from './rent'
 
 export default createSchema({
   name: 'default',
@@ -19,5 +26,12 @@ export default createSchema({
     placeCategory,
     point,
     place,
+    promo,
+    promoType,
+    promoEntry,
+    promoCode,
+    blog,
+    tour,
+    rent,
   ])
 })
