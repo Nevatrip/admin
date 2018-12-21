@@ -7,6 +7,7 @@ import apiRelation from './apiRelation'
 import ticketType from './ticketType'
 import placeCategory from './placeCategory'
 import point from './point'
+import place from './place'
 
 export default createSchema({
   name: 'default',
@@ -17,5 +18,6 @@ export default createSchema({
     ticketType,
     placeCategory,
     point,
+    place,
   ])
 })
