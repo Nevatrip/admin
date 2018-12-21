@@ -12,6 +12,9 @@ import promo from './promo'
 import promoType from './promoType'
 import promoEntry from './promoEntry'
 import promoCode from './promoCode'
+import blog from './blog'
+import tour from './tour'
+import rent from './rent'
 
 export default createSchema({
   name: 'default',
@@ -27,5 +30,8 @@ export default createSchema({
     promoType,
     promoEntry,
     promoCode,
+    blog,
+    tour,
+    rent,
   ])
 })

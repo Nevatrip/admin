@@ -1,25 +1,29 @@
 export default {
-  name: 'promo',
-  title: 'Акции',
+  name: 'rent',
+  title: 'Аренда',
   type: 'document',
   fields: [
     {
       name: 'title',
-      title: 'Название',
+      title: 'Имя',
       type: 'string',
       required: true,
+    },
+    {
+      name: 'key',
+      title: 'Ключ',
+      type: 'slug',
+      required: true,
+      options: {
+        source: 'title',
+        maxLength: 96
+      }
     },
     {
       name: 'description',
       title: 'Описание',
       type: 'text'
     },
-    {
-      name: 'promoCode',
-      title: 'Промокод',
-      type: 'array',
-      of: [{ type: 'promoCode' }]
-    }
   ],
   preview: {
     select: {
