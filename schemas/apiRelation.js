@@ -1,30 +1,37 @@
 export default {
   name: 'apiRelation',
   title: 'Значение в API партнёра',
-  type: 'object',
-  fields: [
+  type: 'array',
+  of: [
     {
-      title: 'API',
-      name: 'api',
-      type: 'reference',
-      to: { type: 'apiProvider' }
-    },
-    {
-      title: 'Значение',
-      name: 'value',
-      type: 'string',
-    },
-  ],
-  preview: {
-    select: {
-      title: 'api.title',
-      value: 'value'
-    },
-    prepare(selection) {
-      const {title, value} = selection
-      return {
-        title: `${ title } — ${ value }`
-      }
+      type: 'object',
+      fields: [
+        {
+          title: 'API',
+          name: 'provider',
+          type: 'reference',
+          required: true,
+          to: { type: 'apiProvider' }
+        },
+        {
+          title: 'Значение',
+          name: 'value',
+          required: true,
+          type: 'string',
+        },
+      ],
+      preview: {
+        select: {
+          title: 'provider.title',
+          value: 'value'
+        },
+        prepare(selection) {
+          const {title, value} = selection
+          return {
+            title: `${ title } — ${ value }`
+          }
+        }
+      },
     }
-  }
+  ]
 }

@@ -20,15 +20,10 @@ export default {
       }
     },
     {
-      name: 'logo',
-      title: 'Логотип',
-      type: 'image'
-    },
-    {
       name: 'description',
       title: 'Описание',
       type: 'text'
-    }
+    },
   ],
   preview: {
     select: {
