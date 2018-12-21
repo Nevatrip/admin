@@ -4,6 +4,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import supportedLanguages from './supportedLanguages'
 import apiProvider from './apiProvider'
 import apiRelation from './apiRelation'
+import ticketType from './ticketType'
 
 export default createSchema({
   name: 'default',
@@ -11,5 +12,6 @@ export default createSchema({
     supportedLanguages,
     apiProvider,
     apiRelation,
+    ticketType,
   ])
 })
