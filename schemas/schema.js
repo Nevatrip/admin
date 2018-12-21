@@ -5,6 +5,7 @@ import supportedLanguages from './supportedLanguages'
 import apiProvider from './apiProvider'
 import apiRelation from './apiRelation'
 import ticketType from './ticketType'
+import placeCategory from './placeCategory'
 
 export default createSchema({
   name: 'default',
@@ -13,5 +14,6 @@ export default createSchema({
     apiProvider,
     apiRelation,
     ticketType,
+    placeCategory,
   ])
 })
