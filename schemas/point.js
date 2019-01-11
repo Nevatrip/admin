@@ -24,6 +24,24 @@ export default {
       title: 'Описание',
       type: 'text'
     },
+    {
+      name: 'coords',
+      title: 'Координаты',
+      type: 'geopoint'
+    },
+    {
+      name: 'image',
+      title: 'Фотография',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    },
+    {
+      name: 'phone',
+      title: 'Контакты',
+      type: 'string'
+    },
   ],
   preview: {
     select: {

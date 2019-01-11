@@ -15,6 +15,9 @@ import promoCode from './promoCode'
 import blog from './blog'
 import tour from './tour'
 import rent from './rent'
+import direction from './direction'
+import schedule from './schedule'
+import settingTicketPrint from './settingTicketPrint'
 
 export default createSchema({
   name: 'default',
@@ -33,5 +36,8 @@ export default createSchema({
     blog,
     tour,
     rent,
+    direction,
+    schedule,
+    settingTicketPrint,
   ])
 })

@@ -23,6 +23,7 @@ export default () =>
               SB.documentTypeListItem('ticketType'),
               SB.documentTypeListItem('apiProvider'),
               SB.documentTypeListItem('supportedLanguages'),
+              SB.documentTypeListItem('settingTicketPrint'),
           ])
         ),
     ])
