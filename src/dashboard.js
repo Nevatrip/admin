@@ -24,6 +24,9 @@ export default () =>
               SB.documentTypeListItem('apiProvider'),
               SB.documentTypeListItem('supportedLanguages'),
               SB.documentTypeListItem('settingTicketPrint'),
+              SB.documentTypeListItem('page'),
+              SB.documentTypeListItem('settingServiceCategory'),
+              SB.documentTypeListItem('settingMenu'),
           ])
         ),
     ])

@@ -18,6 +18,9 @@ import rent from './rent'
 import direction from './direction'
 import schedule from './schedule'
 import settingTicketPrint from './settingTicketPrint'
+import settingServiceCategory from './settingServiceCategory'
+import settingMenu from './settingMenu'
+import page from './page'
 
 export default createSchema({
   name: 'default',
@@ -39,5 +42,8 @@ export default createSchema({
     direction,
     schedule,
     settingTicketPrint,
+    settingServiceCategory,
+    settingMenu,
+    page,
   ])
 })

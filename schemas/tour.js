@@ -18,6 +18,12 @@ export default {
       required: true,
     },
     {
+      name: 'category',
+      type: 'reference',
+      title: 'Категория',
+      to: { type: 'settingServiceCategory' },
+    },
+    {
       name: 'key',
       title: 'Ключ',
       type: 'slug',
