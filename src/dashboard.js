@@ -26,7 +26,9 @@ export default () =>
               SB.documentTypeListItem('settingTicketPrint'),
               SB.documentTypeListItem('page'),
               SB.documentTypeListItem('settingServiceCategory'),
+              SB.documentTypeListItem('settingServiceTag'),
               SB.documentTypeListItem('settingMenu'),
           ])
         ),
+      SB.documentTypeListItem('event'),
     ])

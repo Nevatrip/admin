@@ -19,8 +19,10 @@ import direction from './direction'
 import schedule from './schedule'
 import settingTicketPrint from './settingTicketPrint'
 import settingServiceCategory from './settingServiceCategory'
+import settingServiceTag from './settingServiceTag'
 import settingMenu from './settingMenu'
 import page from './page'
+import event from './event'
 
 export default createSchema({
   name: 'default',
@@ -43,7 +45,9 @@ export default createSchema({
     schedule,
     settingTicketPrint,
     settingServiceCategory,
+    settingServiceTag,
     settingMenu,
     page,
+    event,
   ])
 })

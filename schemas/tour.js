@@ -24,6 +24,18 @@ export default {
       to: { type: 'settingServiceCategory' },
     },
     {
+      name: 'tags',
+      type: 'array',
+      title: 'Теги',
+      of: [
+        {
+          type: 'reference',
+          title: 'Тег',
+          to: { type: 'settingServiceTag' }
+        }
+      ],
+    },
+    {
       name: 'key',
       title: 'Ключ',
       type: 'slug',
