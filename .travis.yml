@@ -6,7 +6,7 @@ before_install:
   -in deploy_rsa.enc -out deploy_rsa -d
 - export TZ=Europe/Moscow
 - date
-- npm install -g sanity
+- npm install -g @sanity/cli
 addons:
   ssh_known_hosts: 188.166.58.173
 after_success:
