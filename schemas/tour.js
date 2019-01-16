@@ -18,6 +18,12 @@ export default {
       required: true,
     },
     {
+      name: 'titleImage',
+      title: 'Главное изображение',
+      type: 'image',
+      required: true,
+    },
+    {
       name: 'category',
       type: 'reference',
       title: 'Категория',
