@@ -11,7 +11,7 @@ before_install:
   - date
   - npm install -g @sanity/cli
 script:
-    - sanity build
+  - sanity deploy
 addons:
   ssh_known_hosts: 188.166.58.173
 after_success:
