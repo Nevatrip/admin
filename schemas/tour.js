@@ -220,6 +220,28 @@ export default {
       title: 'Расписание',
       type: 'text'
     },
+    {
+      name: 'gallery',
+      title: 'Галерея',
+      type: 'array',
+      options: { layout: 'grid' },
+      of: [
+        {
+          title: 'Фотография',
+          type: 'image',
+          fields: [
+            {
+              name: 'description',
+              type: 'string',
+              title: 'Описание',
+              options: {
+                isHighlighted: true
+              }
+            }
+          ]
+        }
+      ]
+    },
   ],
   preview: {
     select: {
