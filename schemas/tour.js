@@ -18,6 +18,11 @@ export default {
       required: true,
     },
     {
+      name: 'description',
+      title: 'Содержимое',
+      type: 'text'
+    },
+    {
       name: 'status',
       title: 'Статус',
       type: 'array',
@@ -33,7 +38,7 @@ export default {
       name: 'titleImage',
       title: 'Главное изображение',
       type: 'image',
-      options: {hotspot: true}
+      options: { hotspot: true }
     },
     {
       name: 'category',
@@ -108,11 +113,6 @@ export default {
     {
       name: 'descriptionPrepend',
       title: 'Дополнительная информация перед описанием',
-      type: 'text'
-    },
-    {
-      name: 'description',
-      title: 'Описание',
       type: 'text'
     },
     {
