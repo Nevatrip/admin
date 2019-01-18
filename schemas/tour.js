@@ -18,6 +18,18 @@ export default {
       required: true,
     },
     {
+      name: 'status',
+      title: 'Статус',
+      type: 'array',
+      of: [ { type: 'string' } ],
+      options: {
+        list: [
+          { title: 'Не показывать в списке категории', value: 'hidden' },
+          { title: 'Снять с публикации', value: 'deleted' },
+        ]
+      }
+    },
+    {
       name: 'titleImage',
       title: 'Главное изображение',
       type: 'image',
@@ -219,6 +231,28 @@ export default {
       name: 'schedule',
       title: 'Расписание',
       type: 'text'
+    },
+    {
+      name: 'gallery',
+      title: 'Галерея',
+      type: 'array',
+      options: { layout: 'grid' },
+      of: [
+        {
+          title: 'Фотография',
+          type: 'image',
+          fields: [
+            {
+              name: 'description',
+              type: 'string',
+              title: 'Описание',
+              options: {
+                isHighlighted: true
+              }
+            }
+          ]
+        }
+      ]
     },
   ],
   preview: {
