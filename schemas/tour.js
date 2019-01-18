@@ -66,8 +66,9 @@ export default {
       required: true,
       options: {
         source: 'title',
-        maxLength: 96
-      }
+        maxLength: 96,
+      },
+      description: 'Уникальное имя, которое будет использоваться в URL-адресе ресурса: <категория>/<ключ>',
     },
     {
       name: 'directions',
@@ -135,11 +136,17 @@ export default {
     {
       name: 'priceDescription',
       title: 'Текст с призывом перед последней ценой на странице экскурсии',
+      description: 'Например: «Ваши яркие впечатления всего за». Цену указывать не нужно',
       type: 'string'
     },
     {
       name: 'price',
       title: 'Стоимость по умолчанию',
+      type: 'string'
+    },
+    {
+      name: 'priceWidget',
+      title: '… или код виджета стороннего сервиса',
       type: 'string'
     },
     {
