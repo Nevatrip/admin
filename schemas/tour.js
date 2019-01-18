@@ -21,9 +21,7 @@ export default {
       name: 'titleImage',
       title: 'Главное изображение',
       type: 'image',
-      options: {
-        hotspot: true
-      }
+      options: {hotspot: true}
     },
     {
       name: 'category',
