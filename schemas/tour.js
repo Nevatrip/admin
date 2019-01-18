@@ -213,11 +213,6 @@ export default {
       type: 'string'
     },
     {
-      name: 'partnerContract',
-      title: '№ договора с оператором',
-      type: 'string'
-    },
-    {
       name: 'duration',
       title: 'Длительность',
       type: 'string'
@@ -225,7 +220,29 @@ export default {
     {
       name: 'schedule',
       title: 'Расписание',
-      type: 'string'
+      type: 'text'
+    },
+    {
+      name: 'gallery',
+      title: 'Галерея',
+      type: 'array',
+      options: { layout: 'grid' },
+      of: [
+        {
+          title: 'Фотография',
+          type: 'image',
+          fields: [
+            {
+              name: 'description',
+              type: 'string',
+              title: 'Описание',
+              options: {
+                isHighlighted: true
+              }
+            }
+          ]
+        }
+      ]
     },
   ],
   preview: {
