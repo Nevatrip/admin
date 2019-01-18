@@ -20,6 +20,16 @@ export default {
       }
     },
     {
+      name: 'partnerContract',
+      title: '№ партнёрского договора',
+      type: 'string'
+    },
+    {
+      name: 'email',
+      title: 'Email партнёра',
+      type: 'string'
+    },    
+    {
       name: 'logo',
       title: 'Логотип',
       type: 'image'

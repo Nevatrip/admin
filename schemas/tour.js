@@ -214,11 +214,6 @@ export default {
       type: 'string'
     },
     {
-      name: 'partnerContract',
-      title: '№ договора с оператором',
-      type: 'string'
-    },
-    {
       name: 'duration',
       title: 'Длительность',
       type: 'string'
