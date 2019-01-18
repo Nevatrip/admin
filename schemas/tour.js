@@ -57,6 +57,7 @@ export default {
           to: { type: 'settingServiceTag' }
         }
       ],
+      validation: Rule => Rule.unique().error('Уже есть такой тег…')
     },
     {
       name: 'key',
