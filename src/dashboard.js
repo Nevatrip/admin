@@ -28,6 +28,7 @@ export default () =>
               SB.documentTypeListItem('settingServiceCategory'),
               SB.documentTypeListItem('settingServiceTag'),
               SB.documentTypeListItem('settingMenu'),
+              SB.documentTypeListItem('settingPlaceFeatures'),
           ])
         ),
       SB.documentTypeListItem('event'),

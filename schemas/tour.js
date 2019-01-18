@@ -185,16 +185,13 @@ export default {
       title: 'Что есть на борту',
       name: 'placeFeatures',
       type: 'array',
-      of: [{type: 'string'}],
-      options: {
-        list: [
-          { title: 'туалет', value: 'male' },
-          { title: 'бар', value: 'glass' },
-          { title: 'еда', value: 'cutlery' },
-          { title: 'экскурсия', value: 'comment' },
-          { title: 'музыка', value: 'music' },
-        ]
-      }
+      of: [
+        {
+          type: 'reference',
+          title: 'На борту',
+          to: { type: 'settingPlaceFeatures' }
+        }
+      ],
     },
     {
       name: 'ticketPrint',
