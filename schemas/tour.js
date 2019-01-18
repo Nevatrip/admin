@@ -33,7 +33,7 @@ export default {
       name: 'titleImage',
       title: 'Главное изображение',
       type: 'image',
-      required: true,
+      options: {hotspot: true}
     },
     {
       name: 'category',
