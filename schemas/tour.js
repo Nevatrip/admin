@@ -221,7 +221,7 @@ export default {
     {
       name: 'schedule',
       title: 'Расписание',
-      type: 'string'
+      type: 'text'
     },
   ],
   preview: {
