@@ -18,6 +18,11 @@ export default {
       required: true,
     },
     {
+      name: 'description',
+      title: 'Содержимое',
+      type: 'text'
+    },
+    {
       name: 'status',
       title: 'Статус',
       type: 'array',
@@ -33,7 +38,7 @@ export default {
       name: 'titleImage',
       title: 'Главное изображение',
       type: 'image',
-      options: {hotspot: true}
+      options: { hotspot: true }
     },
     {
       name: 'category',
@@ -52,6 +57,7 @@ export default {
           to: { type: 'settingServiceTag' }
         }
       ],
+      validation: Rule => Rule.unique().error('Уже есть такой тег…')
     },
     {
       name: 'key',
@@ -60,8 +66,9 @@ export default {
       required: true,
       options: {
         source: 'title',
-        maxLength: 96
-      }
+        maxLength: 96,
+      },
+      description: 'Уникальное имя, которое будет использоваться в URL-адресе ресурса: <категория>/<ключ>',
     },
     {
       name: 'directions',
@@ -111,11 +118,6 @@ export default {
       type: 'text'
     },
     {
-      name: 'description',
-      title: 'Описание',
-      type: 'text'
-    },
-    {
       name: 'descriptionAppend',
       title: 'Дополнительная информация после описания',
       type: 'text'
@@ -134,11 +136,17 @@ export default {
     {
       name: 'priceDescription',
       title: 'Текст с призывом перед последней ценой на странице экскурсии',
+      description: 'Например: «Ваши яркие впечатления всего за». Цену указывать не нужно',
       type: 'string'
     },
     {
       name: 'price',
       title: 'Стоимость по умолчанию',
+      type: 'string'
+    },
+    {
+      name: 'priceWidget',
+      title: '… или код виджета стороннего сервиса',
       type: 'string'
     },
     {
