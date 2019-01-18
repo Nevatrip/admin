@@ -18,6 +18,18 @@ export default {
       required: true,
     },
     {
+      name: 'status',
+      title: 'Статус',
+      type: 'array',
+      of: [ { type: 'string' } ],
+      options: {
+        list: [
+          { title: 'Не показывать в списке категории', value: 'hidden' },
+          { title: 'Снять с публикации', value: 'deleted' },
+        ]
+      }
+    },
+    {
       name: 'titleImage',
       title: 'Главное изображение',
       type: 'image',
