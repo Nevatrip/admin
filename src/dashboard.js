@@ -29,6 +29,7 @@ export default () =>
               SB.documentTypeListItem('settingServiceTag'),
               SB.documentTypeListItem('settingMenu'),
               SB.documentTypeListItem('settingPlaceFeatures'),
+              SB.documentTypeListItem('settingTourLanguages'),
           ])
         ),
       SB.documentTypeListItem('event'),

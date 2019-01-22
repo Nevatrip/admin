@@ -166,15 +166,15 @@ export default {
     },
     {
       title: 'Язык экскурсии',
-      name: 'language',
+      name: 'tourLanguage',
       type: 'array',
-      of: [{type: 'string'}],
-      options: {
-        list: [
-          { title: 'русский', value: 'ru' },
-          { title: 'английский', value: 'en' },
-        ]
-      }
+      of: [
+        {
+          type: 'reference',
+          title: 'Язык',
+          to: { type: 'settingTourLanguages' }
+        }
+      ],
     },
     {
       title: 'Достопримечательности',

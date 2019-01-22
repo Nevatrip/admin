@@ -24,6 +24,7 @@ import settingPlaceFeatures from './settingPlaceFeatures'
 import settingMenu from './settingMenu'
 import page from './page'
 import event from './event'
+import settingTourLanguages from './settingTourLanguages'
 
 export default createSchema({
   name: 'default',
@@ -51,5 +52,6 @@ export default createSchema({
     settingPlaceFeatures,
     page,
     event,
+    settingTourLanguages,
   ])
 })
