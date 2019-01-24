@@ -137,7 +137,8 @@ export default {
     {
       name: 'sale',
       title: 'Скидки',
-      type: 'string'
+      type: 'text',
+      description: '||$льготный||  ||$детский||  ||$детский3||  ||$детский5||  ||$иностранный||'
     },
     {
       name: 'routeMap',
