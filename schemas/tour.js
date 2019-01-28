@@ -21,6 +21,7 @@ export default {
       name: 'titleImage',
       title: 'Главное изображение',
       type: 'image',
+      description: 'Настройка: "Edit", "Square": задать центр для превью экскурсии, по умолчанию это центр изображения',
       options: {hotspot: true}
     },
     {
