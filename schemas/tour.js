@@ -33,11 +33,6 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
-      name: 'description',
-      title: 'Содержимое',
-      type: 'text'
-    },
-    {
       name: 'status',
       title: 'Статус',
       type: 'array',
