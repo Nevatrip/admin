@@ -17,12 +17,14 @@ export default {
       type: 'reference',
       to: [{type: 'tour'}],
       required: true,
+      validation: Rule => Rule.required(),
     },
     {
       name: 'title',
       title: 'Заголовок',
       type: 'string',
       required: true,
+      validation: Rule => Rule.required(),
     },
     {
       name: 'description',
@@ -46,6 +48,7 @@ export default {
         calendarTodayLabel: 'Сегодня'
       },
       required: true,
+      validation: Rule => Rule.required(),
     },
     {
       name: 'end',
@@ -58,6 +61,7 @@ export default {
         calendarTodayLabel: 'Сегодня'
       },
       required: true,
+      validation: Rule => Rule.required(),
     },
     {
       name: 'recurrenceId',

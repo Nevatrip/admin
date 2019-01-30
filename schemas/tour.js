@@ -10,12 +10,27 @@ export default {
       title: 'Имя',
       type: 'string',
       required: true,
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'key',
+      title: 'Ключ',
+      type: 'slug',
+      required: true,
+      description: 'Для экскурсий со старого сайта должен совпадать с полем "Псевдоним"',
+      validation: Rule => Rule.required(),
+      options: {
+        source: 'title',
+        maxLength: 96
+      }
     },
     {
       name: 'titleLong',
       title: 'Расширенный заголовок',
       type: 'string',
+      description: 'Развернутый заголовок для мета тегов',
       required: true,
+      validation: Rule => Rule.required(),
     },
     {
       name: 'description',
@@ -39,13 +54,15 @@ export default {
       title: 'Главное изображение',
       type: 'image',
       description: 'Настройка: "Edit", "Square": задать центр для превью экскурсии, по умолчанию это центр изображения',
-      options: { hotspot: true }
+      options: { hotspot: true },
+      validation: Rule => Rule.required(),
     },
     {
       name: 'category',
       type: 'reference',
       title: 'Категория',
       to: { type: 'settingServiceCategory' },
+      validation: Rule => Rule.required(),
     },
     {
       name: 'tags',
@@ -61,20 +78,10 @@ export default {
       validation: Rule => Rule.unique().error('Уже есть такой тег…')
     },
     {
-      name: 'key',
-      title: 'Ключ',
-      type: 'slug',
-      required: true,
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-      description: 'Уникальное имя, которое будет использоваться в URL-адресе ресурса: <категория>/<ключ>',
-    },
-    {
       name: 'directions',
       title: 'Направления',
       type: 'array',
+      description: 'Нужно добавлять как минимум одно направление. Больше нужно только для экскурсий с несколькими направлениями',
       options: {
         editModal: 'fullscreen',
       },
@@ -111,12 +118,19 @@ export default {
     {
       name: 'features',
       title: 'Характеристики (список, через перенос строки)',
+      description: 'список, который виден на превью',
       type: 'text'
     },
     {
       name: 'descriptionPrepend',
       title: 'Дополнительная информация перед описанием',
       type: 'text'
+    },
+    {
+      name: 'description',
+      title: 'Описание',
+      type: 'text',
+      validation: Rule => Rule.required(),
     },
     {
       name: 'descriptionAppend',
@@ -160,6 +174,12 @@ export default {
       title: 'Скидки',
       type: 'text',
       description: '||$льготный||  ||$детский||  ||$детский3||  ||$детский5||  ||$иностранный||'
+    },
+    {
+      name: 'prevention',
+      title: 'Предупреждение',
+      type: 'text',
+      description: 'Пассажиры до 18 лет допускаются на борт в присутствии старших сопровождающих.'
     },
     {
       name: 'routeMap',
