@@ -30,7 +30,8 @@ export default {
     {
       name: 'map',
       title: 'Карта',
-      type: 'string'
+      type: 'string',
+      description: 'Ссылка на яндекс или гугл-карту текущего маршрута'
     },
     {
       name: 'tickets',
@@ -45,6 +46,7 @@ export default {
               name: 'category',
               type: 'reference',
               required: true,
+              validation: Rule => Rule.required(),
               to: { type: 'placeCategory' }
             },
             {
@@ -52,6 +54,7 @@ export default {
               name: 'ticket',
               type: 'array',
               required: true,
+              validation: Rule => Rule.required(),
               description: 'Билет может быть одиночным, т. е. содержать один тип билета, или составным, например: «взрослый + взрослый + детский = „семейный“»',
               of: [
                 {
@@ -59,6 +62,7 @@ export default {
                   name: 'ticketType',
                   type: 'reference',
                   required: true,
+                  validation: Rule => Rule.required(),
                   to: { type: 'ticketType' }
                 }
               ]
@@ -72,12 +76,14 @@ export default {
               title: 'Стоимость',
               name: 'price',
               required: true,
+              validation: Rule => Rule.required(),
               type: 'string'
             },
             {
               title: 'Количество',
               name: 'count',
-              type: 'number'
+              type: 'number',
+              description: 'Это «сколько билетов должно отображаться на странице покупки». Обычно там будет 0, только для «Взрослый» — 1, чтобы был выбран хотя бы один билет при покупке. Но если у какой-то экскурсии нет «Взрослых» билетов, то лучше поставить единицу для какого-то другого набора билетов.'
             },
             {
               title: 'Альтернативное описание',
@@ -110,6 +116,7 @@ export default {
                     {
                       name: 'api',
                       title: 'Значение в API партнёра',
+                      description: 'Поле для программиста',
                       type: 'array',
                       of: [
                         {

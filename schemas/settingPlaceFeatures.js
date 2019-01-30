@@ -8,12 +8,14 @@ export default {
       title: 'Имя',
       type: 'string',
       required: true,
+      validation: Rule => Rule.required(),
     },
     {
       name: 'key',
       title: 'Ключ',
       type: 'slug',
       required: true,
+      validation: Rule => Rule.required(),
       options: {
         source: 'title',
         maxLength: 96
@@ -30,6 +32,7 @@ export default {
       title: 'Изображение',
       type: 'image',
       required: true,
+      validation: Rule => Rule.required(),
     },
   ],
 }
