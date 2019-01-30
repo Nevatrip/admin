@@ -33,11 +33,28 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'description',
+      title: 'Содержимое',
+      type: 'text'
+    },
+    {
+      name: 'status',
+      title: 'Статус',
+      type: 'array',
+      of: [ { type: 'string' } ],
+      options: {
+        list: [
+          { title: 'Не показывать в списке категории', value: 'hidden' },
+          { title: 'Снять с публикации', value: 'deleted' },
+        ]
+      }
+    },
+    {
       name: 'titleImage',
       title: 'Главное изображение',
       type: 'image',
       description: 'Настройка: "Edit", "Square": задать центр для превью экскурсии, по умолчанию это центр изображения',
-      options: {hotspot: true},
+      options: { hotspot: true },
       validation: Rule => Rule.required(),
     },
     {
@@ -58,6 +75,7 @@ export default {
           to: { type: 'settingServiceTag' }
         }
       ],
+      validation: Rule => Rule.unique().error('Уже есть такой тег…')
     },
     {
       name: 'directions',
@@ -133,11 +151,17 @@ export default {
     {
       name: 'priceDescription',
       title: 'Текст с призывом перед последней ценой на странице экскурсии',
+      description: 'Например: «Ваши яркие впечатления всего за». Цену указывать не нужно',
       type: 'string'
     },
     {
       name: 'price',
       title: 'Стоимость по умолчанию',
+      type: 'string'
+    },
+    {
+      name: 'priceWidget',
+      title: '… или код виджета стороннего сервиса',
       type: 'string'
     },
     {
