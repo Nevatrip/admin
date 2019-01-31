@@ -25,6 +25,7 @@ import settingMenu from './settingMenu'
 import page from './page'
 import event from './event'
 import settingTourLanguages from './settingTourLanguages'
+import serviceBasedData from './serviceBasedData'
 
 export default createSchema({
   name: 'default',
@@ -53,5 +54,6 @@ export default createSchema({
     page,
     event,
     settingTourLanguages,
+    serviceBasedData,
   ])
 })
