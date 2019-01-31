@@ -33,4 +33,13 @@ export default () =>
           ])
         ),
       SB.documentTypeListItem('event'),
+      SB.listItem()
+        .id('serviceSettings')
+        .title('Служебные настройки')
+        .child(
+          SB.editor()
+            .id('config')
+            .schemaType("serviceBasedData")
+            .documentId("serviceBasedData")
+        ),
     ])
