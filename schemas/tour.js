@@ -8,7 +8,7 @@ export default {
     {
       name: 'title',
       title: 'Имя',
-      type: 'string',
+      type: 'localeString',
       required: true,
       validation: Rule => Rule.required(),
     },
@@ -282,7 +282,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'title.ru',
       media: 'logo'
     }
   }
