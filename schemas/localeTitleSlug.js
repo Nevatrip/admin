@@ -31,7 +31,7 @@ export default {
           name: 'key',
           type: 'slug',
           options: {
-            source: options => (typeof options.title !== 'undefined') ? `${options.title[lang.id].name}` : '',
+            source: options => ((typeof options.title !== 'undefined')&&(typeof options.title[lang.id] !== 'undefined')) ? `${options.title[lang.id].name}` : '',
             maxLength: 96,
           }
         }
