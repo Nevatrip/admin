@@ -16,7 +16,7 @@ export default {
     {
       name: 'titleLong',
       title: 'Расширенный заголовок',
-      type: 'string',
+      type: 'localeString',
       description: 'Развернутый заголовок для мета тегов',
       required: true,
       validation: Rule => Rule.required(),
@@ -103,28 +103,29 @@ export default {
       name: 'features',
       title: 'Характеристики (список, через перенос строки)',
       description: 'список, который виден на превью',
-      type: 'text'
+      type: 'localeText'
     },
     {
       name: 'descriptionPrepend',
       title: 'Дополнительная информация перед описанием',
-      type: 'text'
+      type: 'localeText'
     },
     {
       name: 'description',
       title: 'Описание',
-      type: 'text',
+      description: 'Основной текст',
+      type: 'localeText',
       validation: Rule => Rule.required(),
     },
     {
       name: 'descriptionAppend',
       title: 'Дополнительная информация после описания',
-      type: 'text'
+      type: 'localeText'
     },
     {
       name: 'advice',
       title: 'Совет от организатора',
-      type: 'text'
+      type: 'localeText'
     },
     {
       name: 'point',
@@ -136,7 +137,7 @@ export default {
       name: 'priceDescription',
       title: 'Текст с призывом перед последней ценой на странице экскурсии',
       description: 'Например: «Ваши яркие впечатления всего за». Цену указывать не нужно',
-      type: 'string'
+      type: 'localeString'
     },
     {
       name: 'price',
@@ -162,7 +163,7 @@ export default {
     {
       name: 'prevention',
       title: 'Предупреждение',
-      type: 'text',
+      type: 'localeText',
       description: 'Пассажиры до 18 лет допускаются на борт в присутствии старших сопровождающих.'
     },
     {
@@ -239,12 +240,12 @@ export default {
     {
       name: 'duration',
       title: 'Длительность',
-      type: 'string'
+      type: 'localeString'
     },
     {
       name: 'schedule',
       title: 'Расписание',
-      type: 'text'
+      type: 'localeText'
     },
     {
       name: 'gallery',
@@ -258,7 +259,7 @@ export default {
           fields: [
             {
               name: 'description',
-              type: 'string',
+              type: 'localeString',
               title: 'Описание',
               options: {
                 isHighlighted: true
