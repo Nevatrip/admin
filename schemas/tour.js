@@ -7,22 +7,11 @@ export default {
   fields: [
     {
       name: 'title',
-      title: 'Имя',
-      type: 'localeString',
+      title: 'Заголовок',
+      type: 'localeTitleSlug',
       required: true,
+      description: 'Для экскурсий со старого сайта Ключ должен совпадать с полем "Псевдоним"',
       validation: Rule => Rule.required(),
-    },
-    {
-      name: 'key',
-      title: 'Ключ',
-      type: 'slug',
-      required: true,
-      description: 'Для экскурсий со старого сайта должен совпадать с полем "Псевдоним"',
-      validation: Rule => Rule.required(),
-      options: {
-        source: 'title',
-        maxLength: 96
-      }
     },
     {
       name: 'titleLong',
@@ -282,7 +271,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title.ru',
+      title: 'title.ru.name',
       media: 'logo'
     }
   }
