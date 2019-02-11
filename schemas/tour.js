@@ -11,7 +11,6 @@ export default {
       type: 'localeTitleSlug',
       required: true,
       description: 'Для экскурсий со старого сайта Ключ должен совпадать с полем "Псевдоним"',
-      validation: Rule => Rule.required(),
     },
     {
       name: 'titleLong',
@@ -19,7 +18,6 @@ export default {
       type: 'localeString',
       description: 'Развернутый заголовок для мета тегов',
       required: true,
-      validation: Rule => Rule.required(),
     },
     {
       name: 'status',
@@ -39,7 +37,6 @@ export default {
       type: 'image',
       description: 'Настройка: "Edit", "Square": задать центр для превью экскурсии, по умолчанию это центр изображения',
       options: { hotspot: true },
-      validation: Rule => Rule.required(),
     },
     {
       name: 'category',
