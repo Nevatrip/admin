@@ -6,13 +6,13 @@ export default {
     {
       name: 'title',
       title: 'Имя организации',
-      type: 'string',
+      type: 'localeString',
     },
     {
       name: 'shortDescription',
       title: 'Краткое описание организации',
       description: 'Для метатегов',
-      type: 'text',
+      type: 'localeText',
     },
     {
       name: 'favicon',
@@ -28,7 +28,7 @@ export default {
       name: 'Slogan',
       title: 'Слоган',
       description: 'Отображается в шапке сайта',
-      type: 'string',
+      type: 'localeString',
     },
     // {
     //   name: 'languages',
@@ -87,7 +87,7 @@ export default {
     {
       name: 'articleTitle',
       title: 'Заголовок статьи "Об оргазизации"',
-      type: 'string',
+      type: 'localeString',
     },
     {
       name: 'articleImage',
@@ -109,23 +109,23 @@ export default {
     {
       name: 'articleContent',
       title: 'Статья "Об оргазизации"',
-      type: 'text',
+      type: 'localeText',
     },
     {
       name: 'awards',
       title: 'Награды',
-      description: 'Раделять единичным переносм строки',
-      type: 'text',
+      description: 'Раделять единичным переносм строки, расположены в футере',
+      type: 'localeText',
     },
     {
       name: 'footerCategoryTitle',
       title: 'Заголовок для подборок в футере',
-      type: 'string',
+      type: 'localeString',
     },
     {
       name: 'copyright',
       title: '@ Копирайт',
-      type: 'string',
+      type: 'localeString',
     },
   ],
   preview: {
