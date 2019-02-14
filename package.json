@@ -11,7 +11,7 @@
     "test": "sanity check"
   },
   "dependencies": {
-    "@progress/kendo-ui": "^2018.3.1219",
+    "@progress/kendo-ui": "^2019.1.213",
     "@sanity/base": "^0.140.7",
     "@sanity/components": "^0.140.7",
     "@sanity/core": "^0.140.7",
