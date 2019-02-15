@@ -7,8 +7,11 @@ import {PatchEvent, set, unset, setIfMissing, insert} from 'part:@sanity/form-bu
 
 import $ from 'jquery'
 import '@progress/kendo-ui';
+import '@progress/kendo-ui/js/messages/kendo.messages.ru-RU';
 import '@progress/kendo-ui/js/kendo.timezones';
 import '@progress/kendo-ui/js/cultures/kendo.culture.ru-RU';
+
+import { RRule } from "rrule";
 
 const createPatchFrom = value => {
   console.log( 'createPatchFrom', value );
@@ -31,9 +34,8 @@ export default class Schedule extends React.Component {
       <div>
         <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.common.min.css" />
         <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.default.min.css" />
+        {/*<pre><code>{JSON.stringify(value, null, 2 )}</code></pre>*/}
         <div className="schedule" ref={ el => this.el = el } />
-        <button>Добавить событие</button>
-        {/*<pre><code>{ JSON.stringify( (value || []).map( ({ _key, title }) => ({ _key, title }) ), null, 2 ) }</code></pre>*/}
       </div>
     )
   }
@@ -44,6 +46,29 @@ export default class Schedule extends React.Component {
 
     const newEvent = eventArr.map( event => {
       event._key = uuid();
+
+      console.log('event.start instanceof Date', event.start instanceof Date);
+
+      if ( event.recurrenceRule ) {
+        const options = RRule.parseString(event.recurrenceRule)
+        options.dtstart = new Date(event.start);
+        const rrule = new RRule(options);
+
+        event.actions = rrule.all().map((date) => {
+          return {
+            _key: uuid(),
+            start: date.toISOString(),
+            _eventId: event._key
+          }
+        });
+      } else {
+        event.actions = [{
+          _key: uuid(),
+          start: event.start,
+          _eventId: event._key
+        }]
+      }
+
       return event;
     } );
 
@@ -99,7 +124,7 @@ export default class Schedule extends React.Component {
   }
 
   componentDidMount() {
-    const { value, onChange, type } = this.props;
+    const { value } = this.props;
     this.setState({
       events: value || []
     });
@@ -115,7 +140,8 @@ export default class Schedule extends React.Component {
         { type: 'day' },
         { type: 'week' },
         { type: 'month', selected: true },
-        { type: 'agenda' }
+        { type: 'agenda' },
+        { type: "timeline", eventHeight: 50 }
       ],
       timezone: 'Europe/Moscow',
       dataSource: {
@@ -125,7 +151,7 @@ export default class Schedule extends React.Component {
               response.success(value || []);
             },
             update: response => {
-              this.editEvent( response.data.models, response )
+              this.editEvent( response.data.models, response );
             },
             create: response => {
               this.addEvent( response.data.models, response );
@@ -155,6 +181,32 @@ export default class Schedule extends React.Component {
               }
             }
           }
+      },
+      edit: function (e) {
+        e.event.set("isAllDay", false);
+
+        if (e.event.isNew) {
+          const start = e.container.find("[name=start][data-role=datetimepicker]");
+          const end = e.container.find("[name=end][data-role=datetimepicker]");
+          const startTime = new Date(e.event.start);
+          const endTime = new Date(startTime);
+          endTime.setHours(startTime.getHours() + 1);
+          $(start).data("kendoDateTimePicker").value(startTime);
+          $(end).data("kendoDateTimePicker").value(endTime);
+
+          $(start).on('change', function () {
+            const newStart = $(start).data("kendoDateTimePicker").value()
+            const newEnd = $(end).data("kendoDateTimePicker").value()
+            
+            if (newStart <= newEnd) {
+              newEnd.setHours(newStart.getHours() + 1);
+              $(end).data("kendoDateTimePicker").value(newEnd);
+              e.event.end = newEnd;
+            }
+          });
+          
+          e.event.end = endTime;
+        }
       }
     });
 
@@ -182,7 +234,7 @@ export default class Schedule extends React.Component {
   }
 
   componentWillUnmount() {
-    this.scheduler.destroy();
+    this.scheduler && this.scheduler.destroy();
   }
 
   focus() {
