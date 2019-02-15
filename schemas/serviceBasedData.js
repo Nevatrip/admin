@@ -1,6 +1,6 @@
 export default {
   name: 'serviceBasedData',
-  title: 'Служебная информация',
+  title: 'Служебные настройки',
   type: 'object',
   fields: [
     {
@@ -130,8 +130,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title',
-      subtitle: 'releaseDate'
+      title: 'title.ru',
     }
   }
 }
