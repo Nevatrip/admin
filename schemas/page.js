@@ -6,26 +6,21 @@ export default {
     {
       name: 'title',
       title: 'Заголовок',
-      type: 'string',
+      type: 'localeTitleSlug',
       required: true,
       validation: Rule => Rule.required(),
     },
     {
       name: 'titleLong',
       title: 'Расширенный заголовок',
-      type: 'string',
+      type: 'localeString',
       required: true,
-    },
-    {
-      name: 'key',
-      title: 'Ключ',
-      type: 'slug',
-      required: true,
-      validation: Rule => Rule.required(),
-      options: {
-        source: 'title',
-        maxLength: 96
-      }
     },
   ],
+  preview: {
+    select: {
+      title: 'title.ru.name',
+      media: 'logo'
+    }
+  }
 }

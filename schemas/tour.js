@@ -6,62 +6,6 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'title',
-      title: 'Заголовок',
-      type: 'localeTitleSlug',
-      required: true,
-      description: 'Для экскурсий со старого сайта Ключ должен совпадать с полем "Псевдоним"',
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'titleLong',
-      title: 'Расширенный заголовок',
-      type: 'localeString',
-      description: 'Развернутый заголовок для мета тегов',
-      required: true,
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'status',
-      title: 'Статус',
-      type: 'array',
-      of: [ { type: 'string' } ],
-      options: {
-        list: [
-          { title: 'Не показывать в списке категории', value: 'hidden' },
-          { title: 'Снять с публикации', value: 'deleted' },
-        ]
-      }
-    },
-    {
-      name: 'titleImage',
-      title: 'Главное изображение',
-      type: 'image',
-      description: 'Настройка: "Edit", "Square": задать центр для превью экскурсии, по умолчанию это центр изображения',
-      options: { hotspot: true },
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'category',
-      type: 'reference',
-      title: 'Категория',
-      to: { type: 'settingServiceCategory' },
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'tags',
-      type: 'array',
-      title: 'Теги',
-      of: [
-        {
-          type: 'reference',
-          title: 'Тег',
-          to: { type: 'settingServiceTag' }
-        }
-      ],
-      validation: Rule => Rule.unique().error('Уже есть такой тег…')
-    },
-    {
       name: 'directions',
       title: 'Направления',
       type: 'array',
@@ -98,6 +42,59 @@ export default {
         },
       ],
       // inputComponent: Direction
+    },
+    {
+      name: 'title',
+      title: 'Заголовок',
+      type: 'localeTitleSlug',
+      required: true,
+      description: 'Для экскурсий со старого сайта Ключ должен совпадать с полем "Псевдоним"',
+    },
+    {
+      name: 'titleLong',
+      title: 'Расширенный заголовок',
+      type: 'localeString',
+      description: 'Развернутый заголовок для мета тегов',
+      required: true,
+    },
+    {
+      name: 'status',
+      title: 'Статус',
+      type: 'array',
+      of: [ { type: 'string' } ],
+      options: {
+        list: [
+          { title: 'Не показывать в списке категории', value: 'hidden' },
+          { title: 'Снять с публикации', value: 'deleted' },
+        ]
+      }
+    },
+    {
+      name: 'titleImage',
+      title: 'Главное изображение',
+      type: 'image',
+      description: 'Настройка: "Edit", "Square": задать центр для превью экскурсии, по умолчанию это центр изображения',
+      options: { hotspot: true },
+    },
+    {
+      name: 'category',
+      type: 'reference',
+      title: 'Категория',
+      to: { type: 'settingServiceCategory' },
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'tags',
+      type: 'array',
+      title: 'Теги',
+      of: [
+        {
+          type: 'reference',
+          title: 'Тег',
+          to: { type: 'settingServiceTag' }
+        }
+      ],
+      validation: Rule => Rule.unique().error('Уже есть такой тег…')
     },
     {
       name: 'features',
