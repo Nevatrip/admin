@@ -2,7 +2,7 @@ import Schedule from '../components/Schedule'
 
 export default {
   name: 'schedule',
-  title: 'Транспортное средство/площадка',
+  title: 'Расписание',
   type: 'array',
   of: [
     {
@@ -66,6 +66,31 @@ export default {
           name: 'endTimezone',
           title: 'endTimezone',
           type: 'string',
+        },
+        {
+          name: 'actions',
+          title: 'actions',
+          type: 'array',
+          of: [
+            {
+              name: 'action',
+              type: 'object',
+              fields: [
+                {
+                  name: 'start',
+                  type: 'datetime',
+                  options: {
+                    dateFormat: 'DD.MM.YYYY',
+                    timeFormat: 'HH:mm',
+                    timeStep: 15,
+                    calendarTodayLabel: 'Сегодня'
+                  },
+                  required: true,
+                  validation: Rule => Rule.required(),
+                }
+              ]
+            }
+          ]
         }
       ]
     }
