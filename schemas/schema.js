@@ -3,6 +3,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 import supportedLanguages from './supportedLanguages'
 import localeString from './localeString'
+import localeMarkdown from './localeMarkdown'
 import localeTitleSlug from './localeTitleSlug'
 import localeText from './localeText'
 import apiProvider from './apiProvider'
@@ -36,6 +37,7 @@ export default createSchema({
   types: schemaTypes.concat([
     supportedLanguages,
     localeString,
+    localeMarkdown,
     localeTitleSlug,
     localeText,
     apiProvider,
