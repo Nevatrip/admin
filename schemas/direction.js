@@ -34,6 +34,11 @@ export default {
       description: 'Ссылка на яндекс или гугл-карту текущего маршрута'
     },
     {
+      title: 'В течение одного дня',
+      name: 'isOneDay',
+      type: 'boolean'
+    },
+    {
       name: 'tickets',
       title: 'Билеты',
       type: 'array',

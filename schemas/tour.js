@@ -58,6 +58,13 @@ export default {
       required: true,
     },
     {
+      name: 'descriptionMeta',
+      title: 'Описание для мета тегов',
+      type: 'localeString',
+      description: 'Описание для мета тегов',
+      required: true,
+    },
+    {
       name: 'status',
       title: 'Статус',
       type: 'array',
@@ -73,7 +80,7 @@ export default {
       name: 'titleImage',
       title: 'Главное изображение',
       type: 'image',
-      description: 'Настройка: "Edit", "Square": задать центр для превью экскурсии, по умолчанию это центр изображения',
+      description: 'Настройка: "Edit", Центр круга: центр для превью, Черная область: область для показа на детальной',
       options: { hotspot: true },
     },
     {
@@ -110,7 +117,7 @@ export default {
     {
       name: 'description',
       title: 'Описание',
-      description: 'Основной текст',
+      description: 'Основной текст, сюда нельзя добавлять заголовок h1',
       type: 'localeMarkdown',
       validation: Rule => Rule.required(),
     },
