@@ -19,6 +19,7 @@ export default () =>
             .items([
               SB.documentTypeListItem('place'),
               SB.documentTypeListItem('point'),
+              SB.documentTypeListItem('sight'),
               SB.documentTypeListItem('placeCategory'),
               SB.documentTypeListItem('ticketType'),
               SB.documentTypeListItem('apiProvider'),

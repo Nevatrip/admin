@@ -1,6 +1,6 @@
 export default {
-  name: 'point',
-  title: 'Причал/Остановка',
+  name: 'sight',
+  title: 'Достопримечательность',
   type: 'document',
   fields: [
     {
