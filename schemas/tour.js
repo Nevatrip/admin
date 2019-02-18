@@ -111,7 +111,7 @@ export default {
       name: 'description',
       title: 'Описание',
       description: 'Основной текст',
-      type: 'localeText',
+      type: 'localeMarkdown',
       validation: Rule => Rule.required(),
     },
     {
