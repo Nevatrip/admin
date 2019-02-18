@@ -185,7 +185,7 @@ export default {
       name: 'attractions',
       type: 'array',
       of: [
-        { type: 'reference', to: { type: 'point' } },
+        { type: 'reference', to: { type: 'sight' } },
       ],
     },
     {
