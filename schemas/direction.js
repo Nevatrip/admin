@@ -175,6 +175,12 @@ export default {
       ]
     },
     {
+      name: 'point',
+      type: 'reference',
+      title: 'Причал',
+      to: { type: 'point' },
+    },
+    {
       name: 'schedule',
       title: 'Расписание',
       type: 'schedule',

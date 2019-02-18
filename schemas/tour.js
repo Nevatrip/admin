@@ -6,6 +6,44 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'directions',
+      title: 'Направления',
+      type: 'array',
+      description: 'Нужно добавлять как минимум одно направление. Больше нужно только для экскурсий с несколькими направлениями',
+      options: {
+        editModal: 'fullscreen',
+      },
+      of: [
+        { type: 'direction' },
+        {
+          name: 'complex',
+          title: '«Составная» экскурсия',
+          icon: FaExchange,
+          type: 'object',
+          fields: [
+            {
+              name: 'title',
+              title: 'Название',
+              type: 'string'
+            },
+            {
+              name: 'nested',
+              title: 'Одиночные направления',
+              type: 'array',
+              of: [
+                {
+                  type: 'reference',
+                  title: 'Выбрать одиночное направление',
+                  to: { type: 'direction' },
+                }
+              ]
+            }
+          ]
+        },
+      ],
+      // inputComponent: Direction
+    },
+    {
       name: 'title',
       title: 'Заголовок',
       type: 'localeTitleSlug',
@@ -60,44 +98,6 @@ export default {
         }
       ],
       validation: Rule => Rule.unique().error('Уже есть такой тег…')
-    },
-    {
-      name: 'directions',
-      title: 'Направления',
-      type: 'array',
-      description: 'Нужно добавлять как минимум одно направление. Больше нужно только для экскурсий с несколькими направлениями',
-      options: {
-        editModal: 'fullscreen',
-      },
-      of: [
-        { type: 'direction' },
-        {
-          name: 'complex',
-          title: '«Составная» экскурсия',
-          icon: FaExchange,
-          type: 'object',
-          fields: [
-            {
-              name: 'title',
-              title: 'Название',
-              type: 'string'
-            },
-            {
-              name: 'nested',
-              title: 'Одиночные направления',
-              type: 'array',
-              of: [
-                {
-                  type: 'reference',
-                  title: 'Выбрать одиночное направление',
-                  to: { type: 'direction' },
-                }
-              ]
-            }
-          ]
-        },
-      ],
-      // inputComponent: Direction
     },
     {
       name: 'features',
