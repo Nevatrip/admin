@@ -18,7 +18,7 @@ export const ScheduleEvent = () => (
       }
     </script>
     <script id="event-template" type="text/x-kendo-template">
-      <span class="tour-template" style={{background: '#: getColor(data) #'}}>
+      <span className="tour-template" style={{background: '#: getColor(data) #'}}>
         #: kendo.toString(start, "HH:mm") # - #: kendo.toString(end, "HH:mm") #
       </span>
     </script>

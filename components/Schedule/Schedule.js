@@ -33,8 +33,6 @@ export default class Schedule extends React.Component {
     };
   }
 
-
-
   render() {
     const { value } = this.props;
 
@@ -174,9 +172,6 @@ export default class Schedule extends React.Component {
           },
           schema: {
             type: 'json',
-            data: "model",
-            total: "total",
-            // data: 'events',
             model: {
               id: '_key',
               fields: {
