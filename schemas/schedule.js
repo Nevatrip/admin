@@ -1,4 +1,4 @@
-import Schedule from '../components/Schedule'
+import Schedule from '../components/Schedule/Schedule'
 
 export default {
   name: 'schedule',
@@ -58,6 +58,11 @@ export default {
           type: 'string',
         },
         {
+          name: 'recurrenceException',
+          title: 'recurrenceException',
+          type: 'string'
+        },
+        {
           name: 'startTimezone',
           title: 'startTimezone',
           type: 'string',
@@ -66,6 +71,11 @@ export default {
           name: 'endTimezone',
           title: 'endTimezone',
           type: 'string',
+        },
+        {
+          name: 'description',
+          title: 'description',
+          type: 'string'
         },
         {
           name: 'actions',
