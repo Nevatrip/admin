@@ -6,7 +6,7 @@ export default {
     {
       name: 'title',
       title: 'Имя',
-      type: 'string',
+      type: 'localeString',
       required: true,
       validation: Rule => Rule.required(),
     },
@@ -35,4 +35,10 @@ export default {
       validation: Rule => Rule.required(),
     },
   ],
+  preview: {
+    select: {
+      title: 'title.ru',
+      media: 'icon'
+    }
+  }
 }

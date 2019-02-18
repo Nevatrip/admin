@@ -154,7 +154,7 @@ export default {
     {
       name: 'sale',
       title: 'Скидки',
-      type: 'text',
+      type: 'localeText',
       description: '||$льготный||  ||$детский||  ||$детский3||  ||$детский5||  ||$иностранный||'
     },
     {

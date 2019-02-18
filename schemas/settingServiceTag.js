@@ -6,16 +6,15 @@ export default {
     {
       name: 'title',
       title: 'Заголовок',
-      type: 'string',
+      type: 'localeString',
       required: true,
       validation: Rule => Rule.required(),
     },
     {
       name: 'subTitle',
       title: 'Подзаголовок',
-      type: 'string',
+      type: 'localeString',
       required: true,
-      validation: Rule => Rule.required(),
     },
     {
       name: 'key',
@@ -29,4 +28,9 @@ export default {
       }
     },
   ],
+  preview: {
+    select: {
+      title: 'title.ru',
+    }
+  }
 }
