@@ -28,6 +28,7 @@ export default {
         },
         {
           title: 'Ключ',
+          description: 'Если ключ не заполнен, то страница не отобразится на этом языке',
           name: 'key',
           type: 'slug',
           options: {

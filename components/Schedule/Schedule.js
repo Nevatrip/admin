@@ -10,6 +10,7 @@ import '@progress/kendo-ui';
 import '@progress/kendo-ui/js/kendo.all';
 import '@progress/kendo-ui/js/messages/kendo.messages.ru-RU';
 import '@progress/kendo-ui/js/kendo.timezones';
+import '@progress/kendo-ui/js/kendo.multiselect';
 import '@progress/kendo-ui/js/cultures/kendo.culture.ru-RU';
 
 import { RRule } from "rrule";
@@ -31,6 +32,8 @@ export default class Schedule extends React.Component {
       events: []
     };
   }
+
+
 
   render() {
     const { value } = this.props;
@@ -126,13 +129,19 @@ export default class Schedule extends React.Component {
     })
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { value } = this.props;
     this.setState({
       events: value || []
     });
 
     kendo.culture( 'ru-RU' );
+
+    const baseURI = window.location.pathname;
+    const serviceID = baseURI.split(';')[(baseURI.split(';')).length - 1];
+    const query = `*[_id == "${serviceID}"]`;
+    const params = {};
+    const servceObj = (await client.fetch(query, params))[0];
 
     this.$el = $( this.el );
     this.$el.kendoScheduler({
@@ -165,22 +174,24 @@ export default class Schedule extends React.Component {
           },
           schema: {
             type: 'json',
+            data: "model",
+            total: "total",
             // data: 'events',
             model: {
               id: '_key',
               fields: {
-                _key: { from: '_key', type: 'string' },
-                _type: { from: '_type', type: 'string', defaultValue: 'event' },
-                start: { from: 'start' , type: 'date'},
-                end: { from: 'end' , type: 'date'},
-                title: { from: 'title', type: 'string', defaultValue: 'No title' },
-                startTimezone: { from: 'startTimezone' },
-                endTimezone: { from: 'endTimezone' },
-                description: { from: 'description' },
-                recurrenceId: { from: 'recurrenceID' },
-                recurrenceRule: { from: 'recurrenceRule' },
+                _key:                { from: '_key',               type: 'string' },
+                _type:               { from: '_type',              type: 'string', defaultValue: 'event' },
+                start:               { from: 'start' ,             type: 'date'},
+                end:                 { from: 'end' ,               type: 'date'},
+                title:               { from: 'title',              type: 'string', defaultValue: servceObj.title.ru.name},
+                startTimezone:       { from: 'startTimezone' },
+                endTimezone:         { from: 'endTimezone' },
+                description:         { from: 'description' },
+                recurrenceId:        { from: 'recurrenceID' },
+                recurrenceRule:      { from: 'recurrenceRule' },
                 recurrenceException: { from: 'recurrenceException' },
-                isAllDay: { type: 'boolean', from: 'isAllDay' }
+                isAllDay:            { from: 'isAllDay',           type: 'boolean'  },
               }
             }
           }
@@ -214,6 +225,109 @@ export default class Schedule extends React.Component {
           
           e.event.end = endTime;
         }
+      
+          this.setState({
+              title: servceObj.title.ru.name,
+            },
+            ()=> {
+
+              $('#grid-ticket').kendoGrid({
+                dataSource: new kendo.data.DataSource({
+                  pageSize: 6,
+                  data: [
+                    {
+                      productID: 1,
+                      productName: "Взрослый",
+                      price: 320,
+                      buyed: 50,
+                      description: "Bla-bla-bla…"
+                    }, {
+                      productID: 2,
+                      productName: "Детский",
+                      price: 280,
+                      buyed: 50,
+                      description: "Bla-bla-bla…"
+                    }, {
+                      productID: 3,
+                      productName: "Льготный",
+                      price: 260,
+                      buyed: 50,
+                      description: "Bla-bla-bla…"
+                    }
+                  ],
+                  autoSync: true,
+                  schema: {
+                    model: {
+                      id: "productID",
+                      fields: {
+                        productID: {editable: false, nullable: true},
+                        productName: {defaultValue: "Взрослый", validation: {required: true}},
+                        description: {defaultValue: ""},
+                        price: {type: "number", validation: {required: true, min: 0}},
+                        buyed: {editable: false, type: "number", validation: {min: 0}},
+                      }
+                    }
+                  }
+                }),
+                pageable: false,
+                // height: 550,
+                toolbar: ["create"],
+                columns: [
+                  {field: "productName", title: "Билет"},
+                  // { field: "description", title: "Описание" },
+                  {field: "price", title: "Стоимость", format: "{0:c}"},
+                  {field: "buyed", title: "Продано"},
+                  {command: "destroy", title: " "}],
+                editable: true
+              });
+
+              $('#grid-additional').kendoGrid({
+                dataSource: new kendo.data.DataSource({
+                  pageSize: 6,
+                  data: [
+                    {
+                      productID: 1,
+                      productName: "Дождевик",
+                      price: 320,
+                      description: "Bla-bla-bla…"
+                    }, {
+                      productID: 2,
+                      productName: "Зонт",
+                      price: 280,
+                      description: "Bla-bla-bla…"
+                    }, {
+                      productID: 3,
+                      productName: "Кокаин",
+                      price: 260,
+                      description: "Bla-bla-bla…"
+                    }
+                  ],
+                  autoSync: true,
+                  schema: {
+                    model: {
+                      id: "productID",
+                      fields: {
+                        productID: {editable: false, nullable: true},
+                        productName: {defaultValue: "Взрослый", validation: {required: true}},
+                        description: {defaultValue: ""},
+                        price: {type: "number", validation: {required: true, min: 0}}
+                      }
+                    }
+                  }
+                }),
+                pageable: false,
+                // height: 550,
+                toolbar: ["create"],
+                columns: [
+                  {field: "productName", title: "Билет"},
+                  // { field: "description", title: "Описание" },
+                  {field: "price", title: "Стоимость", format: "{0:c}"},
+                  {command: "destroy", title: " "}],
+                editable: true
+              });
+
+            }
+          );
       }
     });
 
@@ -243,6 +357,8 @@ export default class Schedule extends React.Component {
   componentWillUnmount() {
     this.scheduler && this.scheduler.destroy();
   }
+
+
 
   focus() {
     this.el.focus();
