@@ -54,7 +54,14 @@ export default {
       name: 'titleLong',
       title: 'Расширенный заголовок',
       type: 'localeString',
-      description: 'Развернутый заголовок для мета тегов',
+      description: 'Развернутый заголовок статьи для мета тегов',
+      required: true,
+    },
+    {
+      name: 'descriptionMeta',
+      title: 'Описание для мета тегов',
+      type: 'localeString',
+      description: 'Краткое описание статьи для мета тегов',
       required: true,
     },
     {
@@ -73,7 +80,7 @@ export default {
       name: 'titleImage',
       title: 'Главное изображение',
       type: 'image',
-      description: 'Настройка: "Edit", "Square": задать центр для превью экскурсии, по умолчанию это центр изображения',
+      description: 'Настройка: "Edit", Центр круга: центр для превью, Черная область: область для показа на детальной',
       options: { hotspot: true },
     },
     {
@@ -110,7 +117,7 @@ export default {
     {
       name: 'description',
       title: 'Описание',
-      description: 'Основной текст',
+      description: 'Основной текст, сюда нельзя добавлять заголовок h1',
       type: 'localeMarkdown',
       validation: Rule => Rule.required(),
     },
@@ -125,10 +132,16 @@ export default {
       type: 'localeText'
     },
     {
+      title: 'Причалы отправления',
       name: 'point',
-      type: 'reference',
-      title: 'Причал',
-      to: { type: 'point' },
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          title: 'Причал',
+          to: {type: 'point'}
+        }
+      ],
     },
     {
       name: 'priceDescription',
@@ -149,7 +162,14 @@ export default {
     {
       name: 'priceOld',
       title: 'Стоимость на причале',
-      type: 'string'
+      type: 'localeString',
+      description: 'Если не прописано иностранной цены, берётся русская'
+    },
+    {
+      name: 'pricesDescription',
+      title: 'Стоимость(описание цен)',
+      type: 'localeText',
+      description: 'В одну сторону - 2₽, туда-обратно - 3₽ (по 1,5₽ за билет). На причале 8₽'
     },
     {
       name: 'sale',
@@ -270,7 +290,7 @@ export default {
   preview: {
     select: {
       title: 'title.ru.name',
-      media: 'logo'
+      media: 'titleImage'
     }
   }
 }

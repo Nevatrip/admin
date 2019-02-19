@@ -45,12 +45,12 @@ export default {
     {
       name: 'tel',
       title: 'Номер телефона',
-      type: 'string',
+      type: 'localeString',
     },
     {
       name: 'email',
       title: 'E-mail',
-      type: 'string',
+      type: 'localeString',
     },
     // {
       // name: 'social',

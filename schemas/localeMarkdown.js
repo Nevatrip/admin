@@ -1,3 +1,5 @@
+import htmlPreview from 'sanity-plugin-markdown/html-preview'
+
 const supportedLanguages = [
   {id: 'ru', title: 'Русский', isDefault: true},
   {id: 'en', title: 'Английский'},
@@ -6,6 +8,7 @@ const supportedLanguages = [
 
 export default {
   name: 'localeMarkdown',
+  title: 'localeMarkdown',
   type: 'object',
   fieldsets: [
     {
@@ -19,6 +22,9 @@ export default {
       title: lang.title,
       name: lang.id,
       type: 'markdown',
+      options: {
+        renderPreview: htmlPreview
+      },
       fieldset: lang.isDefault ? null : 'translations'
     }
   ))
