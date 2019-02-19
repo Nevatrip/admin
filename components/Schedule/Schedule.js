@@ -38,10 +38,10 @@ export default class Schedule extends React.Component {
 
     return (
       <div>
-        <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.common.min.css" />
-        <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.default.min.css" />
         <ScheduleEvent />
         <ScheduleModal />
+        <link rel="stylesheet" href={`http://kendo.cdn.telerik.com/${kendo.version}/styles/kendo.common.min.css`} />
+        <link rel="stylesheet" href={`http://kendo.cdn.telerik.com/${kendo.version}/styles/kendo.default.min.css`} />
         <div className="schedule" ref={ el => this.el = el } />
         {/* <pre><code>{JSON.stringify(value, null, 2 )}</code></pre> */}
       </div>
