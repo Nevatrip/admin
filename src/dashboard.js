@@ -42,7 +42,6 @@ export default () =>
                 ),
           ])
         ),
-      SB.documentTypeListItem('event'),
       SB.listItem()
         .id('serviceSettings')
         .title('Служебные настройки')

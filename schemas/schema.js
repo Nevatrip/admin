@@ -27,7 +27,6 @@ import settingServiceTag from './settingServiceTag'
 import settingPlaceFeatures from './settingPlaceFeatures'
 import settingMenu from './settingMenu'
 import page from './page'
-import event from './event'
 import settingTourLanguages from './settingTourLanguages'
 import serviceBasedData from './serviceBasedData'
 import settingService from './settingService'
@@ -62,7 +61,6 @@ export default createSchema({
     settingMenu,
     settingPlaceFeatures,
     page,
-    event,
     settingTourLanguages,
     serviceBasedData,
     settingService,

@@ -1,3 +1,5 @@
+import slugValidation from "../components/slugValidation";
+
 export default {
   name: 'sight',
   title: 'Достопримечательность',
@@ -14,8 +16,7 @@ export default {
       name: 'key',
       title: 'Ключ',
       type: 'slug',
-      required: true,
-      validation: Rule => Rule.required(),
+      validation: slugValidation,
       options: {
         source: 'title.ru',
         maxLength: 96

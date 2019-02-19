@@ -1,3 +1,5 @@
+import slugValidation from "../components/slugValidation";
+
 export default {
   name: 'settingTicketPrint',
   title: 'Печать билета',
@@ -15,7 +17,7 @@ export default {
       title: 'Ключ',
       type: 'slug',
       required: true,
-      validation: Rule => Rule.required(),
+      validation: slugValidation,
       options: {
         source: 'title',
         maxLength: 96
