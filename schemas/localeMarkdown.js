@@ -8,6 +8,7 @@ const supportedLanguages = [
 
 export default {
   name: 'localeMarkdown',
+  title: 'localeMarkdown',
   type: 'object',
   fieldsets: [
     {

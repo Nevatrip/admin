@@ -6,6 +6,7 @@ const supportedLanguages = [
 
 export default {
   name: 'localeText',
+  title: 'localeText',
   type: 'object',
   fieldsets: [
     {
