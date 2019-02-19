@@ -206,9 +206,9 @@ export default class Schedule extends React.Component {
           }
       },
       eventTemplate: $("#event-template").html(),
-      editable: {
-        template: $("#customEditorTemplate").html(),
-      },
+      // editable: {
+      //   template: $("#customEditorTemplate").html(),
+      // },
       edit: function (e) {
         e.event.set("isAllDay", false);
 
