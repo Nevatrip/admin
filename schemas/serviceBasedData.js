@@ -127,6 +127,58 @@ export default {
       title: '@ Копирайт',
       type: 'localeString',
     },
+
+    {
+      type: 'object',
+      name: 'error',
+      title: 'Страница ошибки',
+      fieldsets: [
+        {
+          name: 'errorSettings',
+          title: 'Настройки страницы ошибки',
+          options: {collapsed: true}
+        }
+      ],
+      fields: [
+        {
+          name: 'errorImage',
+          title: 'Фото на странице ошибки',
+          type: 'image',
+          fieldset: 'errorSettings',
+        },
+        {
+          name: 'errorTitle',
+          title: 'Заголовок на странице ошибки',
+          type: 'localeString',
+          fieldset: 'errorSettings',
+        },
+        {
+          name: 'errorContent',
+          title: 'Основное содержимое на странице ошибки',
+          type: 'localeText',
+          fieldset: 'errorSettings',
+        },
+        {
+          name: 'errorMoreLink',
+          title: 'Ссылка посмотрите другие экскурсии на странице ошибки',
+          description: 'Ведёт на главную',
+          type: 'localeString',
+          fieldset: 'errorSettings',
+        },
+        {
+          name: 'errorInfoTitle',
+          title: 'Заголовок блока инфо на странице ошибки',
+          type: 'localeString',
+          fieldset: 'errorSettings',
+        },
+        {
+          name: 'errorInfoText',
+          title: 'Содержимое блока инфо на странице ошибки',
+          type: 'localeText',
+          fieldset: 'errorSettings',
+        },
+      ]
+    },
   ],
   preview: {
     select: {
