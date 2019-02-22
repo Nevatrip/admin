@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 language: node_js
 node_js:
 - stable
@@ -16,7 +16,7 @@ before_install:
 - echo "128817a63de17a5af03fe69241e453436c6c286c86dd37fb70ed9b3bf7171d7d  git-crypt"
   | shasum -a 256 -c -
 - chmod +x git-crypt
-- cp git-crypt /usr/local/bin/
+- sudo cp git-crypt /usr/local/bin/
 - git-crypt unlock
 install:
 - yarn global add @sanity/cli
