@@ -5,7 +5,8 @@ node_js:
 os:
 - linux
 before_install:
-- docker ps
+- npm install -g @sanity/cli
+- npm install
 script:
 - ls -la
 branches:
