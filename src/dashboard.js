@@ -31,6 +31,7 @@ export default () =>
               SB.documentTypeListItem('settingMenu'),
               SB.documentTypeListItem('settingPlaceFeatures'),
               SB.documentTypeListItem('settingTourLanguages'),
+              SB.documentTypeListItem('settingServicesCollections'),
               SB.listItem()
                 .id('settingService')
                 .title('Настройки экскурсия')

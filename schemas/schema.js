@@ -31,6 +31,7 @@ import settingTourLanguages from './settingTourLanguages'
 import serviceBasedData from './serviceBasedData'
 import settingService from './settingService'
 import sight from './sight'
+import settingServicesCollections from './settingServicesCollections'
 
 export default createSchema({
   name: 'default',
@@ -65,5 +66,6 @@ export default createSchema({
     serviceBasedData,
     settingService,
     sight,
+    settingServicesCollections,
   ])
 })
