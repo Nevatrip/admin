@@ -7,13 +7,14 @@ os:
 before_install:
 - openssl aes-256-cbc -K $encrypted_504078b5b0bc_key -iv $encrypted_504078b5b0bc_iv
   -in deploy.gpg.enc -out deploy.gpg -d
+- cat deploy.gpg
 - gpg --import deploy.gpg
-
 - export TZ=Europe/Moscow
 - date
-
-- curl -L https://github.com/minrk/git-crypt-bin/releases/download/0.6.0/git-crypt > git-crypt
-- echo "128817a63de17a5af03fe69241e453436c6c286c86dd37fb70ed9b3bf7171d7d  git-crypt" | shasum -a 256 -c -
+- curl -L https://github.com/minrk/git-crypt-bin/releases/download/0.6.0/git-crypt
+  > git-crypt
+- echo "128817a63de17a5af03fe69241e453436c6c286c86dd37fb70ed9b3bf7171d7d  git-crypt"
+  | shasum -a 256 -c -
 - chmod +x git-crypt
 - cp git-crypt /usr/local/bin/
 - git-crypt unlock
