@@ -21,7 +21,7 @@ install:
 - yarn global add @sanity/cli
 script:
 - ls -la
-- sanity && sanity build && ls -la ./dist
+- sanity install && sanity build && ls -la ./dist
 branches:
   only:
   - master
