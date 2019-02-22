@@ -116,6 +116,25 @@ export default class Schedule extends React.Component {
     } )
 
     eventArr.forEach( updatedEvent => {
+
+      if ( updatedEvent.recurrenceRule ) {
+        const options = RRule.parseString(updatedEvent.recurrenceRule)
+        options.dtstart = new Date(updatedEvent.start);
+        const rrule = new RRule(options);
+
+        updatedEvent.actions = rrule.all().map((date) => {
+          return {
+            _key: uuid(),
+            start: date.toISOString(),
+          }
+        });
+      } else {
+        updatedEvent.actions = [{
+          _key: uuid(),
+          start: updatedEvent.start,
+        }]
+      }
+
       normalize[ updatedEvent._key ] = updatedEvent;
     } )
 
@@ -206,9 +225,9 @@ export default class Schedule extends React.Component {
           }
       },
       eventTemplate: $("#event-template").html(),
-      editable: {
-        template: $("#customEditorTemplate").html(),
-      },
+      // editable: {
+      //   template: $("#customEditorTemplate").html(),
+      // },
       edit: function (e) {
         e.event.set("isAllDay", false);
 
