@@ -17,7 +17,7 @@ before_install:
   | shasum -a 256 -c -
 - chmod +x git-crypt
 - sudo cp git-crypt /usr/local/bin/
-- git-crypt unlock
+- echo $GPG_PASSPHRASE | git-crypt unlock
 install:
 - yarn global add @sanity/cli
 script:
@@ -27,3 +27,6 @@ branches:
   only:
   - master
   - develop
+env:
+  global:
+    secure: c8XFAc6KMvUF6Bo+a6nrM8z4/Cfa4AG02datXEzyxz0ekIyeIHU37xROkZrTvbeQdk5f4aCaTeGOhIG8QyKA07EvmsJ24mUn/lKgZyq6+XH/u5e2xhK/VblXTL0Wh7N5VimbVHl4c/7cUXVowksk8J3G85mbBeDUroDQPQ9eHY/Unq2PRUeSe54k2jij5kLvelBOdJmEdeX2KxvlXG3Qqyq/O7KMzfLBlEIAUyWmxUth5rcB40BHclUjBRi797/XC1Ldpi6Aw2ZK+EAJWfKefHoNF+3tzLWK/HQU8//yLghWy8KI6EdxqwqsvtTXGsT0D7c9VOrCXBDmNmP/+oYONmswFzCyM78IYM9Gv1Kp9wOsXs36CZukWgCZQ7YjpLWOSz1293lskITvQH8gdNO3GvLawp1bGnD14XXIEydzAxO2WpeQd/NUUrI9KjTF7D/hZFRFNoUBtOHsk/Uwvamh6CHS+9SEkGV2cLOFeOhg9VzxdgBgrDhZW4SVJP8cdshVGMPzRh0szxsEwAl1f67/xKaHA0JedrAJlHHJ56X306I5II4MnrlQLhSOwLfsjcN4a037mNZabls9WRBOssyrvQx3TnNSq30KhyzpXqHbfck+J59FFWB/6AuQIQpwwEWsFWHsqjAshYdCLgI2YMCWgcM6Ld6sUUdP2PECgljITe0=
