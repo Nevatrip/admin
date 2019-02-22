@@ -8,7 +8,8 @@ before_install:
 - npm install -g @sanity/cli
 - npm install
 script:
-- ls -la
+- sanity build
+- ls -la ./dist
 branches:
   only:
   - master
