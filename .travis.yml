@@ -7,6 +7,7 @@ os:
 before_install:
 - yarn add global -g @sanity/cli
 script:
+- ls -la
 - sanity && sanity build && ls -la ./dist
 branches:
   only:
