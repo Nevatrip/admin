@@ -5,7 +5,7 @@ node_js:
 os:
 - linux
 install:
-- yarn add global @sanity/cli
+- yarn global add @sanity/cli
 script:
 - ls -la
 - sanity && sanity build && ls -la ./dist
