@@ -5,11 +5,9 @@ node_js:
 os:
 - linux
 before_install:
-- npm install -g @sanity/cli
-- npm install
+- yarn add global -g @sanity/cli
 script:
-- sanity build
-- ls -la ./dist
+- sanity && sanity build && ls -la ./dist
 branches:
   only:
   - master
