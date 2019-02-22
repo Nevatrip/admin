@@ -19,9 +19,12 @@ before_install:
 - git-crypt unlock
 install:
 - yarn global add @sanity/cli
+
 script:
 - ls -la
-- sanity install && sanity build && ls -la ./dist
+- sanity install
+- sanity build --no-minify
+- ls -la ./dist
 branches:
   only:
   - master
