@@ -4,7 +4,7 @@ node_js:
 - stable
 os:
 - linux
-before_install:
+install:
 - yarn add global -g @sanity/cli
 script:
 - ls -la
