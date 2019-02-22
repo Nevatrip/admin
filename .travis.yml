@@ -17,8 +17,8 @@ before_install:
   | shasum -a 256 -c -
 - chmod +x git-crypt
 - sudo cp git-crypt /usr/local/bin/
-- echo "$GPG_PASSPHRASE"
-- echo "$GPG_PASSPHRASE" | git-crypt unlock
+- echo GPG_PASSPHRASE
+- echo GPG_PASSPHRASE | git-crypt unlock
 install:
 - yarn global add @sanity/cli
 script:
