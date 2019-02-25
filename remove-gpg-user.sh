@@ -71,7 +71,8 @@ done
 
 cd $CURRENT_DIR
 for i in `awk '{print $2}' ${TMPDIR}/${BASENAME}/encrypted-files`; do
-    cp -rp --parents $i $TMPDIR/$BASENAME;
+    mkdir -p $TMPDIR/$BASENAME
+    cp -rp $i $TMPDIR/$BASENAME;
 done
 cd $TMPDIR/$BASENAME
 for i in `awk '{print $2}' encrypted-files`; do
