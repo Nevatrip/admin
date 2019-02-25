@@ -86,17 +86,17 @@ export default {
     // },
     {
       name: 'articleTitle',
-      title: 'Заголовок статьи "Об оргазизации"',
+      title: 'Заголовок статьи "Об организации"',
       type: 'localeString',
     },
     {
       name: 'articleImage',
-      title: 'Изображение в заголовке в статье "Об оргазизации"',
+      title: 'Изображение в заголовке в статье "Об организации"',
       type: 'image',
     },
     // {
     //   name: 'articleFeatures',
-    //   title: 'Характеристики после загаловка в статье "Об оргазизации"',
+    //   title: 'Характеристики после загаловка в статье "Об организации"',
     //   type: 'array',
     //   of: [
     //     {
@@ -108,7 +108,7 @@ export default {
     // },
     {
       name: 'articleContent',
-      title: 'Статья "Об оргазизации"',
+      title: 'Статья "Об организации"',
       type: 'localeText',
     },
     {
