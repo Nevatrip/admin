@@ -21,7 +21,6 @@ install:
 - yarn global add @sanity/cli
 
 script:
-- ls -la
 - sanity install
 - sanity build --no-minify
 - ls -la ./dist
