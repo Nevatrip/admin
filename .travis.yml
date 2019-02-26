@@ -29,6 +29,7 @@ script:
 before_deploy:
 - eval "$(ssh-agent -s)"
 - chmod 600 deploy_rsa
+- ssh -o "StrictHostKeyChecking no" -q deploy@$REMOTE_HOST exit && echo $?
 - ssh-add deploy_rsa
 deploy:
   provider: script
