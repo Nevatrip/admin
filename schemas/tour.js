@@ -90,6 +90,12 @@ export default {
       options: { hotspot: true },
     },
     {
+      name: 'previewImage',
+      title: 'Изображение для превью',
+      type: 'image',
+      description: 'Если не загружено, то оно берется из центра круга главного изображения выше',
+    },
+    {
       name: 'category',
       type: 'reference',
       title: 'Категория',
@@ -118,7 +124,7 @@ export default {
     {
       name: 'descriptionPrepend',
       title: 'Дополнительная информация перед описанием',
-      type: 'localeText'
+      type: 'localeMarkdown'
     },
     {
       name: 'description',
@@ -130,7 +136,7 @@ export default {
     {
       name: 'descriptionAppend',
       title: 'Дополнительная информация после описания',
-      type: 'localeText'
+      type: 'localeMarkdown'
     },
     {
       name: 'advice',

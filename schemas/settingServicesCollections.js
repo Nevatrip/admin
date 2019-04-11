@@ -11,6 +11,13 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'titleMenu',
+      title: 'Заголовок в Меню',
+      description: 'Если не заполнено, то берется из главного заголовка выше',
+      type: 'localeString',
+      required: true,
+    },
+    {
       name: 'description',
       title: 'Описание',
       description: 'Основной текст, сюда нельзя добавлять заголовок h1',
@@ -32,6 +39,8 @@ export default {
       name: 'titleImage',
       title: 'Изображение в заголовке',
       type: 'image',
+      description: 'Настройка: "Edit", Черная область: область для показа изображения',
+      options: { hotspot: true },
     },
     {
       title: 'Подборка',
