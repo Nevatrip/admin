@@ -8,7 +8,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "sanity start",
-    "test": "sanity check"
+    "test": "sanity check",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@progress/kendo-ui": "2019.1.115",
@@ -25,5 +26,7 @@
     "rrule": "^2.6.0",
     "sanity-plugin-markdown": "^1.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "patch-package": "^6.1.2"
+  }
 }
