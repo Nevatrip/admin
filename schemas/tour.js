@@ -300,6 +300,11 @@ export default {
         }
       ]
     },
+    {
+      name: 'oldId',
+      title: 'ID в старой админке',
+      type: 'number'
+    }
   ],
   preview: {
     select: {
