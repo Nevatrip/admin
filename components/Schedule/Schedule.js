@@ -252,6 +252,7 @@ export default class Schedule extends React.Component {
           });
           
           e.event.end = endTime;
+          e.event.set('startTimezone', 'Europe/Moscow');
         }
       
         /*
