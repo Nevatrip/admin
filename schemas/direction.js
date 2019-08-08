@@ -32,6 +32,11 @@ export default {
       to: { type: 'point' },
     },
     {
+      name: 'buyTimeOffset',
+      type: 'number',
+      title: 'За сколько минут до рейса прекратить продажу',
+    },
+    {
       name: 'schedule',
       title: 'Расписание',
       type: 'schedule',
