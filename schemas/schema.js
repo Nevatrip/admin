@@ -32,6 +32,7 @@ import serviceBasedData from './serviceBasedData'
 import settingService from './settingService'
 import sight from './sight'
 import settingServicesCollections from './settingServicesCollections'
+import ticket from './ticket'
 
 export default createSchema({
   name: 'default',
@@ -67,5 +68,6 @@ export default createSchema({
     settingService,
     sight,
     settingServicesCollections,
+    ticket,
   ])
 })
