@@ -5,3 +5,4 @@ deploy_rsa.pub
 deploy.gpg
 
 .idea
+.DS_Store
