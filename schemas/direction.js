@@ -37,6 +37,12 @@ export default {
       title: 'За сколько минут до рейса прекратить продажу',
     },
     {
+      name: 'ticketInfo',
+      title: 'Инфо в билете',
+      type: 'localeText',
+      description: 'Инфо в билете рядом с восклицательным знаком'
+    },
+    {
       name: 'schedule',
       title: 'Расписание',
       type: 'schedule',
