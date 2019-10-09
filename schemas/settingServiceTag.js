@@ -25,7 +25,7 @@ export default {
       required: true,
       validation: slugValidation,
       options: {
-        source: 'title',
+        source: 'title.ru',
         maxLength: 96
       }
     },
