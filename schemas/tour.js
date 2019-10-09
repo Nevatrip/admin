@@ -33,6 +33,14 @@ export default {
               description: 'Если включено, каждое из направлений будет иметь собственный календарь. По умолчанию выключено, т. е. все направления имеют общую дату'
             },
             {
+              name: 'tickets',
+              title: 'Билеты',
+              type: 'array',
+              of: [
+                { type: 'ticket' }
+              ]
+            },
+            {
               name: 'nested',
               title: 'Одиночные направления',
               type: 'array',
@@ -298,6 +306,11 @@ export default {
         }
       ]
     },
+    {
+      name: 'oldId',
+      title: 'ID в старой админке',
+      type: 'number'
+    }
   ],
   preview: {
     select: {
