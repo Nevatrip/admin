@@ -14,6 +14,7 @@ import '@progress/kendo-ui/js/kendo.multiselect';
 import '@progress/kendo-ui/js/cultures/kendo.culture.ru-RU';
 
 import { RRule } from "rrule";
+import { dateutil } from "rrule/dist/esm/src/dateutil";
 
 import './Schedule.css';
 import { ScheduleEvent } from "./ScheduleEvent";
@@ -78,7 +79,7 @@ export default class Schedule extends React.Component {
         const options = RRule.parseString(event.recurrenceRule)
         options.dtstart = new Date(event.start);
         const rrule = new RRule(options);
-
+        
         event.actions = rrule.all().map((date) => {
           return {
             _key: uuid(),
@@ -121,8 +122,21 @@ export default class Schedule extends React.Component {
         const options = RRule.parseString(updatedEvent.recurrenceRule)
         options.dtstart = new Date(updatedEvent.start);
         const rrule = new RRule(options);
+        
+        const excludeDates = updatedEvent.recurrenceException
+          .split(',')
+          .map(date => dateutil.untilStringToDate(date))
+          .reduce((acc, date) => {
+            acc[date.toISOString()] = date;
+            
+            return acc;
+          }, {});
+        
+        
 
-        updatedEvent.actions = rrule.all().map((date) => {
+        updatedEvent.actions = rrule.all()
+          .filter( date => !excludeDates.hasOwnProperty( date.toISOString() ) )
+          .map((date) => {
           return {
             _key: uuid(),
             start: date.toISOString(),
@@ -230,7 +244,7 @@ export default class Schedule extends React.Component {
       // },
       edit: function (e) {
         e.event.set("isAllDay", false);
-
+        
         if (e.event.isNew) {
           const start = e.container.find("[name=start][data-role=datetimepicker]");
           const end = e.container.find("[name=end][data-role=datetimepicker]");
