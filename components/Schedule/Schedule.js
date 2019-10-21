@@ -131,8 +131,6 @@ export default class Schedule extends React.Component {
             
             return acc;
           }, {});
-        
-        
 
         updatedEvent.actions = rrule.all()
           .filter( date => !excludeDates.hasOwnProperty( date.toISOString() ) )
