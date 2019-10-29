@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-  node:
+  nevatrip:
     build:
       context: .
       args:
@@ -8,7 +8,21 @@ services:
         PROJECT_ID: ${PROJECT_ID}
         PROJECT_DATASET: ${PROJECT_DATASET}
     env_file:
-      - .env
+      - nevatrip.env
+    tty: true
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  moskvatrip:
+    build:
+      context: .
+      args:
+        PROJECT_NAME: ${PROJECT_NAME}
+        PROJECT_ID: ${PROJECT_ID}
+        PROJECT_DATASET: ${PROJECT_DATASET}
+    env_file:
+      - moskvatrip.env
     tty: true
     restart: unless-stopped
     networks:
@@ -28,6 +42,7 @@ services:
     volumes:
       - ./.config/etc/ssl:/etc/nginx/ssl
       - ./.config/etc/admin-moskvatrip-ru.conf:/etc/nginx/service-admin-moskvatrip-ru.conf
+      - ./.config/etc/admin-nevatrip-ru.conf:/etc/nginx/service-admin-nevatrip-ru.conf
       - ./static:/srv/docroot
     ports:
       - 80:80
@@ -36,9 +51,10 @@ services:
       - TZ=Europe/Moscow
       - LETSENCRYPT=true
       - LE_EMAIL=tech-support@nevatrip.ru
-      - LE_FQDN=admin.moskvatrip.ru
+      - LE_FQDN=admin.moskvatrip.ru,admin.nevatrip.ru
     depends_on:
-      - node
+      - nevatrip
+      - moskvatrip
     networks:
       - app-network
 
