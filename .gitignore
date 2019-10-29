@@ -6,3 +6,4 @@ deploy.gpg
 
 .idea
 .DS_Store
+.env
