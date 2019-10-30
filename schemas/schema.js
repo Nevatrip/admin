@@ -33,6 +33,8 @@ import settingService from './settingService'
 import sight from './sight'
 import settingServicesCollections from './settingServicesCollections'
 import ticket from './ticket'
+import settingMainBanner from './settingMainBanner'
+import localeBanner from './localeBanner'
 
 export default createSchema({
   name: 'default',
@@ -69,5 +71,7 @@ export default createSchema({
     sight,
     settingServicesCollections,
     ticket,
+    settingMainBanner,
+    localeBanner,
   ])
 })

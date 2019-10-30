@@ -33,11 +33,22 @@ export default () =>
               SB.documentTypeListItem('settingTourLanguages'),
               SB.documentTypeListItem('settingServicesCollections'),
               SB.listItem()
-                .id('settingService')
-                .title('Настройки экскурсия')
+                .id('settingMainBanner')
+                .title('Баннер на главной')
                 .child(
                   SB.editor()
                     .id('config')
+                    .title('Баннер на главной')
+                    .schemaType("settingMainBanner")
+                    .documentId("settingMainBanner")
+                ),
+              SB.listItem()
+                .id('settingService')
+                .title('Настройки экскурсии')
+                .child(
+                  SB.editor()
+                    .id('config')
+                    .title('Настройки экскурсии')
                     .schemaType("settingService")
                     .documentId("settingService")
                 ),
