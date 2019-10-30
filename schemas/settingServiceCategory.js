@@ -5,7 +5,8 @@ export default {
   fields: [
     {
       name: 'title',
-      title: 'Заголовок',
+      title: 'Заголовок краткий основной',
+      description: 'Используется в меню сайта, в хлебных крошках',
       type: 'localeTitleSlug',
       required: true,
       validation: Rule => Rule.required(),
@@ -13,9 +14,16 @@ export default {
     {
       name: 'subTitle',
       title: 'Подзаголовок',
+      description: 'Используется в меню сайта',
       type: 'localeString',
       required: true,
       validation: Rule => Rule.required(),
+    },
+    {
+      name: 'titleArticle',
+      title: 'Заголовок на странице раздела',
+      description: 'По умолчанию - это заголовок краткий основной',
+      type: 'localeString',
     },
     {
       name: 'description',
