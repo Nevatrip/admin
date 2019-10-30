@@ -4,11 +4,11 @@ services:
     build:
       context: .
       args:
-        PROJECT_NAME: ${PROJECT_NAME}
-        PROJECT_ID: ${PROJECT_ID}
-        PROJECT_DATASET: ${PROJECT_DATASET}
-    env_file:
-      - nevatrip.env
+        PROJECT_NAME: ${NEVATRIP_NAME}
+        PROJECT_ID: ${NEVATRIP_ID}
+        PROJECT_DATASET: ${NEVATRIP_DATASET}
+    environment:
+      PROJECT_NAME: ${NEVATRIP_NAME}
     tty: true
     restart: unless-stopped
     networks:
@@ -18,11 +18,11 @@ services:
     build:
       context: .
       args:
-        PROJECT_NAME: ${PROJECT_NAME}
-        PROJECT_ID: ${PROJECT_ID}
-        PROJECT_DATASET: ${PROJECT_DATASET}
-    env_file:
-      - moskvatrip.env
+        PROJECT_NAME: ${MOSKVATRIP_NAME}
+        PROJECT_ID: ${MOSKVATRIP_ID}
+        PROJECT_DATASET: ${MOSKVATRIP_DATASET}
+    environment:
+      PROJECT_NAME: ${MOSKVATRIP_NAME}
     tty: true
     restart: unless-stopped
     networks:

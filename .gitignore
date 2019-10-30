@@ -8,3 +8,5 @@ deploy.gpg
 .DS_Store
 .env
 *.env
+
+*.pem

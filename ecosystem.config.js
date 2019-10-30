@@ -1,5 +1,7 @@
+const host = process.env.PROJECT_NAME;
+
 module.exports = [{
   name: 'app',
   script: "sanity",
-  args: "start --host=0.0.0.0",
+  args: `start ${host ? `--host=${host}` : ''}`,
 }]
