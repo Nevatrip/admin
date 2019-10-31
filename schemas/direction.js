@@ -12,6 +12,17 @@ export default {
       type: 'string'
     },
     {
+      name: 'partner',
+      type: 'reference',
+      title: 'Партнёр/оператор',
+      to: { type: 'apiProvider' },
+    },
+    {
+      name: 'partnerName',
+      title: 'Название экскурсии для оператора',
+      type: 'string'
+    },
+    {
       name: 'map',
       title: 'Карта',
       type: 'string',

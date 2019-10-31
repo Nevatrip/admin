@@ -57,8 +57,8 @@ export default class Schedule extends React.Component {
       <div>
         <ScheduleEvent />
         <ScheduleModal />
-        <link rel="stylesheet" href={`http://kendo.cdn.telerik.com/${kendo.version}/styles/kendo.common.min.css`} />
-        <link rel="stylesheet" href={`http://kendo.cdn.telerik.com/${kendo.version}/styles/kendo.default.min.css`} />
+        <link rel="stylesheet" href={`https://kendo.cdn.telerik.com/${kendo.version}/styles/kendo.common.min.css`} />
+        <link rel="stylesheet" href={`https://kendo.cdn.telerik.com/${kendo.version}/styles/kendo.default.min.css`} />
         <details>
           <summary>В календаре {events.length || 'нет'} {getNoun(events.length, 'событие', 'события', 'событий')}</summary>
           <pre><code>{JSON.stringify(events, null, 2 )}</code></pre>
@@ -79,7 +79,7 @@ export default class Schedule extends React.Component {
         const options = RRule.parseString(event.recurrenceRule)
         options.dtstart = new Date(event.start);
         const rrule = new RRule(options);
-        
+
         event.actions = rrule.all().map((date) => {
           return {
             _key: uuid(),
@@ -97,7 +97,7 @@ export default class Schedule extends React.Component {
     } );
 
     const newValue = JSON.parse( JSON.stringify( [ ...events, ...newEvent ] ) );
-    const save = PatchEvent.from( set( newValue ) ); 
+    const save = PatchEvent.from( set( newValue ) );
 
     this.setState({
       events: save.patches[0].value
@@ -122,13 +122,13 @@ export default class Schedule extends React.Component {
         const options = RRule.parseString(updatedEvent.recurrenceRule)
         options.dtstart = new Date(updatedEvent.start);
         const rrule = new RRule(options);
-        
+
         const excludeDates = updatedEvent.recurrenceException
           .split(',')
           .map(date => dateutil.untilStringToDate(date))
           .reduce((acc, date) => {
             acc[date.toISOString()] = date;
-            
+
             return acc;
           }, {});
 
@@ -242,7 +242,7 @@ export default class Schedule extends React.Component {
       // },
       edit: function (e) {
         e.event.set("isAllDay", false);
-        
+
         if (e.event.isNew) {
           const start = e.container.find("[name=start][data-role=datetimepicker]");
           const end = e.container.find("[name=end][data-role=datetimepicker]");
@@ -255,18 +255,18 @@ export default class Schedule extends React.Component {
           $(start).on('change', function () {
             const newStart = $(start).data("kendoDateTimePicker").value()
             const newEnd = $(end).data("kendoDateTimePicker").value()
-            
+
             if (newStart <= newEnd) {
               newEnd.setHours(newStart.getHours() + 1);
               $(end).data("kendoDateTimePicker").value(newEnd);
               e.event.end = newEnd;
             }
           });
-          
+
           e.event.end = endTime;
           e.event.set('startTimezone', 'Europe/Moscow');
         }
-      
+
         /*
         this.setState({
             title: serviceObj.title.ru.name,
