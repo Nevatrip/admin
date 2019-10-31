@@ -1,6 +1,6 @@
 export default {
-  name: 'settingTopFeatures',
-  title: 'Преимущества после баннера на главной',
+  name: 'settingBottomFeatures',
+  title: 'Преимущества в разделе "о нас" на главной',
   type: 'document',
   fields: [
     {
