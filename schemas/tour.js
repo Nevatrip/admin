@@ -266,12 +266,12 @@ export default {
     {
       name: 'partner',
       type: 'reference',
-      title: 'Партнёр/оператор',
+      title: '!!!Очистить это поле на всех экскурсиях',
       to: { type: 'apiProvider' },
     },
     {
       name: 'partnerName',
-      title: 'Название экскурсии для оператора',
+      title: '!!!Очистить это поле на всех экскурсиях',
       type: 'string'
     },
     {
