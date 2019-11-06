@@ -112,6 +112,16 @@ export default {
       type: 'localeString',
     },
     {
+      name: 'serviceToTheMainPage',
+      title: 'ALT & TITLE "на главную"',
+      type: 'localeString',
+    },
+    {
+      name: 'serviceMainPage',
+      title: 'В хлебных крошках "Главная"',
+      type: 'localeString',
+    },
+    {
       type: 'array',
       name: 'popup',
       title: 'Всплывающие окна',
