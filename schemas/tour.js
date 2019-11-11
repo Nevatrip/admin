@@ -111,6 +111,13 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'buyLink',
+      title: 'Ссылка на форму покупки',
+      type: 'localeString',
+      required: true,
+      description: 'Нет ссылки - нет кнопки',
+    },
+    {
       name: 'tags',
       type: 'array',
       title: 'Теги',
