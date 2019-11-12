@@ -33,6 +33,7 @@ export default () =>
               SB.documentTypeListItem('settingTourLanguages'),
               SB.documentTypeListItem('settingServicesCollections'),
               SB.documentTypeListItem('settingTopFeatures'),
+              SB.documentTypeListItem('settingBottomFeatures'),
               SB.listItem()
                 .id('settingMainBanner')
                 .title('Баннер на главной')
