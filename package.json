@@ -12,6 +12,12 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
+    "@fullcalendar/core": "^4.3.1",
+    "@fullcalendar/daygrid": "^4.3.0",
+    "@fullcalendar/interaction": "^4.3.0",
+    "@fullcalendar/react": "^4.3.0",
+    "@fullcalendar/rrule": "^4.3.0",
+    "@fullcalendar/timegrid": "^4.3.0",
     "@progress/kendo-ui": "2019.3.1023",
     "@sanity/base": "^0.144.1",
     "@sanity/components": "^0.144.2",
