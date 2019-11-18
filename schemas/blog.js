@@ -24,9 +24,50 @@ export default {
       }
     },
     {
+      name: 'titleLong',
+      title: 'Расширенный заголовок',
+      type: 'localeString',
+      description: 'Развернутый заголовок статьи для мета тегов',
+      required: true,
+    },
+    {
+      name: 'descriptionMeta',
+      title: 'Описание для мета тегов',
+      type: 'localeString',
+      description: 'Краткое описание статьи для мета тегов',
+      required: true,
+    },
+    {
+      name: 'status',
+      title: 'Статус',
+      type: 'array',
+      of: [ { type: 'string' } ],
+      options: {
+        list: [
+          { title: 'Не показывать в списке категории', value: 'hidden' },
+          { title: 'Снять с публикации', value: 'deleted' },
+        ]
+      }
+    },
+    {
+      name: 'titleImage',
+      title: 'Главное изображение',
+      type: 'image',
+      description: 'Настройка: "Edit", Центр круга: центр для превью, Черная область: область для показа на детальной',
+      options: { hotspot: true },
+    },
+    {
+      name: 'previewImage',
+      title: 'Изображение для превью',
+      type: 'image',
+      description: 'Если не загружено, то оно берется из центра круга главного изображения выше',
+    },
+    {
       name: 'description',
       title: 'Описание',
-      type: 'text'
+      description: 'Основной текст, сюда нельзя добавлять заголовок h1',
+      type: 'localeMarkdown',
+      validation: Rule => Rule.required(),
     },
   ],
   preview: {
