@@ -33,7 +33,7 @@ export default {
             timeStep: 5,
             calendarTodayLabel: 'Сегодня'
           },
-          // required: true,
+          required: true,
           validation: Rule => Rule.required(),
         },
         {
@@ -48,7 +48,6 @@ export default {
           title: 'allDay',
           type: 'boolean',
         },
-        /*
         {
           name: 'groupId',
           title: 'groupId',
@@ -63,6 +62,8 @@ export default {
           name: 'editable',
           title: 'editable',
           type: 'boolean',
+          hidden: true,
+          readOnly: true,
         },
         {
           name: 'rrule',
@@ -198,6 +199,7 @@ export default {
           name: 'actions',
           title: 'actions',
           type: 'array',
+          hidden: true,
           of: [
             {
               name: 'action',
@@ -218,8 +220,13 @@ export default {
               ]
             }
           ]
-        }
-        */
+        },
+        {
+          name: 'point',
+          type: 'reference',
+          title: 'Причал',
+          to: { type: 'point' },
+        },
       ]
     }
   ],
