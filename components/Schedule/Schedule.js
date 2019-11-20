@@ -2,9 +2,7 @@ import React from 'react';
 import uuid from '@sanity/uuid';
 import { PatchEvent, set, unset, setIfMissing } from 'part:@sanity/form-builder/patch-event'
 import {FormBuilderInput} from 'part:@sanity/form-builder'
-import Schema from '@sanity/schema'
 import Button from 'part:@sanity/components/buttons/default'
-import DefaultDialog from 'part:@sanity/components/dialogs/default'
 import DialogContent from 'part:@sanity/components/dialogs/content'
 import FullscreenDialog from 'part:@sanity/components/dialogs/fullscreen'
 
@@ -26,9 +24,12 @@ export default class Schedule extends React.Component {
   constructor(props) {
     super(props);
     
-    this.handleToggleModal = this.handleToggleModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.calendarComponentRef = React.createRef();
+
+    this.toggleModal = this.toggleModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.saveEvent = this.saveEvent.bind(this);
 
     this.state = {
       events: this.props.value || [],
@@ -36,51 +37,140 @@ export default class Schedule extends React.Component {
       event: {}
     };
   }
-  
-  calendarComponentRef = React.createRef();
-  
+
   handleFieldChange = (field, fieldPatchEvent) => {
-    const { onChange, type, value = [] } = this.props;
-    const { event, events } = this.state;
-    const [ { value: _value } ] = fieldPatchEvent.patches;
+    const { event } = this.state;
+    const [ { value } ] = fieldPatchEvent.patches;
     
-    const newValue = {};
-    newValue[field.name] = _value;
+    const _event = {};
+    _event[field.name] = value;
     
-    const _event = {
-      ...event,
-      ...newValue,
+    if (field.name === 'start' && value >= event.end) {
+      const end = new Date(value);
+      end.setHours(end.getHours() + 1, 30);
+      _event.end = end;
     }
     
-    const _events = [...events];
-    _events[_events.length - 1] = _event;
+    this.setState({ event: {
+      ...event,
+      ..._event,
+    } });
+  }
+  
+  saveEvent = () => {
+    const { onChange } = this.props;
+    const { event = {} } = this.state;
+    
+    if (event._isNewEvent) {
+      this.addEvent();
+    } else {
+      this.updateEvent();
+    }
+    
+    const _events = this.calendarComponentRef.current.getApi().getEvents()
+      .map(({ id, start, end, title, allDay = false, groupId = '', url = '', extendedProps: { _key, _type, point } }) => ({
+        _key,
+        _type,
+        id,
+        start: start.toISOString(),
+        end: end.toISOString(),
+        title,
+        allDay,
+        groupId,
+        url,
+        point,
+      }));
     
     this.setState({
-      event: _event,
+      event: {},
       events: _events,
-    }, onChange(createPatchEvent(_events)));
+    }, () => {
+      onChange(createPatchEvent(_events));
+      this.calendarComponentRef.current.getApi().rerenderEvents();
+    });
+    
+    this.closeModal();
   }
   
-  handleCloseModal() {
-    this.setState({modalIsOpen: false});
+  addEvent = () => {
+    console.log( 'addEvent' );
+    const { event = {} } = this.state;
+    this.calendarComponentRef.current.getApi().addEvent(event);
   }
   
-  handleOpenModal(events) {
-    const event = events[ events.length - 1 ];
+  updateEvent = () => {
+    console.log( 'updateEvent' );
+    const { event = {} } = this.state;
+    const _event = this.calendarComponentRef.current.getApi().getEventById(event._key);
+    Object.keys(event).forEach(key => {
+      switch (key) {
+        case 'start': _event.setStart(event[key]); break;
+        case 'end': _event.setEnd(event[key]); break;
+        case 'allDay': _event.setAllDay(event[key]); break;
+        case 'title': _event.setProp(key, event[key]); break;
+        default: _event.setExtendedProp(key, event[key]); break;
+      }
+    });
+  }
+  
+  removeEvent = event => {}
+  
+  closeModal() { this.setState({modalIsOpen: false}) }
 
+  dateClick = (arg) => {
+    const start = new Date(arg.date);
+    start.setHours(10);
+    const end = new Date(arg.date);
+    end.setHours(start.getHours() + 1, 30);
+
+    this.openModal({ start, end, _isNewEvent: true });
+  }
+  
+  eventClick = ({ event }) => {
+    const _event = {
+      ...event.extendedProps,
+      _isNewEvent: false,
+      id: event.id,
+      start: event.start,
+      end: event.end,
+      title: event.title,
+      allDay: event.allDay,
+      url: event.url,
+      groupId: event.groupId,
+    }
+    
+    this.openModal(_event);
+  }
+
+  openModal(event) {
+    console.log( 'event', event );
+    const _uuid = uuid();
+    const _event = {
+      _key: event._key || _uuid,
+      _type: event._type || 'event',
+      _isNewEvent: event._isNewEvent || false,
+      id: event._key || _uuid,
+      start: new Date(event.start).toISOString(),
+      end: new Date(event.end).toISOString(),
+      title: event.title,
+      point: event.point,
+    }
+    
     this.setState({
       modalIsOpen: true,
-      events,
-      event,
+      event: _event,
     })
   }
   
-  handleToggleModal() {
-    this.setState(prevState => ({modalIsOpen: !prevState.modalIsOpen}))
-  }
+  toggleModal() { this.setState(prevState => ({modalIsOpen: !prevState.modalIsOpen})) }
 
+
+  componentDidMount() {
+    this.calendarComponentRef.current.getApi().rerenderEvents();
+  }
+  
   render() {
-    const { onChange, type, value, level, focusPath, onFocus, onBlur } = this.props;
+    const { onChange, type, level, focusPath, onFocus, onBlur, value } = this.props;
     const [ { fields } ] = type.of;
     const { events, modalIsOpen, event } = this.state;
     const getNoun = (number, one, two, five) => {
@@ -107,7 +197,7 @@ export default class Schedule extends React.Component {
         </details>
         <button
           type="button"
-          onClick={() => { this.setState({ events: {} }); onChange( createPatchEvent('') ) } }
+          onClick={() => { this.setState({ events: [] }); onChange( createPatchEvent([]) ) } }
         >
           Очистить
         </button>
@@ -120,71 +210,50 @@ export default class Schedule extends React.Component {
           }}
           plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin, rrulePlugin ]}
           ref={ this.calendarComponentRef }
-          events={ events }
-          dateClick={ this.handleDateClick }
+          eventSources={[ events ]}
           locale={ ruLocale }
           timeZone='Europe/Moscow'
-          editable={true}
           eventLimit={true}
-          eventClick={({event}) => console.log( 'event', event, event.title, event.start, event.end )}
+          dateClick={ this.dateClick }
+          eventClick={ this.eventClick }
+          eventDrop={ this.openModal }
         />
         
         <FullscreenDialog
-          title="Добавить новое событие"
-          onClose={this.handleCloseModal}
-          onCloseClick={this.handleCloseModal}
+          title={ event._isNewEvent ? 'Добавить новое событие' : 'Редактировать событие' }
+          onClose={this.closeModal}
+          onCloseClick={this.closeModal}
           showCloseButton={true}
-          onEscape={this.handleCloseModal}
+          onEscape={this.closeModal}
           // actions
-          // onOpen={this.handleOpenModal}
+          // onOpen={this.openModal}
           isOpen={modalIsOpen}
         >
-          <DialogContent size="small" padding="small">
-            {
-              fields.map((field, i) => (
-                <div key={field.name}>
-                  <FormBuilderInput
-                    level={level + 1}
-                    ref={i === 0 ? this.firstFieldInput : null}
-                    key={field.name}
-                    type={field.type}
-                    value={event && event[field.name]}
-                    onChange={patchEvent => this.handleFieldChange(field, patchEvent)}
-                    path={[field.name]}
-                    focusPath={focusPath}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                  />
-                </div>
-              ))
-            }
-            <Button onClick={this.handleCloseModal}>Сохранить</Button>
+          <DialogContent size="auto" padding="small">
+            <div style={{ columns: 2 }}>
+              {
+                fields.map((field, i) => (
+                  <div key={field.name}>
+                    <FormBuilderInput
+                      level={level + 1}
+                      ref={i === 0 ? this.firstFieldInput : null}
+                      key={field.name}
+                      type={field.type}
+                      value={event && event[field.name]}
+                      onChange={patchEvent => this.handleFieldChange(field, patchEvent)}
+                      path={[field.name]}
+                      focusPath={focusPath}
+                      onFocus={onFocus}
+                      onBlur={onBlur}
+                    />
+                  </div>
+                ))
+              }
+            </div>
+            <Button onClick={this.saveEvent}>Сохранить</Button>
           </DialogContent>
         </FullscreenDialog>
       </>
     )
-  }
-  
-  handleDateClick = (arg) => {
-    console.log( 'events', events );
-    const { events = [] } = this.state;
-    const start = new Date(arg.date);
-    const end = new Date(arg.date);
-    end.setHours(end.getHours() + 1, 30);
-    
-    const newState = [
-      ...events,
-      {
-        _key: uuid(),
-        _type: 'event',
-        start: start.toISOString(),
-        end: end.toISOString(),
-        title: '',
-        allDay: false,
-        editable: true,
-      }
-    ];
-    
-    this.handleOpenModal( newState );
   }
 }

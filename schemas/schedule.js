@@ -66,6 +66,12 @@ export default {
           readOnly: true,
         },
         {
+          name: 'point',
+          type: 'reference',
+          title: 'Причал',
+          to: { type: 'point' },
+        },
+        {
           name: 'rrule',
           title: 'rrule',
           type: 'object',
@@ -220,12 +226,6 @@ export default {
               ]
             }
           ]
-        },
-        {
-          name: 'point',
-          type: 'reference',
-          title: 'Причал',
-          to: { type: 'point' },
         },
       ]
     }
