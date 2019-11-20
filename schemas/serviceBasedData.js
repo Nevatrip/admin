@@ -127,6 +127,31 @@ export default {
       title: '@ Копирайт',
       type: 'localeString',
     },
+    {
+      name: 'langSiteLink',
+      title: 'Ссылка на соответствующую языковую версию сайта',
+      description: 'Если ссылки нет, то и ссылок в шапке нет',
+      type: 'localeString',
+    },
+    {
+      name: 'filterTagsCaption',
+      title: 'ФИЛЬТР: заголовок для тегов',
+      description: 'Параметры прогулки',
+      type: 'localeString',
+    },
+    {
+      name: 'filterDayTimeCaption',
+      title: 'ФИЛЬТР: заголовок для времени суток',
+      description: 'Время суток',
+      type: 'localeString',
+    },
+    {
+      name: 'filterNoResult',
+      title: 'ФИЛЬТР: нет результатов',
+      description: 'Нет подходящих экскурсий',
+      type: 'localeString',
+    },
+
 
     {
       type: 'object',
