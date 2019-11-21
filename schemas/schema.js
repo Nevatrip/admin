@@ -24,6 +24,7 @@ import schedule from './schedule'
 import settingTicketPrint from './settingTicketPrint'
 import settingServiceCategory from './settingServiceCategory'
 import settingServiceTag from './settingServiceTag'
+import settingSocials from './settingSocials'
 import settingPlaceFeatures from './settingPlaceFeatures'
 import settingMenu from './settingMenu'
 import page from './page'
@@ -65,6 +66,7 @@ export default createSchema({
     settingServiceCategory,
     settingServiceTag,
     settingMenu,
+    settingSocials,
     settingPlaceFeatures,
     page,
     settingTourLanguages,

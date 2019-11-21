@@ -52,38 +52,6 @@ export default {
       title: 'E-mail',
       type: 'localeString',
     },
-    // {
-      // name: 'social',
-      // title: 'Социальные сети',
-      // type: 'array',
-      // of: [
-      //
-      // ]
-    // },
-    // {
-      // name: 'banner',
-      // title: 'Баннер',
-      // type: 'array',
-      // of: [
-      //   {
-      //     type: 'reference',
-      //     title: 'Экскурсии',
-      //     to: {type: 'tour'}
-      //   }
-      // ]
-    // },
-    // {
-    //   name: 'featuresTop',
-    //   title: 'Характеристики на главной после баннера',
-    //   type: 'array',
-    //   of: [
-    //     {
-    //       type: 'reference',
-    //       title: 'Характеристики',
-    //       to: {type: 'features'}
-    //     }
-    //   ]
-    // },
     {
       name: 'articleTitle',
       title: 'Заголовок статьи "Об организации"',
@@ -94,18 +62,6 @@ export default {
       title: 'Изображение в заголовке в статье "Об организации"',
       type: 'image',
     },
-    // {
-    //   name: 'articleFeatures',
-    //   title: 'Характеристики после загаловка в статье "Об организации"',
-    //   type: 'array',
-    //   of: [
-    //     {
-    //       type: 'reference',
-    //       title: 'Характеристики',
-    //       to: {type: 'features'}
-    //     }
-    //   ]
-    // },
     {
       name: 'articleContent',
       title: 'Статья "Об организации"',
