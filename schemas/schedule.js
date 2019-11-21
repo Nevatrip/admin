@@ -11,6 +11,14 @@ export default {
       title: 'Событие',
       fields: [
         {
+          name: 'id',
+          title: 'id',
+          type: 'string',
+          hidden: true,
+          required: true,
+          validation: Rule => Rule.required(),
+        },
+        {
           name: 'start',
           title: 'start',
           type: 'datetime',
@@ -40,8 +48,8 @@ export default {
           name: 'title',
           title: 'title',
           type: 'string',
-          required: true,
-          validation: Rule => Rule.required(),
+          // required: true,
+          // validation: Rule => Rule.required(),
         },
         {
           name: 'allDay',
@@ -235,5 +243,5 @@ export default {
       title: 'title',
     }
   },
-  inputComponent: Schedule
+  // inputComponent: Schedule
 }

@@ -50,6 +50,12 @@ export default class Schedule extends React.Component {
       end.setHours(end.getHours() + 1, 30);
       _event.end = end;
     }
+    // if (field.name === 'start') _event.rrule.dtstart = value;
+    _event.actions = event.actions || []
+    if (field.name === 'start') _event.actions[0] = {
+      _key: uuid(),
+      start: value
+    };
     
     this.setState({ event: {
       ...event,
@@ -58,7 +64,6 @@ export default class Schedule extends React.Component {
   }
   
   saveEvent = () => {
-    const { onChange } = this.props;
     const { event = {} } = this.state;
     
     if (event._isNewEvent) {
@@ -67,8 +72,41 @@ export default class Schedule extends React.Component {
       this.updateEvent();
     }
     
+    this.closeModal();
+  }
+  
+  addEvent = () => {
+    console.log( 'addEvent' );
+    const { onChange } = this.props;
+    const { event = {}, events = [] } = this.state;
+    const _events = [
+      ...events,
+      event,
+    ];
+    this.setState({
+      event: {},
+      events: _events,
+    }, onChange(createPatchEvent(_events)));
+  }
+  
+  updateEvent = () => {
+    console.log( 'updateEvent' );
+    const { onChange } = this.props;
+    const { event = {} } = this.state;
+    const _event = this.calendarComponentRef.current.getApi().getEventById(event._key);
+    Object.keys(event).forEach(key => {
+      switch (key) {
+        case 'start'  : _event.setStart(event[key]); break;
+        case 'end'    : _event.setEnd(event[key]); break;
+        case 'allDay' : _event.setAllDay(event[key]); break;
+        case 'title'  :
+        case 'rrule'  : _event.setProp(key, event[key]); break;
+        default       : _event.setExtendedProp(key, event[key]); break;
+      }
+    });
+    
     const _events = this.calendarComponentRef.current.getApi().getEvents()
-      .map(({ id, start, end, title, allDay = false, groupId = '', url = '', extendedProps: { _key, _type, point } }) => ({
+      .map(({ id, start, end, title, allDay = false, groupId, /* url, */ extendedProps: { _key, _type, point, actions } }) => ({
         _key,
         _type,
         id,
@@ -77,40 +115,15 @@ export default class Schedule extends React.Component {
         title,
         allDay,
         groupId,
-        url,
+        // url,
         point,
+        actions,
       }));
     
     this.setState({
       event: {},
       events: _events,
-    }, () => {
-      onChange(createPatchEvent(_events));
-      this.calendarComponentRef.current.getApi().rerenderEvents();
-    });
-    
-    this.closeModal();
-  }
-  
-  addEvent = () => {
-    console.log( 'addEvent' );
-    const { event = {} } = this.state;
-    this.calendarComponentRef.current.getApi().addEvent(event);
-  }
-  
-  updateEvent = () => {
-    console.log( 'updateEvent' );
-    const { event = {} } = this.state;
-    const _event = this.calendarComponentRef.current.getApi().getEventById(event._key);
-    Object.keys(event).forEach(key => {
-      switch (key) {
-        case 'start': _event.setStart(event[key]); break;
-        case 'end': _event.setEnd(event[key]); break;
-        case 'allDay': _event.setAllDay(event[key]); break;
-        case 'title': _event.setProp(key, event[key]); break;
-        default: _event.setExtendedProp(key, event[key]); break;
-      }
-    });
+    }, onChange(createPatchEvent(_events)));
   }
   
   removeEvent = event => {}
@@ -135,7 +148,7 @@ export default class Schedule extends React.Component {
       end: event.end,
       title: event.title,
       allDay: event.allDay,
-      url: event.url,
+      // url: event.url,
       groupId: event.groupId,
     }
     
@@ -154,6 +167,10 @@ export default class Schedule extends React.Component {
       end: new Date(event.end).toISOString(),
       title: event.title,
       point: event.point,
+      actions: event.actions || [{
+        _key: uuid(),
+        start: new Date(event.start).toISOString(),
+      } ],
     }
     
     this.setState({
@@ -163,11 +180,6 @@ export default class Schedule extends React.Component {
   }
   
   toggleModal() { this.setState(prevState => ({modalIsOpen: !prevState.modalIsOpen})) }
-
-
-  componentDidMount() {
-    this.calendarComponentRef.current.getApi().rerenderEvents();
-  }
   
   render() {
     const { onChange, type, level, focusPath, onFocus, onBlur, value } = this.props;
@@ -197,7 +209,11 @@ export default class Schedule extends React.Component {
         </details>
         <button
           type="button"
-          onClick={() => { this.setState({ events: [] }); onChange( createPatchEvent([]) ) } }
+          onClick={() => {
+            this.setState({ events: [] });
+            onChange(createPatchEvent([]));
+            this.calendarComponentRef.current.getApi().rerenderEvents();
+          }}
         >
           Очистить
         </button>
@@ -210,7 +226,7 @@ export default class Schedule extends React.Component {
           }}
           plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin, rrulePlugin ]}
           ref={ this.calendarComponentRef }
-          eventSources={[ events ]}
+          events={ events }
           locale={ ruLocale }
           timeZone='Europe/Moscow'
           eventLimit={true}
