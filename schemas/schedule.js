@@ -243,5 +243,5 @@ export default {
       title: 'title',
     }
   },
-  // inputComponent: Schedule
+  inputComponent: Schedule
 }
