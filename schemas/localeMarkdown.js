@@ -3,6 +3,8 @@ import htmlPreview from 'sanity-plugin-markdown/html-preview'
 const supportedLanguages = [
   {id: 'ru', title: 'Русский', isDefault: true},
   {id: 'en', title: 'Английский'},
+  {id: 'de', title: 'Немецкий'},
+  {id: 'cz', title: 'Чешский'},
   {id: 'zh', title: 'Китайский'}
 ]
 
