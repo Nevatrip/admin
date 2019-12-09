@@ -46,6 +46,16 @@ export default () =>
                     .documentId("settingMainBanner")
                 ),
               SB.listItem()
+                .id('settingBlog')
+                .title('Блог')
+                .child(
+                  SB.editor()
+                    .id('config')
+                    .title('Блог')
+                    .schemaType("settingBlog")
+                    .documentId("settingBlog")
+                ),
+              SB.listItem()
                 .id('settingService')
                 .title('Настройки экскурсии')
                 .child(
