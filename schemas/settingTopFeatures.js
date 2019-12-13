@@ -25,6 +25,7 @@ export default {
     {
       name: 'icon',
       title: 'Иконка',
+      description: 'Должна быть квадратной ориентировочно 60px*60px - 70px*70px. #4897c2 цвета',
       type: 'image',
     },
   ],
