@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaFortAwesome from 'react-icons/lib/fa/language';
 
 export default {
   name: 'supportedLanguages',
   title: 'Языки',
   type: 'document',
+  icon: FaFortAwesome,
   fields: [
     {
       name: 'title',

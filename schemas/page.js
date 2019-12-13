@@ -1,7 +1,10 @@
+import FaFileO from 'react-icons/lib/fa/file-o';
+
 export default {
   name: 'page',
   title: 'Страницы',
   type: 'document',
+  icon: FaFileO,
   fields: [
     {
       name: 'title',

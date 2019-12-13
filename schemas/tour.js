@@ -1,9 +1,11 @@
-import FaExchange from 'react-icons/lib/fa/exchange'
+import FaExchange from 'react-icons/lib/fa/exchange';
+import IoAndroidBoat from 'react-icons/lib/io/android-boat';
 
 export default {
   name: 'tour',
   title: 'Экскурсия',
   type: 'document',
+  icon: IoAndroidBoat,
   fields: [
     {
       name: 'directions',
@@ -321,9 +323,17 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title.ru.name',
-      description: 'title.ru.name',
-      media: 'titleImage'
+      title: 'title',
+      titleImage: 'titleImage',
+      previewImage: 'previewImage'
+    },
+    prepare(selection) {
+      const { title, titleImage, previewImage } = selection;
+      return {
+        media: titleImage || previewImage,
+        title: (title.ru || {}).name || (title.en || {}).name  || (title.de || {}).name  || (title.cz || {}).name || (title.zh || {}).name,
+        subtitle: `${((title.ru || {}).key || {}).current ? 'ru ' : ''}${((title.en || {}).key||{}).current ? 'en ' : ''}${((title.de || {}).key||{}).current ? 'de ' : ''}${((title.cz || {}).key||{}).current ? 'cz ' : ''}${((title.zh || {}).key||{}).current ? 'zh ' : ''}`
+      }
     }
   }
 }

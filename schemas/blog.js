@@ -1,27 +1,18 @@
 import slugValidation from "../components/slugValidation";
+import FaBook from 'react-icons/lib/fa/book';
 
 export default {
   name: 'blog',
   title: 'Блог',
   type: 'document',
+  icon: FaBook,
   fields: [
     {
       name: 'title',
-      title: 'Имя',
-      type: 'string',
+      title: 'Заголовок',
+      type: 'localeTitleSlug',
       required: true,
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'key',
-      title: 'Ключ',
-      type: 'slug',
-      required: true,
-      validation: slugValidation,
-      options: {
-        source: 'title',
-        maxLength: 96
-      }
+      description: 'Для экскурсий со старого сайта Ключ должен совпадать с полем "Псевдоним"',
     },
     {
       name: 'titleLong',
@@ -36,6 +27,12 @@ export default {
       type: 'localeString',
       description: 'Краткое описание статьи для мета тегов',
       required: true,
+    },
+    {
+      name: 'description',
+      title: 'Описание',
+      description: 'Малый "надзаголовок" над заголвком экскурсии ( ПО КЛАССИКЕ )',
+      type: 'localeString'
     },
     {
       name: 'status',
@@ -63,9 +60,9 @@ export default {
       description: 'Если не загружено, то оно берется из центра круга главного изображения выше',
     },
     {
-      name: 'description',
-      title: 'Описание',
-      description: 'Основной текст, сюда нельзя добавлять заголовок h1',
+      name: 'content',
+      title: 'Содержимое',
+      description: 'Основной текст',
       type: 'localeMarkdown',
       validation: Rule => Rule.required(),
     },
@@ -73,7 +70,16 @@ export default {
   preview: {
     select: {
       title: 'title',
-      media: 'logo'
+      titleImage: 'titleImage',
+      previewImage: 'previewImage'
+    },
+    prepare(selection) {
+      const { title, titleImage, previewImage } = selection;
+      return {
+        media: titleImage || previewImage,
+        title: (title.ru || {}).name || (title.en || {}).name  || (title.de || {}).name  || (title.cz || {}).name || (title.zh || {}).name,
+        subtitle: `${((title.ru || {}).key || {}).current ? 'ru ' : ''}${((title.en || {}).key||{}).current ? 'en ' : ''}${((title.de || {}).key||{}).current ? 'de ' : ''}${((title.cz || {}).key||{}).current ? 'cz ' : ''}${((title.zh || {}).key||{}).current ? 'zh ' : ''}`
+      }
     }
   }
 }

@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaTicket from 'react-icons/lib/fa/ticket';
 
 export default {
   name: 'ticketType',
   title: 'Тип билета',
   type: 'document',
+  icon: FaTicket,
   fields: [
     {
       name: 'title',

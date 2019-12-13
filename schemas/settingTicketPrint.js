@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaPrint from 'react-icons/lib/fa/print';
 
 export default {
   name: 'settingTicketPrint',
   title: 'Печать билета',
   type: 'document',
+  icon: FaPrint,
   fields: [
     {
       name: 'title',

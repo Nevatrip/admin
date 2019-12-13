@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaTruck from 'react-icons/lib/fa/truck';
 
 export default {
   name: 'place',
   title: 'Транспортное средство/площадка',
   type: 'document',
+  icon: FaTruck,
   fields: [
     {
       name: 'title',

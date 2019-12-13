@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaMapMarker from 'react-icons/lib/fa/map-marker';
 
 export default {
   name: 'point',
   title: 'Причал/Остановка',
   type: 'document',
+  icon: FaMapMarker,
   fields: [
     {
       name: 'title',

@@ -1,5 +1,10 @@
 import React from 'react'
 import SB from '@sanity/desk-tool/structure-builder'
+import FaCog from 'react-icons/lib/fa/cog';
+import FaCogs from 'react-icons/lib/fa/cogs';
+import FaImage from 'react-icons/lib/fa/image';
+import FaBook from 'react-icons/lib/fa/book';
+import IoAndroidBoat from 'react-icons/lib/io/android-boat';
 
 export default () =>
   SB.list()
@@ -13,6 +18,7 @@ export default () =>
       SB.listItem()
         .id('settings')
         .title('Настройки')
+        .icon(FaCogs)
         .child(
           SB.list()
             .title('Настройки')
@@ -38,6 +44,7 @@ export default () =>
               SB.listItem()
                 .id('settingMainBanner')
                 .title('Баннер на главной')
+                .icon(FaImage)
                 .child(
                   SB.editor()
                     .id('config')
@@ -46,8 +53,20 @@ export default () =>
                     .documentId("settingMainBanner")
                 ),
               SB.listItem()
+                .id('settingBlog')
+                .title('Блог')
+                .icon(FaBook)
+                .child(
+                  SB.editor()
+                    .id('config')
+                    .title('Блог')
+                    .schemaType("settingBlog")
+                    .documentId("settingBlog")
+                ),
+              SB.listItem()
                 .id('settingService')
                 .title('Настройки экскурсии')
+                .icon(IoAndroidBoat)
                 .child(
                   SB.editor()
                     .id('config')
@@ -60,6 +79,7 @@ export default () =>
       SB.listItem()
         .id('serviceSettings')
         .title('Служебные настройки')
+        .icon(FaCog)
         .child(
           SB.editor()
             .id('config')

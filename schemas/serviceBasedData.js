@@ -1,7 +1,10 @@
+import FaCog from 'react-icons/lib/fa/cog';
+
 export default {
   name: 'serviceBasedData',
   title: 'Служебные настройки',
   type: 'object',
+  icon: FaCog,
   fields: [
     {
       name: 'title',
