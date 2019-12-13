@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaEmpire from 'react-icons/lib/fa/empire';
 
 export default {
   name: 'rent',
   title: 'Аренда',
   type: 'document',
+  icon: FaEmpire,
   fields: [
     {
       name: 'title',

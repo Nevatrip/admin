@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import MdLanguage from 'react-icons/lib/md/language';
 
 export default {
   name: 'settingTourLanguages',
   title: 'Языки экскурсии',
   type: 'document',
+  icon: MdLanguage,
   fields: [
     {
       name: 'title',

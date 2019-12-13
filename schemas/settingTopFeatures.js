@@ -1,7 +1,10 @@
+import FaListOl from 'react-icons/lib/fa/list-ol';
+
 export default {
   name: 'settingTopFeatures',
   title: 'Преимущества после баннера на главной',
   type: 'document',
+  icon: FaListOl,
   fields: [
     {
       name: 'title',

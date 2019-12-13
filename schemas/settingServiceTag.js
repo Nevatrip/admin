@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaTags from 'react-icons/lib/fa/tags';
 
 export default {
   name: 'settingServiceTag',
   title: 'Теги',
   type: 'document',
+  icon: FaTags,
   fields: [
     {
       name: 'title',
