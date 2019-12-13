@@ -82,6 +82,11 @@ export default {
       type: 'localeString',
     },
     {
+      name: 'currency',
+      title: 'Знак валюта',
+      type: 'localeString',
+    },
+    {
       name: 'copyright',
       title: '@ Копирайт',
       type: 'localeString',
