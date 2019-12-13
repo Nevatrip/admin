@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaBars from 'react-icons/lib/fa/bars';
 
 export default {
   name: 'settingMenu',
   title: 'Навигация',
   type: 'document',
+  icon: FaBars,
   fields: [
     {
       name: 'title',

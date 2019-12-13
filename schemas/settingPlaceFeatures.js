@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaCoffee from 'react-icons/lib/fa/coffee';
 
 export default {
   name: 'settingPlaceFeatures',
   title: 'Что есть на борту',
   type: 'document',
+  icon: FaCoffee,
   fields: [
     {
       name: 'title',

@@ -1,7 +1,10 @@
+import FaFacebookOfficial from 'react-icons/lib/fa/facebook-official';
+
 export default {
   name: 'settingSocials',
   title: 'Социальные сети',
   type: 'document',
+  icon: FaFacebookOfficial,
   fields: [
     {
       name: 'title',

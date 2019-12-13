@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaFortAwesome from 'react-icons/lib/fa/fort-awesome';
 
 export default {
   name: 'sight',
   title: 'Достопримечательность',
   type: 'document',
+  icon: FaFortAwesome,
   fields: [
     {
       name: 'title',

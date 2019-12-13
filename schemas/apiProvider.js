@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaSuitcase from 'react-icons/lib/fa/suitcase';
 
 export default {
   name: 'apiProvider',
   title: 'Партнёры',
   type: 'document',
+  icon: FaSuitcase,
   fields: [
     {
       name: 'title',

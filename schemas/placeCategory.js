@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaPiedPiperAlt from 'react-icons/lib/fa/pied-piper-alt';
 
 export default {
   name: 'placeCategory',
   title: 'Категория места',
   type: 'document',
+  icon: FaPiedPiperAlt,
   fields: [
     {
       name: 'title',

@@ -1,7 +1,10 @@
+import FaPercent from 'react-icons/lib/fa/percent';
+
 export default {
   name: 'promo',
   title: 'Акции',
   type: 'document',
+  icon: FaPercent,
   fields: [
     {
       name: 'title',
