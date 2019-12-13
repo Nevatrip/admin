@@ -17,6 +17,7 @@ export default {
     {
       name: 'name',
       title: 'Ключ',
+      description: 'Это ключ для программиста, должен быть человекопонятным. Если тип билета взрослый, то ключ должен быть — adult',
       type: 'slug',
       required: true,
       validation: slugValidation,

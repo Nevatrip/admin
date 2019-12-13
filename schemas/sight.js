@@ -17,6 +17,7 @@ export default {
     {
       name: 'key',
       title: 'Ключ',
+      description: 'Это ключ для программиста, должен быть человекопонятным. Если достопримечательность планета, то ключ должен быть — planet',
       type: 'slug',
       validation: slugValidation,
       options: {

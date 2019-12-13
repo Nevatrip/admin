@@ -17,6 +17,7 @@ export default {
     {
       name: 'key',
       title: 'Ключ',
+      description: 'Это ключ для программиста, должен быть человекопонятным. Если элементом является туалет, то ключ должен быть — wc',
       type: 'slug',
       required: true,
       validation: slugValidation,

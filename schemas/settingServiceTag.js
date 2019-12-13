@@ -23,6 +23,7 @@ export default {
     {
       name: 'key',
       title: 'Ключ',
+      description: 'Это ключ для программиста, должен быть человекопонятным. Если тег день, то ключ должен быть — day',
       type: 'slug',
       required: true,
       validation: slugValidation,
