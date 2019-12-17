@@ -12,13 +12,6 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@fullcalendar/core": "^4.3.1",
-    "@fullcalendar/daygrid": "^4.3.0",
-    "@fullcalendar/interaction": "^4.3.0",
-    "@fullcalendar/react": "^4.3.0",
-    "@fullcalendar/rrule": "^4.3.0",
-    "@fullcalendar/timegrid": "^4.3.0",
-    "@progress/kendo-ui": "2019.3.1023",
     "@sanity/base": "^0.144.1",
     "@sanity/components": "^0.144.2",
     "@sanity/core": "^0.144.0",
@@ -30,7 +23,6 @@
     "prop-types": "^15.6",
     "react": "^16.2",
     "react-dom": "^16.2",
-    "rrule": "^2.6.0",
     "sanity-plugin-markdown": "^1.0.0"
   }
 }
