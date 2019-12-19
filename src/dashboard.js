@@ -5,6 +5,8 @@ import FaCogs from 'react-icons/lib/fa/cogs';
 import FaImage from 'react-icons/lib/fa/image';
 import FaBook from 'react-icons/lib/fa/book';
 import IoAndroidBoat from 'react-icons/lib/io/android-boat';
+import MdEmail from 'react-icons/lib/md/email';
+import MdShoppingCart from 'react-icons/lib/md/shopping-cart';
 
 export default () =>
   SB.list()
@@ -73,6 +75,28 @@ export default () =>
                     .title('Настройки экскурсии')
                     .schemaType("settingService")
                     .documentId("settingService")
+                ),
+              SB.listItem()
+                .id('settingEmails')
+                .title('Настройки ПИСЕМ')
+                .icon(MdEmail)
+                .child(
+                  SB.editor()
+                    .id('config')
+                    .title('Настройки ПИСЕМ')
+                    .schemaType("settingEmails")
+                    .documentId("settingEmails")
+                ),
+              SB.listItem()
+                .id('settingCart')
+                .title('Настройки КОРЗИНЫ')
+                .icon(MdShoppingCart)
+                .child(
+                  SB.editor()
+                    .id('config')
+                    .title('Настройки КОРЗИНЫ')
+                    .schemaType("settingCart")
+                    .documentId("settingCart")
                 ),
           ])
         ),
