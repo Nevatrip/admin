@@ -17,6 +17,7 @@ export default {
     {
       name: 'name',
       title: 'Ключ',
+      description: 'Это ключ для программиста, должен быть человекопонятным. Если категория места ВИП, то ключ должен быть — vip',
       type: 'slug',
       required: true,
       validation: slugValidation,

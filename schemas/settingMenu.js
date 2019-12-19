@@ -17,6 +17,7 @@ export default {
     {
       name: 'key',
       title: 'Ключ',
+      description: 'Является ключом для программиста - header(главное меню), footer(меню в подвале), nav(мобильное меню)',
       type: 'slug',
       required: true,
       validation: slugValidation,

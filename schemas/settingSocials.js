@@ -24,6 +24,7 @@ export default {
       name: 'icon',
       title: 'Изображение',
       type: 'image',
+      description: 'Должна быть квадратной 20px*20px белого или #e2b44e цвета',
       required: true,
       validation: Rule => Rule.required(),
     },

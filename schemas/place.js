@@ -17,6 +17,7 @@ export default {
     {
       name: 'key',
       title: 'Ключ',
+      description: 'Это ключ для программиста, должен быть человекопонятным. Если транспортное средство автобус, то ключ должен быть — bus',
       type: 'slug',
       required: true,
       validation: slugValidation,

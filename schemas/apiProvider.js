@@ -17,6 +17,7 @@ export default {
     {
       name: 'key',
       title: 'Ключ',
+      description: 'Является ключом для программиста, должен быть человекопонятным, если партнер Яндекс, то в ключе пишем — yandex',
       type: 'slug',
       required: true,
       validation: slugValidation,
