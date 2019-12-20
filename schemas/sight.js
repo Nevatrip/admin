@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaFortAwesome from 'react-icons/lib/fa/fort-awesome';
 
 export default {
   name: 'sight',
   title: 'Достопримечательность',
   type: 'document',
+  icon: FaFortAwesome,
   fields: [
     {
       name: 'title',
@@ -15,6 +17,7 @@ export default {
     {
       name: 'key',
       title: 'Ключ',
+      description: 'Это ключ для программиста, должен быть человекопонятным. Если достопримечательность планета, то ключ должен быть — planet',
       type: 'slug',
       validation: slugValidation,
       options: {

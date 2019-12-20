@@ -38,6 +38,9 @@ import settingMainBanner from './settingMainBanner'
 import localeBanner from './localeBanner'
 import settingTopFeatures from './settingTopFeatures'
 import settingBottomFeatures from './settingBottomFeatures'
+import settingBlog from './settingBlog'
+import settingEmails from './settingEmails'
+import settingCart from './settingCart'
 
 export default createSchema({
   name: 'default',
@@ -79,5 +82,8 @@ export default createSchema({
     localeBanner,
     settingTopFeatures,
     settingBottomFeatures,
+    settingBlog,
+    settingEmails,
+    settingCart
   ])
 })

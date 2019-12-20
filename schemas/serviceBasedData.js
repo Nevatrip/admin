@@ -1,7 +1,10 @@
+import FaCog from 'react-icons/lib/fa/cog';
+
 export default {
   name: 'serviceBasedData',
   title: 'Служебные настройки',
   type: 'object',
+  icon: FaCog,
   fields: [
     {
       name: 'title',
@@ -76,6 +79,11 @@ export default {
     {
       name: 'footerCategoryTitle',
       title: 'Заголовок для подборок в футере',
+      type: 'localeString',
+    },
+    {
+      name: 'currency',
+      title: 'Знак валюта',
       type: 'localeString',
     },
     {

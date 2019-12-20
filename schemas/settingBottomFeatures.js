@@ -1,7 +1,10 @@
+import FaTrophy from 'react-icons/lib/fa/trophy';
+
 export default {
   name: 'settingBottomFeatures',
   title: 'Преимущества в разделе "о нас" на главной',
   type: 'document',
+  icon: FaTrophy,
   fields: [
     {
       name: 'title',
@@ -22,6 +25,7 @@ export default {
     {
       name: 'icon',
       title: 'Иконка',
+      description: 'Должна быть квадратной ориентировочно 60px*60px - 70px*70px. #4897c2 цвета',
       type: 'image',
     },
   ],

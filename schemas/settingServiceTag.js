@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaTags from 'react-icons/lib/fa/tags';
 
 export default {
   name: 'settingServiceTag',
   title: 'Теги',
   type: 'document',
+  icon: FaTags,
   fields: [
     {
       name: 'title',
@@ -21,6 +23,7 @@ export default {
     {
       name: 'key',
       title: 'Ключ',
+      description: 'Это ключ для программиста, должен быть человекопонятным. Если тег день, то ключ должен быть — day',
       type: 'slug',
       required: true,
       validation: slugValidation,

@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaMapMarker from 'react-icons/lib/fa/map-marker';
 
 export default {
   name: 'point',
   title: 'Причал/Остановка',
   type: 'document',
+  icon: FaMapMarker,
   fields: [
     {
       name: 'title',
@@ -15,6 +17,7 @@ export default {
     {
       name: 'key',
       title: 'Ключ',
+      description: 'Это ключ для программиста, должен быть человекопонятным. Если транспортное остановка Площадь Ленина, то ключ должен быть — ploshad-lenina',
       type: 'slug',
       required: true,
       validation: slugValidation,

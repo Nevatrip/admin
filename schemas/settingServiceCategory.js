@@ -1,7 +1,10 @@
+import FaLifeBouy from 'react-icons/lib/fa/life-bouy';
+
 export default {
   name: 'settingServiceCategory',
   title: 'Категории экскурсий',
   type: 'document',
+  icon: FaLifeBouy,
   fields: [
     {
       name: 'title',

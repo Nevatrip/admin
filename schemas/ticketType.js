@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaTicket from 'react-icons/lib/fa/ticket';
 
 export default {
   name: 'ticketType',
   title: 'Тип билета',
   type: 'document',
+  icon: FaTicket,
   fields: [
     {
       name: 'title',
@@ -15,6 +17,7 @@ export default {
     {
       name: 'name',
       title: 'Ключ',
+      description: 'Это ключ для программиста, должен быть человекопонятным. Если тип билета взрослый, то ключ должен быть — adult',
       type: 'slug',
       required: true,
       validation: slugValidation,

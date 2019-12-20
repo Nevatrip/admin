@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaCoffee from 'react-icons/lib/fa/coffee';
 
 export default {
   name: 'settingPlaceFeatures',
   title: 'Что есть на борту',
   type: 'document',
+  icon: FaCoffee,
   fields: [
     {
       name: 'title',
@@ -15,6 +17,7 @@ export default {
     {
       name: 'key',
       title: 'Ключ',
+      description: 'Это ключ для программиста, должен быть человекопонятным. Если элементом является туалет, то ключ должен быть — wc',
       type: 'slug',
       required: true,
       validation: slugValidation,

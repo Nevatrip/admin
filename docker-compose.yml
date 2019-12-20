@@ -28,6 +28,20 @@ services:
     networks:
       - app-network
 
+  prahatrip:
+    build:
+      context: .
+      args:
+        PROJECT_NAME: ${PRAHATRIP_NAME}
+        PROJECT_ID: ${PRAHATRIP_ID}
+        PROJECT_DATASET: ${PRAHATRIP_DATASET}
+    environment:
+      PROJECT_NAME: ${PRAHATRIP_NAME}
+    tty: true
+    restart: unless-stopped
+    networks:
+      - app-network
+
   nginx:
     build: ./.config
     image: umputun/nginx-le:latest
@@ -43,6 +57,7 @@ services:
       - ./.config/etc/ssl:/etc/nginx/ssl
       - ./.config/etc/admin-moskvatrip-ru.conf:/etc/nginx/service-admin-moskvatrip-ru.conf
       - ./.config/etc/admin-nevatrip-ru.conf:/etc/nginx/service-admin-nevatrip-ru.conf
+      - ./.config/etc/admin-prahatrip-cz.conf:/etc/nginx/service-admin-prahatrip-cz.conf
       - ./static:/srv/docroot
     ports:
       - 80:80
@@ -51,10 +66,7 @@ services:
       - TZ=Europe/Moscow
       - LETSENCRYPT=true
       - LE_EMAIL=tech-support@nevatrip.ru
-      - LE_FQDN=admin.moskvatrip.ru,admin.nevatrip.ru
-    depends_on:
-      - nevatrip
-      - moskvatrip
+      - LE_FQDN=admin.moskvatrip.ru,admin.nevatrip.ru,admin.prahatrip.cz
     networks:
       - app-network
 

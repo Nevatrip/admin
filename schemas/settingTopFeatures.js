@@ -1,7 +1,10 @@
+import FaListOl from 'react-icons/lib/fa/list-ol';
+
 export default {
   name: 'settingTopFeatures',
   title: 'Преимущества после баннера на главной',
   type: 'document',
+  icon: FaListOl,
   fields: [
     {
       name: 'title',
@@ -22,6 +25,7 @@ export default {
     {
       name: 'icon',
       title: 'Иконка',
+      description: 'Должна быть квадратной ориентировочно 60px*60px - 70px*70px. #4897c2 цвета',
       type: 'image',
     },
   ],

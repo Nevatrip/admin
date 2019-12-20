@@ -1,7 +1,10 @@
+import FaListAlt from 'react-icons/lib/fa/list-alt';
+
 export default {
   name: 'settingServicesCollections',
   title: 'Подборки экскурсий',
   type: 'document',
+  icon: FaListAlt,
   fields: [
     {
       name: 'title',

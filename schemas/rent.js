@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaEmpire from 'react-icons/lib/fa/empire';
 
 export default {
   name: 'rent',
   title: 'Аренда',
   type: 'document',
+  icon: FaEmpire,
   fields: [
     {
       name: 'title',
@@ -15,6 +17,7 @@ export default {
     {
       name: 'key',
       title: 'Ключ',
+      description: 'Это ключ для программиста, должен быть человекопонятным. Используется в урле. Если транспортное аренда автобуса, то ключ должен быть — bus',
       type: 'slug',
       required: true,
       validation: slugValidation,

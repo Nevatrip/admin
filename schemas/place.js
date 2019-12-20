@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaTruck from 'react-icons/lib/fa/truck';
 
 export default {
   name: 'place',
   title: 'Транспортное средство/площадка',
   type: 'document',
+  icon: FaTruck,
   fields: [
     {
       name: 'title',
@@ -15,6 +17,7 @@ export default {
     {
       name: 'key',
       title: 'Ключ',
+      description: 'Это ключ для программиста, должен быть человекопонятным. Если транспортное средство автобус, то ключ должен быть — bus',
       type: 'slug',
       required: true,
       validation: slugValidation,

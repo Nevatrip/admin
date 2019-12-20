@@ -1,9 +1,11 @@
 import slugValidation from "../components/slugValidation";
+import FaSuitcase from 'react-icons/lib/fa/suitcase';
 
 export default {
   name: 'apiProvider',
   title: 'Партнёры',
   type: 'document',
+  icon: FaSuitcase,
   fields: [
     {
       name: 'title',
@@ -15,6 +17,7 @@ export default {
     {
       name: 'key',
       title: 'Ключ',
+      description: 'Является ключом для программиста, должен быть человекопонятным, если партнер Яндекс, то в ключе пишем — yandex',
       type: 'slug',
       required: true,
       validation: slugValidation,
