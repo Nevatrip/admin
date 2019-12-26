@@ -19,11 +19,11 @@ export default () =>
       SB.documentTypeListItem('blog'),
       SB.listItem()
         .id('settings')
-        .title('Настройки')
+        .title('Settings')
         .icon(FaCogs)
         .child(
           SB.list()
-            .title('Настройки')
+            .title('Settings')
             .items([
               SB.documentTypeListItem('place'),
               SB.documentTypeListItem('point'),
