@@ -37,6 +37,63 @@ const getNoun = (number, one, two, five) => {
 
 const createPatchEvent = value => PatchEvent.from(set(value));
 
+const createOrEditEvent = ({ success, data: { models: [event] } }) => {
+  if (event.point) {
+    event.point = {
+      _ref: event.point,
+      _type: 'reference',
+    };
+  }
+  
+  if (event.tickets) {
+    event.tickets.forEach(ticket => {
+      delete ticket.text;
+      
+      ticket.category = {
+        _ref: ticket.category._id,
+        _type: 'reference',
+      }
+    });
+  }
+
+  if (event.recurrenceRule) {
+    const options = RRule.parseString(event.recurrenceRule)
+    options.dtstart = new Date(event.start);
+    const rrule = new RRule(options);
+
+    const excludeDates = event.recurrenceException ? event.recurrenceException
+      .split(',')
+      .map(date => dateutil.untilStringToDate(date))
+      .reduce((acc, date) => {
+        acc[date.toISOString()] = date;
+
+        return acc;
+      }, {}) : [];
+
+    event.actions = rrule.all()
+      .filter( date => !excludeDates.hasOwnProperty( date.toISOString() ) )
+      .map((date) => {
+      return {
+        _key: nanoid(),
+        start: date.toISOString(),
+      }
+    });
+  } else {
+    event.actions = [{
+      _key: nanoid(),
+      start: event.start,
+    }]
+  }
+  
+  Object.keys(event).forEach(key => {
+    if (!event[key]) {
+      delete event[key]
+    }
+  });
+
+  success(event);
+}
+
 const Schedule = ({ onChange, value = [] }) => {
   const ref = useRef();
   const [events, setEvents] = useState(value);
@@ -75,83 +132,8 @@ const Schedule = ({ onChange, value = [] }) => {
           read: response => {
             response.success(events);
           },
-          update: ( { success, data: { models: [ event ] } } ) => {
-            if ( event.recurrenceRule ) {
-              const options = RRule.parseString(event.recurrenceRule)
-              options.dtstart = new Date(event.start);
-              const rrule = new RRule(options);
-
-              const excludeDates = event.recurrenceException ? event.recurrenceException
-                .split(',')
-                .map(date => dateutil.untilStringToDate(date))
-                .reduce((acc, date) => {
-                  acc[date.toISOString()] = date;
-
-                  return acc;
-                }, {}) : [];
-
-              event.actions = rrule.all()
-                .filter( date => !excludeDates.hasOwnProperty( date.toISOString() ) )
-                .map((date) => {
-                return {
-                  _key: nanoid(),
-                  start: date.toISOString(),
-                }
-              });
-            } else {
-              event.actions = [{
-                _key: nanoid(),
-                start: event.start,
-              }]
-            }
-
-            success(event);
-          },
-          create: ( { success, data: { models: [ event ] } } ) => {
-            if (event.point) {
-              event.point = {
-                _ref: event.point,
-                _type: 'reference',
-              };
-            }
-            
-            if (event.tickets) {
-              event.tickets.forEach(ticket => {
-                delete ticket.text;
-                
-                ticket.category = {
-                  _ref: ticket.category._id,
-                  _type: 'reference',
-                }
-              });
-            }
-            
-            if ( event.recurrenceRule ) {
-              const options = RRule.parseString(event.recurrenceRule)
-              options.dtstart = new Date(event.start);
-              const rrule = new RRule(options);
-
-              event.actions = rrule.all().map((date) => {
-                return {
-                  _key: nanoid(),
-                  start: date.toISOString(),
-                }
-              });
-            } else {
-              event.actions = [{
-                _key: nanoid(),
-                start: event.start,
-              }]
-            }
-            
-            Object.keys(event).forEach(key => {
-              if (!event[key]) {
-                delete event[key]
-              }
-            });
-
-            success( event );
-          },
+          update: createOrEditEvent,
+          create: createOrEditEvent,
           destroy: ( { success, data: { models: [ event ] } } ) => {
             success( event );
           },
@@ -277,17 +259,17 @@ const Schedule = ({ onChange, value = [] }) => {
   
   return (
     <>
-    <details>
-    <summary>В календаре {events.length || 'нет'} {getNoun(events.length, 'событие', 'события', 'событий')}</summary>
-    <pre><code>{JSON.stringify(events, null, 2 )}</code></pre>
-    </details>
-    <button
-    type="button"
-    onClick={ () => { setEvents( [] ) } }
-    >
-    Очистить
-    </button>
-    <div className="schedule" ref={ref} />
+      <details>
+        <summary>В календаре {events.length || 'нет'} {getNoun(events.length, 'событие', 'события', 'событий')}</summary>
+        <pre><code>{JSON.stringify(events, null, 2 )}</code></pre>
+      </details>
+      <button
+        type="button"
+        onClick={ () => { setEvents( [] ) } }
+      >
+        Очистить
+      </button>
+      <div className="schedule" ref={ref} />
     </>
     );
   };
