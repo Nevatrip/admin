@@ -23,6 +23,7 @@ export default () =>
         .icon(FaCogs)
         .child(
           SB.list()
+            .id('setting')
             .title('Настройки')
             .items([
               SB.documentTypeListItem('place'),
