@@ -113,8 +113,6 @@ const Schedule = ({ onChange, value = [] }) => {
                 _ref: event.point,
                 _type: 'reference',
               };
-            } else {
-              delete event.point
             }
             
             if (event.tickets) {
@@ -126,8 +124,6 @@ const Schedule = ({ onChange, value = [] }) => {
                   _type: 'reference',
                 }
               });
-            } else {
-              delete event.tickets
             }
             
             if ( event.recurrenceRule ) {
@@ -147,6 +143,12 @@ const Schedule = ({ onChange, value = [] }) => {
                 start: event.start,
               }]
             }
+            
+            Object.keys(event).forEach(key => {
+              if (!event[key]) {
+                delete event[key]
+              }
+            });
 
             success( event );
           },
@@ -166,9 +168,9 @@ const Schedule = ({ onChange, value = [] }) => {
               startTimezone       : { from: 'startTimezone'       , type: 'string'  ,                          },
               endTimezone         : { from: 'endTimezone'         , type: 'string'  ,                          },
               description         : { from: 'description'         , type: 'string'  ,                          },
-              recurrenceId        : { from: 'recurrenceID'        , type: 'string'  ,                          },
-              recurrenceRule      : { from: 'recurrenceRule'      , type: 'string'  ,                          },
-              recurrenceException : { from: 'recurrenceException' , type: 'string'  ,                          },
+              recurrenceId        : { from: 'recurrenceID'        , type: 'string'  , defaultValue: ''         },
+              recurrenceRule      : { from: 'recurrenceRule'      , type: 'string'  , defaultValue: ''         },
+              recurrenceException : { from: 'recurrenceException' , type: 'string'  , defaultValue: ''         },
               isAllDay            : { from: 'isAllDay'            , type: 'boolean' , defaultValue: false      },
               point               : { from: 'point'               , nullable: false                            },
               tickets             : { from: 'tickets'             , nullable: false                            },
