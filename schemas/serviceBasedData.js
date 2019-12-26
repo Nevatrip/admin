@@ -33,6 +33,12 @@ export default {
       description: 'Отображается в шапке сайта',
       type: 'localeString',
     },
+    {
+      name: 'Country',
+      title: 'Страна каждого языка для локализации',
+      description: 'В формате Alpha-2 iso 3166-1 https://ru.wikipedia.org/wiki/ISO_3166-1 заглавными буквами, например: RU или US или GB или CZ или DE или CN',
+      type: 'localeString',
+    },
     // {
     //   name: 'languages',
     //   title: 'Языки',

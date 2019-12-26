@@ -19,8 +19,6 @@ export default {
       title: 'Подзаголовок',
       description: 'Используется в меню сайта',
       type: 'localeString',
-      required: true,
-      validation: Rule => Rule.required(),
     },
     {
       name: 'titleArticle',
@@ -39,14 +37,12 @@ export default {
       title: 'Расширенный заголовок',
       type: 'localeString',
       description: 'Развернутый заголовок статьи для мета тегов',
-      required: true,
     },
     {
       name: 'descriptionMeta',
       title: 'Описание для мета тегов',
       type: 'localeString',
       description: 'Краткое описание статьи для мета тегов',
-      required: true,
     },
     {
       name: 'titleImage',
