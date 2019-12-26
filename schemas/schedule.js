@@ -7,5 +7,5 @@ export default {
   of: [
     { type: 'event' }
   ],
-  // inputComponent: Schedule
+  inputComponent: Schedule
 }

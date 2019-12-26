@@ -12,6 +12,7 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
+    "@progress/kendo-ui": "^2019.3.1113",
     "@sanity/base": "^0.147.6",
     "@sanity/components": "^0.147.6",
     "@sanity/core": "^0.147.6",
@@ -19,6 +20,8 @@
     "@sanity/default-login": "^0.147.0",
     "@sanity/desk-tool": "^0.147.7",
     "@sanity/google-maps-input": "^0.147.6",
+    "jquery": "^3.4.1",
+    "nanoid": "^2.1.8",
     "patch-package": "^6.1.2",
     "prop-types": "^15.6",
     "react": "^16.2",
