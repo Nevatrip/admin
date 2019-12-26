@@ -38,11 +38,20 @@ const getNoun = (number, one, two, five) => {
 const createPatchEvent = value => PatchEvent.from(set(value));
 
 const createOrEditEvent = ({ success, data: { models: [event] } }) => {
-  if (event.point) {
-    event.point = {
-      _ref: event.point,
-      _type: 'reference',
-    };
+  switch (typeof event.point) {
+    case 'string':
+      event.point = {
+        _ref: event.point,
+        _type: 'reference',
+      };
+      break;
+    case 'object':
+      event.point = {
+        _ref: event.point._ref,
+        _type: 'reference',
+      };
+      break;
+    default: delete event.point;
   }
   
   if (event.tickets) {
@@ -165,12 +174,7 @@ const Schedule = ({ onChange, value = [] }) => {
           field: "point",
           valuePrimitive: false,
           dataSource: {
-            transport: {
-              read:  {
-                url: "https://39dycnz5.api.sanity.io/v1/data/query/develop?query=*[_type==%22point%22]{%22_ref%22:_id,%22text%22:title.ru}",
-                dataType: "json"
-              }
-            },
+            transport: { read: { url: "https://39dycnz5.api.sanity.io/v1/data/query/develop?query=*[_type==%22point%22]{%22_ref%22:_id,%22text%22:title.ru}" } },
             schema: {
               data: function (response) {
                 return response.result;
@@ -197,13 +201,13 @@ const Schedule = ({ onChange, value = [] }) => {
                     { directions = [] }
                   ]
                 } = response;
-
+                
                 let tickets = [];
-                directions.forEach(direction => {
-                  direction.tickets.forEach(ticket => {
+                directions.forEach(({title, tickets: _tickets = []}) => {
+                  _tickets.forEach(ticket => {
                     tickets.push({
                       ...ticket,
-                      text: `${ticket.category.title} ${ticket.name} за ${ticket.price} ₽ (${direction.title})`
+                      text: `${ticket.category.title} ${ticket.name} за ${ticket.price} ₽ (${title})`
                     })
                   });
                 });
