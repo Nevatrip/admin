@@ -2,7 +2,7 @@ import FaFileO from 'react-icons/lib/fa/file-o';
 
 export default {
   name: 'page',
-  title: 'Страницы',
+  title: 'Страница',
   type: 'document',
   icon: FaFileO,
   fields: [
@@ -10,20 +10,47 @@ export default {
       name: 'title',
       title: 'Заголовок',
       type: 'localeTitleSlug',
-      required: true,
-      validation: Rule => Rule.required(),
+      description: 'Для экскурсий со старого сайта Ключ должен совпадать с полем "Псевдоним"',
     },
     {
       name: 'titleLong',
       title: 'Расширенный заголовок',
       type: 'localeString',
-      required: true,
+      description: 'Развернутый заголовок статьи для мета тегов',
+    },
+    {
+      name: 'descriptionMeta',
+      title: 'Описание для мета тегов',
+      type: 'localeString',
+      description: 'Краткое описание статьи для мета тегов',
+    },
+    {
+      name: 'titleImage',
+      title: 'Главное изображение',
+      type: 'image',
+      description: 'Настройка: "Edit", Центр круга: центр для превью, Черная область: область для показа на детальной',
+      options: { hotspot: true },
+    },
+    {
+      name: 'content',
+      title: 'Содержимое',
+      description: 'Основной текст',
+      type: 'localeMarkdown'
     },
   ],
   preview: {
     select: {
-      title: 'title.ru.name',
-      media: 'logo'
+      title: 'title',
+      titleImage: 'titleImage',
+      previewImage: 'previewImage'
+    },
+    prepare(selection) {
+      const { title, titleImage, previewImage } = selection;
+      return {
+        media: titleImage || previewImage,
+        title: (title.ru || {}).name || (title.en || {}).name  || (title.de || {}).name  || (title.cz || {}).name || (title.zh || {}).name,
+        subtitle: `${((title.ru || {}).key || {}).current ? 'ru ' : ''}${((title.en || {}).key||{}).current ? 'en ' : ''}${((title.de || {}).key||{}).current ? 'de ' : ''}${((title.cz || {}).key||{}).current ? 'cz ' : ''}${((title.zh || {}).key||{}).current ? 'zh ' : ''}`
+      }
     }
   }
 }
