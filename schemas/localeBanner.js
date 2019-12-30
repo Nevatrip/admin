@@ -29,14 +29,18 @@ export default {
           title: 'Экскурсия / товар',
           type: 'reference',
           to: { type: 'tour' },
-          required: true,
-          validation: Rule => Rule.required(),
         },
         {
           name: 'titleImage',
           title: 'Баннер-изображение',
           type: 'image',
           options: { hotspot: true },
+        },
+        {
+          name: 'title',
+          title: 'Заголовок баннера-изображения',
+          type: 'string',
+          description: 'Будет прописан в ALT и TITLE изображения',
         },
         {
           name: 'link',

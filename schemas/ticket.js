@@ -18,7 +18,6 @@ export default {
   name: 'ticket',
   title: 'Билет',
   type: 'object',
-  type: 'object',
   fields: [
     {
       title: 'Категория',
