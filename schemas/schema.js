@@ -41,6 +41,8 @@ import settingBottomFeatures from './settingBottomFeatures'
 import settingBlog from './settingBlog'
 import settingEmails from './settingEmails'
 import settingCart from './settingCart'
+import event from "./event";
+import action from "./action";
 
 export default createSchema({
   name: 'default',
@@ -84,6 +86,8 @@ export default createSchema({
     settingBottomFeatures,
     settingBlog,
     settingEmails,
-    settingCart
+    settingCart,
+    event,
+    action,
   ])
 })
