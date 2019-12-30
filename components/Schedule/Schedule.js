@@ -151,25 +151,35 @@ const Schedule = ({ onChange, value = [] }) => {
           model: {
             id: '_key',
             fields: {
-              _key                : { from: '_key'                , type: 'string'  ,                          },
-              _type               : { from: '_type'               , type: 'string'  , defaultValue: 'event'    },
-              title               : { from: 'title'               , type: 'string'  , defaultValue: 'No title' },
-              start               : { from: 'start'               , type: 'date'    ,                          },
-              end                 : { from: 'end'                 , type: 'date'    ,                          },
-              startTimezone       : { from: 'startTimezone'       , type: 'string'  ,                          },
-              endTimezone         : { from: 'endTimezone'         , type: 'string'  ,                          },
-              description         : { from: 'description'         , type: 'string'  ,                          },
-              recurrenceId        : { from: 'recurrenceID'        , type: 'string'  , defaultValue: ''         },
-              recurrenceRule      : { from: 'recurrenceRule'      , type: 'string'  , defaultValue: ''         },
-              recurrenceException : { from: 'recurrenceException' , type: 'string'  , defaultValue: ''         },
-              isAllDay            : { from: 'isAllDay'            , type: 'boolean' , defaultValue: false      },
-              point               : { from: 'point'               , nullable: false                            },
-              tickets             : { from: 'tickets'             , nullable: false                            },
+              _key                : { from: '_key'                , type: 'string'  ,                                            },
+              _type               : { from: '_type'               , type: 'string'  , defaultValue: 'event'                      },
+              title               : { from: 'title'               , type: 'string'  , defaultValue: 'No title'                   },
+              start               : { from: 'start'               , type: 'date'    ,                                            },
+              end                 : { from: 'end'                 , type: 'date'    ,                                            },
+              startTimezone       : { from: 'startTimezone'       , type: 'string'  ,                                            },
+              endTimezone         : { from: 'endTimezone'         , type: 'string'  ,                                            },
+              description         : { from: 'description'         , type: 'string'  ,                                            },
+              recurrenceId        : { from: 'recurrenceID'        , type: 'string'  , defaultValue: ''                           },
+              recurrenceRule      : { from: 'recurrenceRule'      , type: 'string'  , defaultValue: ''                           },
+              recurrenceException : { from: 'recurrenceException' , type: 'string'  , defaultValue: ''                           },
+              isAllDay            : { from: 'isAllDay'            , type: 'boolean' , defaultValue: false                        },
+              openTime            : { from: 'openTime'            , type: 'boolean' , defaultValue: false      , nullable: false },
+              point               : { from: 'point'               , type: 'object'  ,                            nullable: false },
+              tickets             : { from: 'tickets'             , type: 'array'   ,                            nullable: false },
             }
           }
         }
       },
       resources: [
+        {
+          field: "openTime",
+          dataSource: [
+            { text: "Да", value: true, color: "#00fa9a" },
+            { text: "Нет", value: false, color: "#1e90ff" },
+          ],
+          title: "Открытое время"
+        },
+        /*
         {
           field: "point",
           valuePrimitive: false,
@@ -220,10 +230,35 @@ const Schedule = ({ onChange, value = [] }) => {
           multiple: true,
           title: "Билеты"
         }
+        */
       ],
       edit: (e) => {
+        const kendoDropDownList = $('input[title="Recurrence editor"]').data('kendoDropDownList');
+        kendoDropDownList.bind('change', (event) => {
+          $('.k-recur-end-never').prop('disabled', true).parent().hide();
+          $('.k-recur-end-count').prop('checked', true).parent().click();
+          switch (event.sender.value()) {
+            case 'daily':
+              e.event.recurrenceRule = `FREQ=DAILY;COUNT=1`;
+              break;
+            case 'weekly':
+              e.event.recurrenceRule = `FREQ=WEEKLY;COUNT=1;BYDAY=MO`;
+              break;
+            case 'monthly':
+              e.event.recurrenceRule = `FREQ=MONTHLY;COUNT=1;BYMONTHDAY=${ e.event.start.getDay() + 1 }`;
+              break;
+            case 'yearly':
+              e.event.recurrenceRule = `FREQ=YEARLY;COUNT=1;BYMONTH=${ e.event.start.getMonth() + 1 };BYMONTHDAY=${ e.event.start.getDay() + 1 }`;
+              break;
+          }
+        });
+        
         if (e.event.isNew) {
           e.event.set("isAllDay", false);
+          e.event.set('_key', nanoid());
+          e.event.set('startTimezone', 'Europe/Moscow');
+          e.event.set('endTimezone', 'Europe/Moscow');
+
           const start = e.container.find("[name=start][data-role=datetimepicker]");
           const end = e.container.find("[name=end][data-role=datetimepicker]");
           const startTime = new Date(e.event.start);
@@ -231,10 +266,11 @@ const Schedule = ({ onChange, value = [] }) => {
           endTime.setHours(startTime.getHours() + 1);
           $(start).data("kendoDateTimePicker").value(startTime);
           $(end).data("kendoDateTimePicker").value(endTime);
+          e.event.end = endTime;
           
           $(start).on('change', function () {
-            const newStart = $(start).data("kendoDateTimePicker").value()
-            const newEnd = $(end).data("kendoDateTimePicker").value()
+            const newStart = $(start).data("kendoDateTimePicker").value();
+            const newEnd = $(end).data("kendoDateTimePicker").value();
             
             if (newStart <= newEnd) {
               newEnd.setHours(newStart.getHours() + 1);
@@ -242,11 +278,6 @@ const Schedule = ({ onChange, value = [] }) => {
               e.event.end = newEnd;
             }
           });
-          
-          e.event.end = endTime;
-          e.event.set('startTimezone', 'Europe/Moscow');
-          e.event.set('endTimezone', 'Europe/Moscow');
-          e.event.set('_key', nanoid())
         }
       },
       dataBound: (e) => {
