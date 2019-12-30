@@ -14,9 +14,10 @@ export default () =>
     .title('Панель управления')
     .items([
       SB.documentTypeListItem('tour'),
-      SB.documentTypeListItem('rent'),
-      SB.documentTypeListItem('promo'),
       SB.documentTypeListItem('blog'),
+      //SB.documentTypeListItem('rent'),
+      //SB.documentTypeListItem('promo'),
+      SB.documentTypeListItem('page'),
       SB.listItem()
         .id('settings')
         .title('Settings')
@@ -33,7 +34,6 @@ export default () =>
               SB.documentTypeListItem('apiProvider'),
               SB.documentTypeListItem('supportedLanguages'),
               SB.documentTypeListItem('settingTicketPrint'),
-              SB.documentTypeListItem('page'),
               SB.documentTypeListItem('settingServiceCategory'),
               SB.documentTypeListItem('settingServiceTag'),
               SB.documentTypeListItem('settingMenu'),
