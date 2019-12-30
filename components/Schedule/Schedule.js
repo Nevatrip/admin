@@ -233,31 +233,18 @@ const Schedule = ({ onChange, value = [] }) => {
         */
       ],
       edit: (e) => {
-        const kendoDropDownList = $('input[title="Recurrence editor"]').data('kendoDropDownList');
-        kendoDropDownList.bind('change', (event) => {
-          $('.k-recur-end-never').prop('disabled', true).parent().hide();
-          $('.k-recur-end-count').prop('checked', true).parent().click();
-          switch (event.sender.value()) {
-            case 'daily':
-              e.event.recurrenceRule = `FREQ=DAILY;COUNT=1`;
-              break;
-            case 'weekly':
-              e.event.recurrenceRule = `FREQ=WEEKLY;COUNT=1;BYDAY=MO`;
-              break;
-            case 'monthly':
-              e.event.recurrenceRule = `FREQ=MONTHLY;COUNT=1;BYMONTHDAY=${ e.event.start.getDay() + 1 }`;
-              break;
-            case 'yearly':
-              e.event.recurrenceRule = `FREQ=YEARLY;COUNT=1;BYMONTH=${ e.event.start.getMonth() + 1 };BYMONTHDAY=${ e.event.start.getDay() + 1 }`;
-              break;
-          }
-        });
         
         if (e.event.isNew) {
           e.event.set("isAllDay", false);
           e.event.set('_key', nanoid());
           e.event.set('startTimezone', 'Europe/Moscow');
           e.event.set('endTimezone', 'Europe/Moscow');
+          
+          const kendoDropDownList = $('input[title="Recurrence editor"]').data('kendoDropDownList');
+          kendoDropDownList.bind('change', (event) => {
+            $('.k-recur-end-never').prop('disabled', true).parent().hide();
+            $('.k-recur-end-count').prop('checked', true).parent().click();
+          });
 
           const start = e.container.find("[name=start][data-role=datetimepicker]");
           const end = e.container.find("[name=end][data-role=datetimepicker]");
@@ -276,6 +263,27 @@ const Schedule = ({ onChange, value = [] }) => {
               newEnd.setHours(newStart.getHours() + 1);
               $(end).data("kendoDateTimePicker").value(newEnd);
               e.event.end = newEnd;
+            }
+          });
+
+          // Rrule
+          const kendoDropDownList = $('input[title="Recurrence editor"]').data('kendoDropDownList');
+          kendoDropDownList.bind('change', (event) => {
+            $('.k-recur-end-never').prop('disabled', true).parent().hide();
+            $('.k-recur-end-count').prop('checked', true).parent().click();
+            switch (event.sender.value()) {
+              case 'daily':
+                e.event.recurrenceRule = `FREQ=DAILY;COUNT=1`;
+                break;
+              case 'weekly':
+                e.event.recurrenceRule = `FREQ=WEEKLY;COUNT=1;BYDAY=MO`;
+                break;
+              case 'monthly':
+                e.event.recurrenceRule = `FREQ=MONTHLY;COUNT=1;BYMONTHDAY=${ e.event.start.getDay() + 1 }`;
+                break;
+              case 'yearly':
+                e.event.recurrenceRule = `FREQ=YEARLY;COUNT=1;BYMONTH=${ e.event.start.getMonth() + 1 };BYMONTHDAY=${ e.event.start.getDay() + 1 }`;
+                break;
             }
           });
         }
