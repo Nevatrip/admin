@@ -1,0 +1,27 @@
+name: Docker Image Publish
+
+on:
+  [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Branch name
+      run: echo running on branch ${GITHUB_REF##*/}
+    - name: Publish the Docker image to YC
+      env:
+        YC_OAUTH: AgAAAAASc26lAATuwb4k-nWW3EvTmHZOMpsAwNE
+        YC_REGISTRY_ID: crpfp7e90ctln8vulbiu
+      run: |
+        docker-compose build
+        docker tag cr.yandex/${YC_REGISTRY_ID}/admin-nevatrip cr.yandex/${YC_REGISTRY_ID}/admin-nevatrip:${GITHUB_REF##*/}
+        docker tag cr.yandex/${YC_REGISTRY_ID}/admin-moskvatrip cr.yandex/${YC_REGISTRY_ID}/admin-moskvatrip:${GITHUB_REF##*/}
+        docker tag cr.yandex/${YC_REGISTRY_ID}/admin-prahatrip cr.yandex/${YC_REGISTRY_ID}/admin-prahatrip:${GITHUB_REF##*/}
+        docker tag cr.yandex/${YC_REGISTRY_ID}/admin-nginx cr.yandex/${YC_REGISTRY_ID}/admin-nginx:${GITHUB_REF##*/}
+        docker login --username oauth --password ${YC_OAUTH} cr.yandex
+        docker-compose push
