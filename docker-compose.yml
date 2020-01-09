@@ -44,7 +44,6 @@ services:
 
   nginx:
     build: ./.config
-    image: umputun/nginx-le:latest
     hostname: nginx
     restart: unless-stopped
     container_name: nginx
