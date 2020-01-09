@@ -7,6 +7,7 @@ services:
         PROJECT_NAME: ${NEVATRIP_NAME}
         PROJECT_ID: ${NEVATRIP_ID}
         PROJECT_DATASET: ${NEVATRIP_DATASET}
+    image: cr.yandex/${YC_REGISTRY_ID}/admin-nevatrip
     environment:
       PROJECT_NAME: ${NEVATRIP_NAME}
     tty: true
@@ -21,6 +22,7 @@ services:
         PROJECT_NAME: ${MOSKVATRIP_NAME}
         PROJECT_ID: ${MOSKVATRIP_ID}
         PROJECT_DATASET: ${MOSKVATRIP_DATASET}
+    image: cr.yandex/${YC_REGISTRY_ID}/admin-moskvatrip
     environment:
       PROJECT_NAME: ${MOSKVATRIP_NAME}
     tty: true
@@ -35,6 +37,7 @@ services:
         PROJECT_NAME: ${PRAHATRIP_NAME}
         PROJECT_ID: ${PRAHATRIP_ID}
         PROJECT_DATASET: ${PRAHATRIP_DATASET}
+    image: cr.yandex/${YC_REGISTRY_ID}/admin-prahatrip
     environment:
       PROJECT_NAME: ${PRAHATRIP_NAME}
     tty: true
@@ -44,6 +47,7 @@ services:
 
   nginx:
     build: ./.config
+    image: cr.yandex/${YC_REGISTRY_ID}/admin-nginx
     hostname: nginx
     restart: unless-stopped
     container_name: nginx
