@@ -1,4 +1,5 @@
-import htmlPreview from 'sanity-plugin-markdown/html-preview'
+import MarkdownInput from 'sanity-plugin-markdown' //!!!important don't remove otherwise you will see crash after save
+import htmlPreview from 'sanity-plugin-markdown/html-preview' //!!!important don't remove otherwise you will see crash after save
 
 const supportedLanguages = [
   {id: 'ru', title: 'Русский', isDefault: true},
@@ -24,9 +25,6 @@ export default {
       title: lang.title,
       name: lang.id,
       type: 'markdown',
-      options: {
-        renderPreview: htmlPreview
-      },
       fieldset: lang.isDefault ? null : 'translations'
     }
   ))
