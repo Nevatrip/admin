@@ -28,6 +28,6 @@
     "react-dom": "^16.2",
     "rrule": "^2.6.0",
     "sanity-plugin-markdown": "^1.0.0",
-    "sanity-plugin-media": "^0.2.4"
+    "sanity-plugin-media": "^0.2.10"
   }
 }

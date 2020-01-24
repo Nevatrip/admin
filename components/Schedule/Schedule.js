@@ -267,7 +267,7 @@ const Schedule = ({ onChange, value = [] }) => {
           });
 
           // Rrule
-          const kendoDropDownList = $('input[title="Recurrence editor"]').data('kendoDropDownList');
+          kendoDropDownList = $('input[title="Recurrence editor"]').data('kendoDropDownList');
           kendoDropDownList.bind('change', (event) => {
             $('.k-recur-end-never').prop('disabled', true).parent().hide();
             $('.k-recur-end-count').prop('checked', true).parent().click();

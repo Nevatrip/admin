@@ -703,7 +703,6 @@
 "@progress/kendo-ui@^2019.3.1113":
   version "2019.3.1113"
   resolved "https://registry.yarnpkg.com/@progress/kendo-ui/-/kendo-ui-2019.3.1113.tgz#4f816b616267a671794cbc10a6fc44f739694579"
-  integrity sha512-Shvc6Wqy6rCOAXXF4hw6Czo8j+lHWbkGMuV8EQNEstKpFu0vUTOxtZC5zIZbopcKqOYo7W3hPXeQWs4Hh1vueg==
   dependencies:
     jquery "<=3"
 
@@ -4071,6 +4070,12 @@ hoist-non-react-statics@^2.1.1, hoist-non-react-statics@^2.3.1:
   version "2.5.5"
   resolved "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
 
+hoist-non-react-statics@^3.0.0:
+  version "3.3.2"
+  resolved "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
+  dependencies:
+    react-is "^16.7.0"
+
 hoist-non-react-statics@^3.3.0:
   version "3.3.1"
   resolved "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#101685d3aff3b23ea213163f6e8e12f4f111e19f"
@@ -4709,7 +4714,6 @@ isstream@0.1.2, isstream@~0.1.2:
 jquery@<=3, jquery@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
-  integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==
 
 js-base64@^2.1.9:
   version "2.5.1"
@@ -5372,7 +5376,6 @@ nano-pubsub@^1.0.2:
 nanoid@^2.1.8:
   version "2.1.8"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-2.1.8.tgz#2dbb0224231b246e3b4c819de7bfea6384dabf08"
-  integrity sha512-g1z+n5s26w0TGKh7gjn7HCqurNKMZWzH08elXzh/gM/csQHd/UqDV6uxMghQYg9IvqRPm1QpeMk50YMofHvEjQ==
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -7414,9 +7417,9 @@ sanity-plugin-markdown@^1.0.0:
     react-markdown "^4.0.2"
     textarea-editor "^2.1.1"
 
-sanity-plugin-media@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.npmjs.org/sanity-plugin-media/-/sanity-plugin-media-0.2.4.tgz#81bc37f2b6b3fc5baf5e43ad8b7eb20c6e378260"
+sanity-plugin-media@^0.2.10:
+  version "0.2.10"
+  resolved "https://registry.npmjs.org/sanity-plugin-media/-/sanity-plugin-media-0.2.10.tgz#34cfa778799fb374046cff46b94c0a0d1354f1cf"
   dependencies:
     "@sanity/components" "0.144.2"
     "@tanem/react-nprogress" "3.0.8"
@@ -7437,7 +7440,7 @@ sanity-plugin-media@^0.2.4:
     redux-devtools-extension "2.13.8"
     redux-observable "1.2.0"
     rxjs "6.5.3"
-    styled-components "5.0.0-rc.2"
+    styled-components "5.0.0"
     styled-system "5.1.2"
     typesafe-actions "5.1.0"
     use-deep-compare-effect "1.3.0"
@@ -8011,9 +8014,9 @@ style-loader@^0.20.1:
     loader-utils "^1.1.0"
     schema-utils "^0.4.5"
 
-styled-components@5.0.0-rc.2:
-  version "5.0.0-rc.2"
-  resolved "https://registry.npmjs.org/styled-components/-/styled-components-5.0.0-rc.2.tgz#6c44570ff202f47a1a688d6f1249bc079b10a958"
+styled-components@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/styled-components/-/styled-components-5.0.0.tgz#fc59932c9b574571fa3cd462c862af1956114ff2"
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
     "@babel/traverse" "^7.4.5"
@@ -8022,8 +8025,8 @@ styled-components@5.0.0-rc.2:
     "@emotion/unitless" "^0.7.4"
     babel-plugin-styled-components ">= 1"
     css-to-react-native "^3.0.0"
+    hoist-non-react-statics "^3.0.0"
     shallowequal "^1.1.0"
-    stylis-rule-sheet "^0.0.10"
     supports-color "^5.5.0"
 
 styled-system@5.1.2:
@@ -8051,10 +8054,6 @@ stylehacks@^4.0.0:
     browserslist "^4.0.0"
     postcss "^7.0.0"
     postcss-selector-parser "^3.0.0"
-
-stylis-rule-sheet@^0.0.10:
-  version "0.0.10"
-  resolved "https://registry.npmjs.org/stylis-rule-sheet/-/stylis-rule-sheet-0.0.10.tgz#44e64a2b076643f4b52e5ff71efc04d8c3c4a430"
 
 stylis@3.5.0:
   version "3.5.0"
