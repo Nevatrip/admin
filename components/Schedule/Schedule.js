@@ -53,11 +53,11 @@ const createOrEditEvent = ({ success, data: { models: [event] } }) => {
       break;
     default: delete event.point;
   }
-  
+
   if (event.tickets) {
     event.tickets.forEach(ticket => {
       delete ticket.text;
-      
+
       ticket.category = {
         _ref: ticket.category._id,
         _type: 'reference',
@@ -80,20 +80,20 @@ const createOrEditEvent = ({ success, data: { models: [event] } }) => {
       }, {}) : [];
 
     event.actions = rrule.all()
-      .filter( date => !excludeDates.hasOwnProperty( date.toISOString() ) )
+      .filter(date => !excludeDates.hasOwnProperty(date.toISOString()))
       .map((date) => {
-      return {
-        _key: nanoid(),
-        start: date.toISOString(),
-      }
-    });
+        return {
+          _key: nanoid(),
+          start: date.toISOString(),
+        }
+      });
   } else {
     event.actions = [{
       _key: nanoid(),
       start: event.start,
     }]
   }
-  
+
   Object.keys(event).forEach(key => {
     if (!event[key]) {
       delete event[key]
@@ -106,14 +106,14 @@ const createOrEditEvent = ({ success, data: { models: [event] } }) => {
 const Schedule = ({ onChange, value = [] }) => {
   const ref = useRef();
   const [events, setEvents] = useState(value);
-  
+
   useEffect(() => {
     onChange(createPatchEvent(JSON.parse(JSON.stringify(events))));
   }, [events])
-  
+
   useEffect(() => {
     const $elmt = $(ref.current);
-    
+
     const baseURI = window.location.pathname;
     const serviceID = baseURI.split(';')[1];
 
@@ -143,29 +143,29 @@ const Schedule = ({ onChange, value = [] }) => {
           },
           update: createOrEditEvent,
           create: createOrEditEvent,
-          destroy: ( { success, data: { models: [ event ] } } ) => {
-            success( event );
+          destroy: ({ success, data: { models: [event] } }) => {
+            success(event);
           },
         },
         schema: {
           model: {
             id: '_key',
             fields: {
-              _key                : { from: '_key'                , type: 'string'  ,                                            },
-              _type               : { from: '_type'               , type: 'string'  , defaultValue: 'event'                      },
-              title               : { from: 'title'               , type: 'string'  , defaultValue: 'No title'                   },
-              start               : { from: 'start'               , type: 'date'    ,                                            },
-              end                 : { from: 'end'                 , type: 'date'    ,                                            },
-              startTimezone       : { from: 'startTimezone'       , type: 'string'  ,                                            },
-              endTimezone         : { from: 'endTimezone'         , type: 'string'  ,                                            },
-              description         : { from: 'description'         , type: 'string'  ,                                            },
-              recurrenceId        : { from: 'recurrenceID'        , type: 'string'  , defaultValue: ''                           },
-              recurrenceRule      : { from: 'recurrenceRule'      , type: 'string'  , defaultValue: ''                           },
-              recurrenceException : { from: 'recurrenceException' , type: 'string'  , defaultValue: ''                           },
-              isAllDay            : { from: 'isAllDay'            , type: 'boolean' , defaultValue: false                        },
-              openTime            : { from: 'openTime'            , type: 'boolean' , defaultValue: false      , nullable: false },
-              point               : { from: 'point'               , type: 'object'  ,                            nullable: false },
-              tickets             : { from: 'tickets'             , type: 'array'   ,                            nullable: false },
+              _key: { from: '_key', type: 'string', },
+              _type: { from: '_type', type: 'string', defaultValue: 'event' },
+              title: { from: 'title', type: 'string', defaultValue: 'No title' },
+              start: { from: 'start', type: 'date', },
+              end: { from: 'end', type: 'date', },
+              startTimezone: { from: 'startTimezone', type: 'string', },
+              endTimezone: { from: 'endTimezone', type: 'string', },
+              description: { from: 'description', type: 'string', },
+              recurrenceId: { from: 'recurrenceID', type: 'string', defaultValue: '' },
+              recurrenceRule: { from: 'recurrenceRule', type: 'string', defaultValue: '' },
+              recurrenceException: { from: 'recurrenceException', type: 'string', defaultValue: '' },
+              isAllDay: { from: 'isAllDay', type: 'boolean', defaultValue: false },
+              openTime: { from: 'openTime', type: 'boolean', defaultValue: false, nullable: false },
+              point: { from: 'point', type: 'object', nullable: false },
+              tickets: { from: 'tickets', type: 'array', nullable: false },
             }
           }
         }
@@ -238,7 +238,7 @@ const Schedule = ({ onChange, value = [] }) => {
           $('.k-recur-end-never').prop('disabled', true).parent().hide();
           $('.k-recur-end-count').prop('checked', true).parent().click();
         });
-        
+
         if (e.event.isNew) {
           e.event.set("isAllDay", false);
           e.event.set('_key', nanoid());
@@ -254,11 +254,11 @@ const Schedule = ({ onChange, value = [] }) => {
           $(start).data("kendoDateTimePicker").value(startTime);
           $(end).data("kendoDateTimePicker").value(endTime);
           e.event.end = endTime;
-          
+
           $(start).on('change', function () {
             const newStart = $(start).data("kendoDateTimePicker").value();
             const newEnd = $(end).data("kendoDateTimePicker").value();
-            
+
             if (newStart <= newEnd) {
               newEnd.setHours(newStart.getHours() + 1);
               $(end).data("kendoDateTimePicker").value(newEnd);
@@ -267,6 +267,7 @@ const Schedule = ({ onChange, value = [] }) => {
           });
 
           // Rrule
+          kendoDropDownList = $('input[title="Recurrence editor"]').data('kendoDropDownList');
           kendoDropDownList.bind('change', (event) => {
             switch (event.sender.value()) {
               case 'daily':
@@ -276,10 +277,10 @@ const Schedule = ({ onChange, value = [] }) => {
                 e.event.recurrenceRule = `FREQ=WEEKLY;COUNT=1;BYDAY=MO`;
                 break;
               case 'monthly':
-                e.event.recurrenceRule = `FREQ=MONTHLY;COUNT=1;BYMONTHDAY=${ e.event.start.getDay() + 1 }`;
+                e.event.recurrenceRule = `FREQ=MONTHLY;COUNT=1;BYMONTHDAY=${e.event.start.getDay() + 1}`;
                 break;
               case 'yearly':
-                e.event.recurrenceRule = `FREQ=YEARLY;COUNT=1;BYMONTH=${ e.event.start.getMonth() + 1 };BYMONTHDAY=${ e.event.start.getDay() + 1 }`;
+                e.event.recurrenceRule = `FREQ=YEARLY;COUNT=1;BYMONTH=${e.event.start.getMonth() + 1};BYMONTHDAY=${e.event.start.getDay() + 1}`;
                 break;
             }
           });
@@ -290,28 +291,28 @@ const Schedule = ({ onChange, value = [] }) => {
         setEvents([...data]);
       }
     });
-    
+
     return () => {
       const $calendar = $elmt.data("kendoScheduler");
       $calendar.destroy();
     }
   }, []);
-  
+
   return (
     <>
       <details>
         <summary>В календаре {events.length || 'нет'} {getNoun(events.length, 'событие', 'события', 'событий')}</summary>
-        <pre><code>{JSON.stringify(events, null, 2 )}</code></pre>
+        <pre><code>{JSON.stringify(events, null, 2)}</code></pre>
       </details>
       <button
         type="button"
-        onClick={ () => { setEvents( [] ) } }
+        onClick={() => { setEvents([]) }}
       >
         Очистить
       </button>
       <div className="schedule" ref={ref} />
     </>
-    );
-  };
-  
-  export default Schedule;
+  );
+};
+
+export default Schedule;
