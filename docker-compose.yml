@@ -1,46 +1,48 @@
 version: '3.7'
+
+x-project: &function
+  image: app_base:1
+  command:
+    - /bin/sh
+    - -c
+    - |
+      cd /home/node/app && \
+      sed -i -e 's/$$NAME/'$$PROJECT_NAME'/g' \
+             -e 's/$$PROJECT/'$$PROJECT_ID'/g' \
+             -e 's/$$DATASET/'$$PROJECT_DATASET'/g' sanity.json && \
+      pm2-runtime ecosystem.config.js
+  tty: true
+  restart: unless-stopped
+  networks:
+    - app-network
+  
 services:
-  nevatrip:
+  base:
     build:
       context: .
-      args:
-        PROJECT_NAME: ${NEVATRIP_NAME}
-        PROJECT_ID: ${NEVATRIP_ID}
-        PROJECT_DATASET: ${NEVATRIP_DATASET}
+    image: app_base:1
+    tty: true
+
+  nevatrip:
+    <<: *function
     environment:
       PROJECT_NAME: ${NEVATRIP_NAME}
-    tty: true
-    restart: unless-stopped
-    networks:
-      - app-network
+      PROJECT_ID: ${NEVATRIP_ID}
+      PROJECT_DATASET: ${NEVATRIP_DATASET}
 
   moskvatrip:
-    build:
-      context: .
-      args:
-        PROJECT_NAME: ${MOSKVATRIP_NAME}
-        PROJECT_ID: ${MOSKVATRIP_ID}
-        PROJECT_DATASET: ${MOSKVATRIP_DATASET}
+    <<: *function
     environment:
       PROJECT_NAME: ${MOSKVATRIP_NAME}
-    tty: true
-    restart: unless-stopped
-    networks:
-      - app-network
+      PROJECT_ID: ${MOSKVATRIP_ID}
+      PROJECT_DATASET: ${MOSKVATRIP_DATASET}
 
   prahatrip:
-    build:
-      context: .
-      args:
-        PROJECT_NAME: ${PRAHATRIP_NAME}
-        PROJECT_ID: ${PRAHATRIP_ID}
-        PROJECT_DATASET: ${PRAHATRIP_DATASET}
+    <<: *function
     environment:
       PROJECT_NAME: ${PRAHATRIP_NAME}
-    tty: true
-    restart: unless-stopped
-    networks:
-      - app-network
+      PROJECT_ID: ${PRAHATRIP_ID}
+      PROJECT_DATASET: ${PRAHATRIP_DATASET}
 
   nginx:
     build: ./.config

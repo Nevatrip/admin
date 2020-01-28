@@ -23,13 +23,12 @@ USER node
 
 COPY --chown=node:node . .
 
-RUN sed -i -e 's/$NAME/'$PROJECT_NAME'/g' \
-           -e 's/$PROJECT/'$PROJECT_ID'/g' \
-           -e 's/$DATASET/'$PROJECT_DATASET'/g' sanity.json
+# RUN sed -i -e 's/$NAME/'$PROJECT_NAME'/g' \
+#            -e 's/$PROJECT/'$PROJECT_ID'/g' \
+#            -e 's/$DATASET/'$PROJECT_DATASET'/g' sanity.json
 
-RUN npm install -g @sanity/cli pm2
-RUN npm install
+RUN npm install -g @sanity/cli pm2 && npm install
 
 EXPOSE 3333
 
-CMD [ "pm2-runtime", "ecosystem.config.js" ]
+CMD [ "node" ]

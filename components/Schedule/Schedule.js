@@ -267,7 +267,6 @@ const Schedule = ({ onChange, value = [] }) => {
           });
 
           // Rrule
-          kendoDropDownList = $('input[title="Recurrence editor"]').data('kendoDropDownList');
           kendoDropDownList.bind('change', (event) => {
             switch (event.sender.value()) {
               case 'daily':
