@@ -93,6 +93,11 @@ export default {
       type: 'localeString',
     },
     {
+      name: 'priceCurrency',
+      title: 'Валюта (в 3-х буквенном формате ISO 4217 ) цены предложения. ( RUB, EUR, ... )',
+      type: 'string',
+    },
+    {
       name: 'copyright',
       title: '@ Копирайт',
       type: 'localeString',
