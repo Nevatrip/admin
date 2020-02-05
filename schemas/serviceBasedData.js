@@ -12,6 +12,12 @@ export default {
       type: 'localeString',
     },
     {
+      name: 'titleMeta',
+      title: 'Title для главной страницы для метатегов',
+      description: 'Желательно, чтобы название компании в нем тоже присутствовало',
+      type: 'localeString',
+    },
+    {
       name: 'shortDescription',
       title: 'Краткое описание организации',
       description: 'Для метатегов',
