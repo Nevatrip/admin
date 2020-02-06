@@ -132,8 +132,32 @@ export default {
       description: 'Нет подходящих экскурсий',
       type: 'localeString',
     },
-
-
+    {
+      type: 'object',
+      name: 'sitemap',
+      title: 'SITEMAP',
+      fieldsets: [
+        {
+          name: 'sitemapSettings',
+          title: 'Настройки страницы карты сайта',
+          options: {collapsed: true}
+        }
+      ],
+      fields: [
+        {
+          name: 'sitemapImage',
+          title: 'Фото на странице карты сайта',
+          type: 'image',
+          fieldset: 'sitemapSettings',
+        },
+        {
+          name: 'sitemapTitle',
+          title: 'Заголовок на странице карты сайта',
+          type: 'localeString',
+          fieldset: 'sitemapSettings',
+        }
+      ]
+    },
     {
       type: 'object',
       name: 'error',
