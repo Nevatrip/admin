@@ -77,8 +77,8 @@ export default {
       const { title, titleImage, previewImage } = selection;
       return {
         media: titleImage || previewImage,
-        title: (title.ru || {}).name || (title.en || {}).name  || (title.de || {}).name  || (title.cz || {}).name || (title.zh || {}).name,
-        subtitle: `${((title.ru || {}).key || {}).current ? 'ru ' : ''}${((title.en || {}).key||{}).current ? 'en ' : ''}${((title.de || {}).key||{}).current ? 'de ' : ''}${((title.cz || {}).key||{}).current ? 'cz ' : ''}${((title.zh || {}).key||{}).current ? 'zh ' : ''}`
+        title: (title.ru || {}).name || (title.en || {}).name  || (title.de || {}).name  || (title.cs || {}).name || (title.zh || {}).name,
+        subtitle: `${((title.ru || {}).key || {}).current ? 'ru ' : ''}${((title.en || {}).key||{}).current ? 'en ' : ''}${((title.de || {}).key||{}).current ? 'de ' : ''}${((title.cs || {}).key||{}).current ? 'cs ' : ''}${((title.zh || {}).key||{}).current ? 'zh ' : ''}`
       }
     }
   }
