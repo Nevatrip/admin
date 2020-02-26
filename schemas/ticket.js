@@ -48,7 +48,8 @@ export default {
     {
       title: 'Альтернативное имя',
       name: 'name',
-      type: 'string'
+      type: 'localeString',
+      description: 'Название будет использовано в билете, если оно заполнено'
     },
     {
       title: 'Стоимость',
@@ -141,9 +142,10 @@ export default {
       ticket: 'ticket',
     },
     prepare(selection) {
-      const { name, price, description, category, ticket } = selection
+      const { name, price, description, category, ticket } = selection;
+
       return {
-        title: `${ category }, ${ name ? name.toLowerCase() : ticket.length + ' ' + getNoun( ticket.length, 'билет', 'билета', 'билетов' ) } — ${ price } ₽`,
+        title: `${ category }, ${ name ? name[ru].toLowerCase() : ticket.length + ' ' + getNoun( ticket.length, 'билет', 'билета', 'билетов' ) } — ${ price } ₽`,
         subtitle: description
       }
     },

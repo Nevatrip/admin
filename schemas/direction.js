@@ -9,7 +9,8 @@ export default {
     {
       name: 'title',
       title: 'Название',
-      type: 'string'
+      type: 'localeString',
+      description: 'Название используется в билете, должно быть заполнено на всех продаваемых языках'
     },
     {
       name: 'partner',
@@ -59,4 +60,16 @@ export default {
       type: 'schedule',
     }
   ],
+  preview: {
+    select: {
+      title: 'title'
+    },
+    prepare( selection ) {
+      const { title } = selection;
+      
+      return {
+        title: title.ru
+      }
+    },
+  },
 }

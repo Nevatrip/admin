@@ -10,9 +10,7 @@ export default {
     {
       name: 'title',
       title: 'Категория места',
-      type: 'string',
-      required: true,
-      validation: Rule => Rule.required(),
+      type: 'localeString'
     },
     {
       name: 'name',
@@ -29,7 +27,7 @@ export default {
     {
       name: 'description',
       title: 'Описание',
-      type: 'text'
+      type: 'localeText'
     },
     {
       name: 'api',
@@ -40,7 +38,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'title.ru',
       subtitle: 'name.current'
     }
   }
