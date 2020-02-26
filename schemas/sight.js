@@ -51,8 +51,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title.ru',
-      media: 'logo'
+      title: 'title.ru'
     }
   }
 }
