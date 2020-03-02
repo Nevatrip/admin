@@ -159,6 +159,11 @@ export default {
       ]
     },
     {
+      name: 'moreText',
+      title: 'Заголовок для кнопки Еще',
+      type: 'localeString',
+    },
+    {
       type: 'object',
       name: 'error',
       title: 'Страница ошибки',
