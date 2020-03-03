@@ -325,14 +325,16 @@ export default {
     select: {
       title: 'title',
       titleImage: 'titleImage',
-      previewImage: 'previewImage'
+      previewImage: 'previewImage',
+      category: 'category.title.ru.name'
     },
     prepare(selection) {
-      const { title, titleImage, previewImage } = selection;
+      const { title, titleImage, previewImage, category } = selection;
+      
       return {
         media: titleImage || previewImage,
         title: (title.ru || {}).name || (title.en || {}).name  || (title.de || {}).name  || (title.cs || {}).name || (title.zh || {}).name,
-        subtitle: `${((title.ru || {}).key || {}).current ? 'ru ' : ''}${((title.en || {}).key||{}).current ? 'en ' : ''}${((title.de || {}).key||{}).current ? 'de ' : ''}${((title.cs || {}).key||{}).current ? 'cs ' : ''}${((title.zh || {}).key||{}).current ? 'zh ' : ''}`
+        subtitle: `${category} — ${((title.ru || {}).key || {}).current ? 'ru ' : ''}${((title.en || {}).key||{}).current ? 'en ' : ''}${((title.de || {}).key||{}).current ? 'de ' : ''}${((title.cs || {}).key||{}).current ? 'cs ' : ''}${((title.zh || {}).key||{}).current ? 'zh ' : ''}`
       }
     }
   }
