@@ -20,7 +20,7 @@ export default {
       type: 'date',
       options: {
         dateFormat: 'YYYY-MM-DD',
-        calendarTodayLabel: 'Today'
+        calendarTodayLabel: 'Сегодня'
       },
       required: true,
       description: 'Дата создания статьи (можно выбрать любую дату)'
