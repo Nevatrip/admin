@@ -15,6 +15,17 @@ export default {
       description: 'Для экскурсий со старого сайта Ключ должен совпадать с полем "Псевдоним"',
     },
     {
+      name: 'releaseDate',
+      title: 'Дата создания статьи',
+      type: 'date',
+      options: {
+        dateFormat: 'YYYY-MM-DD',
+        calendarTodayLabel: 'Today'
+      },
+      required: true,
+      description: 'Дата создания статьи (можно выбрать любую дату)'
+    },
+    {
       name: 'titleLong',
       title: 'Расширенный заголовок',
       type: 'localeString',
