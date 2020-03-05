@@ -74,6 +74,12 @@ export default {
       required: true,
     },
     {
+      name: 'breadcrumb',
+      title: 'Хлебная крошка',
+      type: 'localeString',
+      description: 'Краткая версия заголовка для хлебных крошек',
+    },
+    {
       name: 'descriptionMeta',
       title: 'Описание для мета тегов',
       type: 'localeString',
