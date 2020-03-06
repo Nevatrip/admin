@@ -138,12 +138,11 @@ export default {
       name: 'name',
       price: 'price',
       description: 'description',
-      category: 'category.title',
+      category: 'category.title.ru',
       ticket: 'ticket',
     },
     prepare(selection) {
       const { name, price, description, category, ticket } = selection;
-
       return {
         title: `${ category }, ${ name ? name[ru].toLowerCase() : ticket.length + ' ' + getNoun( ticket.length, 'билет', 'билета', 'билетов' ) } — ${ price } ₽`,
         subtitle: description

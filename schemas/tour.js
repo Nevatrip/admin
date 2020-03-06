@@ -63,7 +63,6 @@ export default {
       name: 'title',
       title: 'Заголовок',
       type: 'localeTitleSlug',
-      required: true,
       description: 'Для экскурсий со старого сайта Ключ должен совпадать с полем "Псевдоним"',
     },
     {
@@ -97,6 +96,12 @@ export default {
           { title: 'Снять с публикации', value: 'deleted' },
         ]
       }
+    },
+    {
+      name: 'tourPriority',
+      title: 'Позиция в меню',
+      type: 'number',
+      description: 'Число, в каком порядке показывать эскурсию, чем меньше число, тем выше экскурсия.'
     },
     {
       name: 'titleImage',
