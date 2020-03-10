@@ -136,15 +136,17 @@ export default {
   preview: {
     select: {
       name: 'name',
+      nameRu: 'name.ru',
       price: 'price',
       description: 'description',
       category: 'category.title.ru',
       ticket: 'ticket',
     },
     prepare(selection) {
-      const { name, price, description, category, ticket } = selection;
+      const { name, price, description, category, ticket, nameRu } = selection;
+
       return {
-        title: `${ category }, ${ name ? name[ru].toLowerCase() : ticket.length + ' ' + getNoun( ticket.length, 'билет', 'билета', 'билетов' ) } — ${ price } ₽`,
+        title: `${ category }, ${ name ? nameRu : ticket.length + ' ' + getNoun( ticket.length, 'билет', 'билета', 'билетов' ) } — ${ price } ₽`,
         subtitle: description
       }
     },
