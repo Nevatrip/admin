@@ -60,6 +60,18 @@ export default {
       // inputComponent: Direction
     },
     {
+      name: 'status',
+      title: 'Статус',
+      type: 'array',
+      of: [ { type: 'string' } ],
+      options: {
+        list: [
+          { title: 'Не показывать в списке категории', value: 'hidden' },
+          { title: 'Снять с публикации', value: 'deleted' },
+        ]
+      }
+    },
+    {
       name: 'title',
       title: 'Заголовок',
       type: 'localeTitleSlug',
@@ -84,18 +96,6 @@ export default {
       type: 'localeString',
       description: 'Краткое описание статьи для мета тегов',
       required: true,
-    },
-    {
-      name: 'status',
-      title: 'Статус',
-      type: 'array',
-      of: [ { type: 'string' } ],
-      options: {
-        list: [
-          { title: 'Не показывать в списке категории', value: 'hidden' },
-          { title: 'Снять с публикации', value: 'deleted' },
-        ]
-      }
     },
     {
       name: 'tourPriority',
@@ -341,7 +341,7 @@ export default {
     },
     prepare(selection) {
       const { title, titleImage, previewImage, category } = selection;
-      
+
       return {
         media: titleImage || previewImage,
         title: (title.ru || {}).name || (title.en || {}).name  || (title.de || {}).name  || (title.cs || {}).name || (title.zh || {}).name,
