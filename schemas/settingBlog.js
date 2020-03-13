@@ -21,7 +21,7 @@ export default {
     {
       name: 'intro',
       title: 'Текст под заголовком',
-      type: 'localeText',
+      type: 'localeMarkdown',
     },
     {
       name: 'sectionsCaption',
