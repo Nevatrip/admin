@@ -5,6 +5,7 @@ RUN apk update && apk upgrade && \
 
 RUN mkdir -p /home/node/app/node_modules && \
     mkdir /home/node/app/dist && \
+    mkdir /home/node/app/build && \
     chown -R node:node /home/node/app
 
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
