@@ -48,14 +48,14 @@ export default {
     // {
     //   name: 'languages',
     //   title: 'Языки',
-      // type: 'array',
-      // of: [
-      //   {
-      //     type: 'reference',
-      //     title: 'Язык',
-      //     to: {type: 'settingTourLanguages'}
-      //   }
-      // ]
+    // type: 'array',
+    // of: [
+    //   {
+    //     type: 'reference',
+    //     title: 'Язык',
+    //     to: {type: 'settingTourLanguages'}
+    //   }
+    // ]
     // },
     {
       name: 'tel',
@@ -214,6 +214,33 @@ export default {
         },
       ]
     },
+    {
+      name: 'counters',
+      title: 'Счётчики',
+      type: 'object',
+      fields: [
+        {
+          name: 'yandexCounter',
+          title: 'Счётчик для Яндекс',
+          type: 'text',
+        },
+        {
+          name: 'googleCounter',
+          title: 'Счётчик для Google',
+          type: 'text',
+        },
+        {
+          name: 'altCounters',
+          title: 'Альтернативные счётчики',
+          type: 'text',
+        },
+        {
+          name: 'pixelForSocials',
+          title: 'Пиксель для социальных сетей',
+          type: 'text',
+        }
+      ]
+    }
   ],
   preview: {
     select: {

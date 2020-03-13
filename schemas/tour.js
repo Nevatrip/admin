@@ -60,27 +60,6 @@ export default {
       // inputComponent: Direction
     },
     {
-      name: 'title',
-      title: 'Заголовок',
-      type: 'localeTitleSlug',
-      required: true,
-      description: 'Для экскурсий со старого сайта Ключ должен совпадать с полем "Псевдоним"',
-    },
-    {
-      name: 'titleLong',
-      title: 'Расширенный заголовок',
-      type: 'localeString',
-      description: 'Развернутый заголовок статьи для мета тегов',
-      required: true,
-    },
-    {
-      name: 'descriptionMeta',
-      title: 'Описание для мета тегов',
-      type: 'localeString',
-      description: 'Краткое описание статьи для мета тегов',
-      required: true,
-    },
-    {
       name: 'status',
       title: 'Статус',
       type: 'array',
@@ -91,6 +70,38 @@ export default {
           { title: 'Снять с публикации', value: 'deleted' },
         ]
       }
+    },
+    {
+      name: 'title',
+      title: 'Заголовок',
+      type: 'localeTitleSlug',
+      description: 'Для экскурсий со старого сайта Ключ должен совпадать с полем "Псевдоним"',
+    },
+    {
+      name: 'titleLong',
+      title: 'Расширенный заголовок',
+      type: 'localeString',
+      description: 'Развернутый заголовок статьи для мета тегов',
+      required: true,
+    },
+    {
+      name: 'breadcrumb',
+      title: 'Хлебная крошка',
+      type: 'localeString',
+      description: 'Краткая версия заголовка для хлебных крошек',
+    },
+    {
+      name: 'descriptionMeta',
+      title: 'Описание для мета тегов',
+      type: 'localeString',
+      description: 'Краткое описание статьи для мета тегов',
+      required: true,
+    },
+    {
+      name: 'tourPriority',
+      title: 'Позиция в меню',
+      type: 'number',
+      description: 'Число, в каком порядке показывать эскурсию, чем меньше число, тем выше экскурсия.'
     },
     {
       name: 'titleImage',
@@ -325,14 +336,16 @@ export default {
     select: {
       title: 'title',
       titleImage: 'titleImage',
-      previewImage: 'previewImage'
+      previewImage: 'previewImage',
+      category: 'category.title.ru.name'
     },
     prepare(selection) {
-      const { title, titleImage, previewImage } = selection;
+      const { title, titleImage, previewImage, category } = selection;
+
       return {
         media: titleImage || previewImage,
         title: (title.ru || {}).name || (title.en || {}).name  || (title.de || {}).name  || (title.cs || {}).name || (title.zh || {}).name,
-        subtitle: `${((title.ru || {}).key || {}).current ? 'ru ' : ''}${((title.en || {}).key||{}).current ? 'en ' : ''}${((title.de || {}).key||{}).current ? 'de ' : ''}${((title.cs || {}).key||{}).current ? 'cs ' : ''}${((title.zh || {}).key||{}).current ? 'zh ' : ''}`
+        subtitle: `${category} — ${((title.ru || {}).key || {}).current ? 'ru ' : ''}${((title.en || {}).key||{}).current ? 'en ' : ''}${((title.de || {}).key||{}).current ? 'de ' : ''}${((title.cs || {}).key||{}).current ? 'cs ' : ''}${((title.zh || {}).key||{}).current ? 'zh ' : ''}`
       }
     }
   }
