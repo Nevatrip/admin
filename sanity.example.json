@@ -1,0 +1,26 @@
+{
+  "root": true,
+  "project": {
+    "name": "Admin"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/components",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "@sanity/google-maps-input",
+    "markdown",
+    "media"
+  ],
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema.js"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./src/dashboard.js"
+    }
+  ]
+}
