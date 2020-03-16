@@ -157,7 +157,12 @@ export default {
         },
 
       ],
-    }
+    },
+    {
+      name: 'noDirectionBtn',
+      title: 'Текст, который будет отображаться, если направление экскурсии не заполнено',
+      type: 'localeString',
+    },
   ],
   preview: {
     select: {
