@@ -33,3 +33,6 @@ jobs:
 
     - name: Build
       run: docker build . -t cr.yandex/${{ secrets.YC_REGISTRY_ID }}/admin:${GITHUB_REF##*/}
+
+    - name: Push
+      run: docker push cr.yandex/${{ secrets.YC_REGISTRY_ID }}/admin:${GITHUB_REF##*/}
