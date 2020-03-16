@@ -17,6 +17,6 @@ USER node
 
 COPY --chown=node:node . .
 
-RUN npm install -g @sanity/cli && npm install
+RUN npm install -g @sanity/cli && npm ci
 
 CMD [ "node" ]
