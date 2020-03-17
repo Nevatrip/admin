@@ -21,7 +21,8 @@ export default {
     {
       name: 'intro',
       title: 'Текст под заголовком',
-      type: 'localeText',
+      description: 'Нажмите «Try», если после попытки опубликовать изменения, у вас появится окно с ошибкой. Не переживайте, изменения успешно опубликуются.',
+      type: 'localeMarkdown',
     },
     {
       name: 'sectionsCaption',
