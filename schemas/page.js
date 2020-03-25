@@ -32,6 +32,12 @@ export default {
       options: { hotspot: true },
     },
     {
+      name: 'imagesGallery',
+      title: 'Загрузить картинки',
+      type: 'array',
+      of: [{ type: 'image' }]
+    },
+    {
       name: 'content',
       title: 'Содержимое',
       description: 'Основной текст',
