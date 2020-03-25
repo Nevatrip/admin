@@ -117,6 +117,12 @@ export default {
       description: 'Если не загружено, то оно берется из центра круга главного изображения выше',
     },
     {
+      name: 'imagesGallery',
+      title: 'Загрузить картинки',
+      type: 'array',
+      of: [{ type: 'image' }]
+    },
+    {
       name: 'category',
       type: 'reference',
       title: 'Категория',
