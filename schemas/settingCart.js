@@ -4,10 +4,11 @@ export default {
   type: 'object',
   fields: [
     {
-      name: 'serviceBuyLink',
-      title: 'Дата поездки',
-      description: '«Дата поездки»',
-      type: 'localeString',
+      name: 'cartBackground',
+      title: 'Фон корзины',
+      description: '«Изображение для фона для корзины»',
+      type: 'image',
+      options: { hotspot: true },
     }
   ],
   preview: {
