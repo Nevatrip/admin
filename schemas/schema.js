@@ -43,6 +43,7 @@ import settingEmails from './settingEmails'
 import settingCart from './settingCart'
 import event from "./event";
 import action from "./action";
+import localeImage from "./localeImage";
 
 export default createSchema({
   name: 'default',
@@ -89,5 +90,6 @@ export default createSchema({
     settingCart,
     event,
     action,
+    localeImage
   ])
 })
