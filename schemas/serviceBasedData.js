@@ -34,6 +34,12 @@ export default {
       type: 'image',
     },
     {
+      name: 'logoSm',
+      title: 'Лого на мобильных',
+      description: 'На мобильных слоган в шапке сайта скрыт, поэтому предполагается, что лого для каждого языка будет включать в себя слоган',
+      type: 'localeImage',
+    },
+    {
       name: 'Slogan',
       title: 'Слоган',
       description: 'Отображается в шапке сайта',
