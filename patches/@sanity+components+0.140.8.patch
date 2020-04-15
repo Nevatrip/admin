@@ -1,0 +1,21 @@
+diff --git a/node_modules/@sanity/components/lib/textareas/styles/DefaultTextArea.css b/node_modules/@sanity/components/lib/textareas/styles/DefaultTextArea.css
+index 6a1047d..1e773cf 100644
+--- a/node_modules/@sanity/components/lib/textareas/styles/DefaultTextArea.css
++++ b/node_modules/@sanity/components/lib/textareas/styles/DefaultTextArea.css
+@@ -6,12 +6,16 @@
+ 
+   /* forces bigger dialog when in dialog */
+   composes: largeContent from 'part:@sanity/components/dialogs/default-style';
++  max-height: 400px;
++  overflow-y: auto;
+ }
+ 
+ .textarea {
+   composes: root from 'part:@sanity/base/theme/forms/textarea-style';
+   position: relative;
+   width: 100%;
++  max-height: 400px;
++  overflow-y: auto;
+ }
+ 
+ .clearButton {

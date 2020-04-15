@@ -1,28 +1,35 @@
+import slugValidation from "../components/slugValidation";
+import FaTruck from 'react-icons/lib/fa/truck';
+
 export default {
   name: 'place',
   title: 'Транспортное средство/площадка',
   type: 'document',
+  icon: FaTruck,
   fields: [
     {
       name: 'title',
       title: 'Имя',
-      type: 'string',
+      type: 'localeString',
       required: true,
+      validation: Rule => Rule.required(),
     },
     {
       name: 'key',
       title: 'Ключ',
+      description: 'Это ключ для программиста, должен быть человекопонятным. Если транспортное средство автобус, то ключ должен быть — bus',
       type: 'slug',
       required: true,
+      validation: slugValidation,
       options: {
-        source: 'title',
+        source: 'title.ru',
         maxLength: 96
       }
     },
     {
       name: 'description',
       title: 'Описание',
-      type: 'text'
+      type: 'localeText'
     },
     {
       name: 'api',
@@ -32,7 +39,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'title.ru',
       media: 'logo'
     }
   }

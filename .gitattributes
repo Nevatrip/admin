@@ -1,1 +1,1 @@
-sanity.json filter=git-crypt diff=git-crypt
+# sanity.json filter=git-crypt diff=git-crypt

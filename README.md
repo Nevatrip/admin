@@ -1,3 +1,1 @@
-# NevaTrip admin panel
-
-Repo use [git-crypt](https://github.com/AGWA/git-crypt) for keep sensitive data.
+# NevaTrip admin panel ![CI](https://github.com/Nevatrip/admin/workflows/CI/badge.svg)

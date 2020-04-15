@@ -1,6 +1,7 @@
 export default {
   name: 'apiRelation',
   title: 'Значение в API партнёра',
+  description: 'Поле для программиста',
   type: 'array',
   of: [
     {

@@ -8,12 +8,14 @@ export default {
       title: 'Название',
       type: 'string',
       required: true,
+      validation: Rule => Rule.required(),
     },
     {
       name: 'value',
       title: 'Значение',
       type: 'number',
       required: true,
+      validation: Rule => Rule.required(),
     },
     {
       name: 'type',
