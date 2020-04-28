@@ -1,10 +1,4 @@
-const supportedLanguages = [
-  {id: 'ru', title: 'Русский', isDefault: true},
-  {id: 'en', title: 'Английский'},
-  {id: 'de', title: 'Немецкий'},
-  {id: 'cs', title: 'Чешский'},
-  {id: 'zh', title: 'Китайский'}
-]
+const supportedLanguages = JSON.parse(process.env.SANITY_STUDIO_LANGS);
 
 export default {
   name: 'localeImage',
