@@ -1,4 +1,4 @@
-const supportedLanguages = JSON.parse(process.env.SANITY_STUDIO_LANGS);
+import supportedLanguages from '../src/langs';
 
 export default {
   name: 'localeString',
@@ -11,12 +11,12 @@ export default {
       options: {collapsible: true}
     }
   ],
-  fields: supportedLanguages.map(lang => (
+  fields: supportedLanguages.map(( lang, index ) => (
     {
       title: lang.title,
       name: lang.id,
       type: 'string',
-      fieldset: lang.isDefault ? null : 'translations'
+      fieldset: index === 0 ? null : 'translations',
     }
   ))
 }
