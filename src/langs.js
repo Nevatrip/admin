@@ -1,4 +1,4 @@
-const languages = process.env.SANITY_STUDIO_LANG ? JSON.parse(process.env.SANITY_STUDIO_LANG) : [''];
+const languages = process.env.SANITY_STUDIO_LANG ? JSON.parse(process.env.SANITY_STUDIO_LANG) : [];
 
 export default languages.map(lang => {
   let translate;
