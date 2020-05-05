@@ -37,6 +37,12 @@ export default {
           options: { hotspot: true },
         },
         {
+          name: 'titleImageSm',
+          title: 'Баннер-изображение для мобилы',
+          type: 'image',
+          options: { hotspot: true },
+        },
+        {
           name: 'title',
           title: 'Заголовок баннера-изображения',
           type: 'string',
