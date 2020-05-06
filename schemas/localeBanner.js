@@ -11,12 +11,12 @@ export default {
       options: {collapsible: true}
     }
   ],
-  fields: supportedLanguages.map(( lang, index ) => (
+  fields: supportedLanguages.map( lang => (
     {
       title: lang.title,
       name: lang.id,
       type: 'object',
-      fieldset: index === 0 ? null : 'translations',
+      fieldset: lang.isDefault ? null : 'translations',
       fields: [
         {
           name: 'tour',

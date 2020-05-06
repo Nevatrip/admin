@@ -1,28 +1,17 @@
-const languages = process.env.SANITY_STUDIO_LANGS ? JSON.parse(process.env.SANITY_STUDIO_LANGS) : [''];
+const langsMap = {
+  ru: 'Русский',
+  en: 'Английский',
+  de: 'Немецкий',
+  cs: 'Чешский',
+  zh: 'Китайский',
+}
 
-export default languages.map(lang => {
-  let translate;
+const langsStr = process.env.SANITY_STUDIO_LANGS || 'ru';
+const langsArr = langsStr.replace( / /g, '' ).split( ',' );
 
-  switch (lang) {
-    case 'ru':
-      translate = 'Русский';
-      break;
-    case 'en':
-      translate = 'Английский';
-      break;
-    case 'de':
-      translate = 'Немецкий';
-      break;
-    case 'cs':
-      translate = 'Чешский';
-      break;
-    case 'zh':
-      translate = 'Китайский';
-      break;
-    default:
-      lang = 'ru';
-      translate = 'Русский';
-  }
+export default langsArr.map( ( id, index ) => ( {
+  id,
+  title: langsMap[ id ] || 'Unknown language',
+  isDefault: !index,
+} ) );
 
-  return {id: lang, title: translate};
-});
