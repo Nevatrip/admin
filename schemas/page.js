@@ -13,6 +13,12 @@ export default {
       description: 'Для экскурсий со старого сайта Ключ должен совпадать с полем "Псевдоним"',
     },
     {
+      name: 'anchor',
+      title: 'Вести до якоря',
+      type: 'localeString',
+      description: 'Путь до страницы с якорем, если заполнен то будет вести до якоря',
+    },
+    {
       name: 'titleLong',
       title: 'Расширенный заголовок',
       type: 'localeString',
