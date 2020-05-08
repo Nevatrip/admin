@@ -1,5 +1,8 @@
 import FaExchange from 'react-icons/lib/fa/exchange';
 import IoAndroidBoat from 'react-icons/lib/io/android-boat';
+import { ComplexDirection } from "../components/ComplexDirection/ComplexDirection";
+
+console.log( `ComplexDirection`, ComplexDirection );
 
 export default {
   name: 'tour',
@@ -22,11 +25,16 @@ export default {
           title: '«Составная» экскурсия',
           icon: FaExchange,
           type: 'object',
+          preview: {
+            select: {
+              title: 'title.ru'
+            },
+          },
           fields: [
             {
               name: 'title',
               title: 'Название',
-              type: 'string'
+              type: 'localeString',
             },
             {
               title: 'У каждого направления своя дата',
@@ -46,11 +54,12 @@ export default {
               name: 'nested',
               title: 'Одиночные направления',
               type: 'array',
+              inputComponent: ComplexDirection,
               of: [
                 {
                   type: 'reference',
                   title: 'Выбрать одиночное направление',
-                  to: { type: 'direction' },
+                  to: { type: 'point' },
                 }
               ]
             }
