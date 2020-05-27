@@ -12,7 +12,7 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@progress/kendo-ui": "^2019.3.1113",
+    "@progress/kendo-ui": "^2020.1.219",
     "@sanity/base": "^1.149.3",
     "@sanity/components": "^1.149.3",
     "@sanity/core": "^1.149.2",

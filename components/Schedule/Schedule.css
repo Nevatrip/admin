@@ -1,7 +1,30 @@
-.k-scheduler-edit-form .k-edit-label {
-  width: 26%;
+div[data-container-for=openTime] > .k-dropdown,
+div[data-container-for=point] > .k-dropdown,
+div[name=recurrenceRule] > .k-dropdown {
+  width: 100%;
 }
 
-.k-scheduler-edit-form .k-edit-field {
-  width: 68%;
+.k-datetimepicker {
+  width: 14.5em;
+  margin-right: .5em;
+}
+
+div[data-container-for=isAllDay] {
+  margin-top: .7em;
+}
+
+.k-event-actions:first-child {
+  margin-top: -2px;
+}
+
+.k-event {
+  line-height: 1.4;
+}
+
+.k-event-template {
+  padding-top: 1px;
+}
+
+.k-scheduler-task-text {
+  padding-top: 2px;
 }
