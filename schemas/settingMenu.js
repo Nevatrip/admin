@@ -35,6 +35,11 @@ export default {
         { title: 'Категория', name: 'category', type: 'reference', to: { type: 'settingServiceCategory' } },
         { title: 'Подборки', name: 'collections', type: 'reference', to: { type: 'settingServicesCollections' } },
         { title: 'Статья блога', name: 'blogArticle', type: 'reference', to: { type: 'blog' } },
+        {
+          title: 'Ссылка',
+          name: 'menuLink',
+          type: 'localeLink',
+        },
       ]
     },
   ],
