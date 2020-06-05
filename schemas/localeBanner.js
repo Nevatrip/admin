@@ -1,10 +1,4 @@
-const supportedLanguages = [
-  {id: 'ru', title: 'Русский', isDefault: true},
-  {id: 'en', title: 'Английский'},
-  {id: 'de', title: 'Немецкий'},
-  {id: 'cs', title: 'Чешский'},
-  {id: 'zh', title: 'Китайский'}
-]
+import supportedLanguages from '../src/langs';
 
 export default {
   name: 'localeBanner',
@@ -17,7 +11,7 @@ export default {
       options: {collapsible: true}
     }
   ],
-  fields: supportedLanguages.map(lang => (
+  fields: supportedLanguages.map( lang => (
     {
       title: lang.title,
       name: lang.id,
@@ -33,6 +27,12 @@ export default {
         {
           name: 'titleImage',
           title: 'Баннер-изображение',
+          type: 'image',
+          options: { hotspot: true },
+        },
+        {
+          name: 'titleImageSm',
+          title: 'Баннер-изображение для мобилы',
           type: 'image',
           options: { hotspot: true },
         },

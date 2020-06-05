@@ -3,13 +3,7 @@ import htmlPreview from 'sanity-plugin-markdown/html-preview' //!!!important don
 
 // We need to solve the error problem. The error is displayed when switching between languages and input markdown.
 
-const supportedLanguages = [
-  {id: 'ru', title: 'Русский', isDefault: true},
-  {id: 'en', title: 'Английский'},
-  {id: 'de', title: 'Немецкий'},
-  {id: 'cs', title: 'Чешский'},
-  {id: 'zh', title: 'Китайский'}
-];
+import supportedLanguages from '../src/langs';
 
 export default {
   name: 'localeMarkdown',
@@ -22,12 +16,12 @@ export default {
       options: {collapsible: true}
     }
   ],
-  fields: supportedLanguages.map(lang => (
+  fields: supportedLanguages.map( lang => (
     {
       title: lang.title,
       name: lang.id,
       type: 'markdown',
-      fieldset: lang.isDefault ? null : 'translations'
+      fieldset: lang.isDefault ? null : 'translations',
     }
   ))
 }
