@@ -44,6 +44,7 @@ import settingCart from './settingCart'
 import event from "./event";
 import action from "./action";
 import localeImage from "./localeImage";
+import localeLink from "./localeLink";
 
 export default createSchema({
   name: 'default',
@@ -90,6 +91,7 @@ export default createSchema({
     settingCart,
     event,
     action,
-    localeImage
+    localeImage,
+    localeLink
   ])
 })
