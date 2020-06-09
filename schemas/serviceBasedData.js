@@ -244,6 +244,11 @@ export default {
           name: 'pixelForSocials',
           title: 'Пиксель для социальных сетей',
           type: 'text',
+        },
+        {
+          name: 'metatags',
+          title: 'Мета-теги (будут вставлены в тег <head>)',
+          type: 'localeText',
         }
       ]
     }
