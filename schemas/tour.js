@@ -26,7 +26,7 @@ export default {
             {
               name: 'title',
               title: 'Название',
-              type: 'string'
+              type: 'localeString'
             },
             {
               title: 'У каждого направления своя дата',
@@ -54,7 +54,12 @@ export default {
                 }
               ]
             }
-          ]
+          ],
+          preview: {
+            select: {
+              title: 'title.ru'
+            }
+          }
         },
       ],
       // inputComponent: Direction
