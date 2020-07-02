@@ -14,9 +14,34 @@ export default {
     },
     {
       name: 'partner',
-      type: 'reference',
-      title: 'Партнёр/оператор',
-      to: { type: 'apiProvider' },
+      type: 'object',
+      fields: [
+        {
+          title: 'API',
+          name: 'provider',
+          type: 'reference',
+          required: true,
+          to: { type: 'apiProvider' }
+        },
+        {
+          title: 'Значение',
+          name: 'value',
+          required: true,
+          type: 'string',
+        },
+      ],
+      preview: {
+        select: {
+          title: 'provider.title',
+          value: 'value'
+        },
+        prepare(selection) {
+          const {title, value} = selection
+          return {
+            title: `${ title } — ${ value }`
+          }
+        }
+      },
     },
     {
       name: 'partnerName',
